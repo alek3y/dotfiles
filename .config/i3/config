@@ -1,0 +1,188 @@
+#  _ ___             ___ _     
+# |_|_  |___ ___ ___|  _|_|___ 
+# | |_  |  _| . |   |  _| | . |
+# |_|___|___|___|_|_|_| |_|_  |
+#                         |___|
+# 
+# This is ale's ~/.config/i3/config
+# [Documentation](https://i3wm.org/docs/userguide.html)
+
+##
+# Bindings
+#
+
+# Super (Win) key
+set $mod Mod4
+
+# Application menu
+bindsym $mod+d exec --no-startup-id dmenu_run
+
+# Close a window
+bindsym $mod+Shift+q kill
+
+# Terminal
+bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
+
+# Open empty window
+bindsym $mod+q exec --no-startup-id i3-msg open
+
+# Set the key to move floating windows along with the mouse
+floating_modifier $mod
+
+# Focus navigation
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move focused window
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Set the split direction
+bindsym $mod+h split h
+bindsym $mod+v split v
+
+# Focus the parent container
+bindsym $mod+a focus parent
+
+# Change container layout
+# - split: Tiling layout (default)
+# - stacking: Focused window with vertical stacked list
+# - tabbed: Focused window with horizontal stacked list
+bindsym $mod+e layout toggle split
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+
+# Switch between floating and tiling for the focused window
+bindsym $mod+f floating toggle
+
+# Toggle focus between tiling and floating windows
+bindsym $mod+space focus mode_toggle
+
+# Fullscreen toggle
+bindsym $mod+t fullscreen toggle
+
+# Reload config file
+#bindsym $mod+Shift+c reload
+
+# Reload i3wm
+bindsym $mod+Shift+r restart
+
+##
+# Workspaces
+#
+
+# Workspaces titles
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+
+# Switch to workspace
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+
+# Move window to workspace
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+
+##
+# Fonts
+#
+
+# Window titles
+font pango:monospace 8
+
+##
+# Displays
+#
+
+# Move HDMI to the left of DP
+exec --no-startup-id xrandr --output HDMI-A-0 --auto --left-of DisplayPort-0
+
+##
+# Lockscreen setup
+#
+
+# Lockscreen timeout in minutes
+set $minutes 1
+
+# Lockscreen script path
+set $lockscreen "$HOME/.config/i3/lockscreen.sh"
+
+# Start the daemon
+set $checkaudio "$HOME/.config/i3/checktimeout.sh"
+exec --no-startup-id xautolock -secure -time $minutes -locker $checkaudio -nowlocker $checkaudio
+
+##
+# Resize window
+#
+
+mode "Resize" {
+	bindsym Right resize grow width 40 px or 10 ppt
+	bindsym Left resize shrink width 40 px or 10 ppt
+	bindsym Up resize shrink height 40 px or 10 ppt
+	bindsym Down resize grow height 40 px or 10 ppt
+
+	bindsym Escape mode "default"
+	bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "Resize"
+
+##
+# Power management
+#
+
+mode "Power" {
+	bindsym l exec --no-startup-id $lockscreen, mode "default"
+	bindsym e exec --no-startup-id i3-nagbar -t warning -m "Do you really want to logout?" -B "Yup!" "i3-msg exit", mode "default"
+	bindsym s exec --no-startup-id $lockscreen && systemctl suspend, mode "default"
+	bindsym r exec --no-startup-id i3-nagbar -t warning -m "Do you really want to reboot?" -B "Yup!" "systemctl reboot", mode "default"
+	bindsym p exec --no-startup-id i3-nagbar -t warning -m "Do you really want to poweroff?" -B "Yup!" "systemctl poweroff", mode "default"
+
+	bindsym Escape mode "default"
+	bindsym $mod+Pause mode "default"
+}
+
+bindsym $mod+Pause mode "Power"
+
+# Fast shortcut to lock the screen
+bindsym $mod+l exec --no-startup-id bash -c $lockscreen
+
+##
+# Other stuff
+#
+
+# Focus on mouse hover
+focus_follows_mouse no
+
+# Move the mouse to window center when switching display
+mouse_warping none
+
+# Focus the window of the opposide side when trying to focus in
+# a direction with no windows left
+focus_wrapping yes
+
+# Return to the old workspace after going in another one
+# by pressing the same key combination
+workspace_auto_back_and_forth yes
+
+# Set the minimum and maximum size for floating window
+floating_minimum_size 864 x 486
+floating_maximum_size 1280 x 720
+
+##
+# Workspace bar, i3bar
+#
+
+bar {
+	status_command i3status
+}

@@ -1,0 +1,23 @@
+## For reference: /etc/nanorc
+
+include /usr/share/nano/*.nanorc
+
+set autoindent
+#set backup
+#set backupdir "~/.nano_backups"
+set historylog
+set linenumbers
+set locking
+set nonewlines
+set positionlog
+set smarthome
+set smooth
+set softwrap
+set suspend
+set tabsize 2
+set titlecolor brightwhite,red
+set statuscolor brightred
+set selectedcolor brightwhite,red
+set numbercolor brightblack
+set keycolor brightred
+set functioncolor white
