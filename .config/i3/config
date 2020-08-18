@@ -110,15 +110,19 @@ exec --no-startup-id xrandr --output HDMI-A-0 --auto --left-of DisplayPort-0
 # Lockscreen setup
 #
 
-# Lockscreen timeout in minutes
-set $minutes 1
+# Timeout and blank time
+set $lockminutes 1
+set $blankseconds 1200
 
 # Lockscreen script path
 set $lockscreen "$HOME/.config/i3/lockscreen.sh"
 
-# Start the daemon
-set $checkaudio "$HOME/.config/i3/checktimeout.sh"
-exec --no-startup-id xautolock -secure -time $minutes -locker $checkaudio -nowlocker $checkaudio
+# Set the screen blank time
+exec --no-startup-id xset s $blankseconds $blankseconds
+
+# Start the lock daemon
+set $checker "$HOME/.config/i3/checkbeforelock.sh"
+exec --no-startup-id xautolock -secure -detectsleep -time $minutes -locker $checker -nowlocker $checker
 
 ##
 # Resize window
