@@ -36,4 +36,4 @@ i3lock \
         --datecolor=$datecolor --datestr="Type password.." --datesize=20 --date-font=$font \
         --radius=20 --ring-width=5 \
         --time-align=1 --date-align=1 \
-        --indpos="x+50+200+5+5+25+r:y+h-85-r" --timepos="x+50:y+h-100" --datepos="x+50+5:y+h-65"
+        --indpos="x+50+200+32+r:y+h-65-(86/2)" --timepos="x+50:y+h-100" --datepos="x+50+5+2:y+h-65"
