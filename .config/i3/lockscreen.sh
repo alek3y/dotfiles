@@ -1,5 +1,9 @@
 #!/bin/bash
 
+##
+# Colors
+#
+
 background="$HOME/Pictures/wallpaper.png"
 backgroundcolor="000000ff"
 ringcolor="ffffffff"
@@ -9,6 +13,10 @@ verifyingcolor="ffffffaa"
 timecolor="ffffffff"
 datecolor="eeeeeeff"
 font="monospace"
+
+##
+# Layout
+#
 
 i3lock \
         --screen 1 \
@@ -22,7 +30,8 @@ i3lock \
         --line-uses-inside \
         --keyhlcolor=$activecolor --bshlcolor=$activecolor \
         --separatorcolor=$activecolor \
-        --veriftext="" --wrongtext="" --noinputtext="" --locktext="" --lockfailedtext="Error" --wrongcolor=$ringcolor \
+        --veriftext="" --wrongtext="" --noinputtext="" --locktext="" --lockfailedtext="Error" \
+        --wrongcolor=$ringcolor \
         --timecolor=$timecolor --timestr="%H:%M" --timesize="70" --time-font=$font \
         --datecolor=$datecolor --datestr="Type password.." --datesize=20 --date-font=$font \
         --radius=20 --ring-width=5 \

@@ -1,23 +1,27 @@
-## For reference: /etc/nanorc
+#  ___ ___ ___ ___ ___ ___
+# |   | .'|   | . |  _|  _|
+# |_|_|__,|_|_|___|_| |___|
+#
+# This is ale's ~/.nanorc
 
 include /usr/share/nano/*.nanorc
 
+#set backup		# Enable backup of the file being edited
+#set backupdir "~/.nanobackups"		# Backup location
 set autoindent
-#set backup
-#set backupdir "~/.nano_backups"
-set historylog
 set linenumbers
-set locking
-set nonewlines
-set positionlog
-set smarthome
-set smooth
-set softwrap
-set suspend
+set locking		# Warn the user when opening an already opened file
+#set nonewlines		# Disable the newline at the end of the file
+set positionlog		# Remember the cursor position for the next session
+set smarthome		# Adapt the Home key to indentation
+set smooth		# Set smooth scrolling
+set softwrap		# Wrap lines when lines are longer than the window
+set suspend		# Allow suspension of nano
 set tabsize 2
-set titlecolor brightwhite,red
-set statuscolor brightred
-set selectedcolor brightwhite,red
-set numbercolor brightblack
-set keycolor brightred
-set functioncolor white
+
+set titlecolor brightwhite,red		# Title bar
+set statuscolor brightred		# Status feedback
+set selectedcolor brightwhite,red		# Selection
+set numbercolor brightblack		# Line numbers
+set keycolor brightred		# Help key shortcuts
+set functioncolor white		# Help text

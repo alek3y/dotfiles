@@ -1,11 +1,10 @@
-#  _ ___             ___ _     
-# |_|_  |___ ___ ___|  _|_|___ 
+#  _ ___             ___ _
+# |_|_  |___ ___ ___|  _|_|___
 # | |_  |  _| . |   |  _| | . |
 # |_|___|___|___|_|_|_| |_|_  |
 #                         |___|
-# 
+#
 # This is ale's ~/.config/i3/config
-# [Documentation](https://i3wm.org/docs/userguide.html)
 
 ##
 # Bindings
