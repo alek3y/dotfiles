@@ -111,7 +111,7 @@ exec --no-startup-id xrandr --output HDMI-A-0 --auto --left-of DisplayPort-0
 #
 
 # Timeout and blank time
-set $lockminutes 1
+set $lockminutes 15
 set $blankseconds 1200
 
 # Lockscreen script path
