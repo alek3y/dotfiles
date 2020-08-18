@@ -122,7 +122,7 @@ exec --no-startup-id xset s $blankseconds $blankseconds
 
 # Start the lock daemon
 set $checker "$HOME/.config/i3/checkbeforelock.sh"
-exec --no-startup-id xautolock -secure -detectsleep -time $minutes -locker $checker -nowlocker $checker
+exec --no-startup-id xautolock -secure -detectsleep -time $lockminutes -locker $checker -nowlocker $checker
 
 ##
 # Resize window
