@@ -129,10 +129,10 @@ exec --no-startup-id xautolock -secure -detectsleep -time $lockminutes -locker $
 #
 
 mode "Resize" {
-	bindsym Right resize grow width 40 px or 10 ppt
-	bindsym Left resize shrink width 40 px or 10 ppt
-	bindsym Up resize shrink height 40 px or 10 ppt
-	bindsym Down resize grow height 40 px or 10 ppt
+	bindsym Right resize grow width 100 px or 10 ppt
+	bindsym Left resize shrink width 100 px or 10 ppt
+	bindsym Up resize shrink height 100 px or 10 ppt
+	bindsym Down resize grow height 100 px or 10 ppt
 
 	bindsym Escape mode "default"
 	bindsym $mod+r mode "default"
