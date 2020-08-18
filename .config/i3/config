@@ -7,6 +7,12 @@
 # This is ale's ~/.config/i3/config
 
 ##
+# Wallpaper
+#
+
+exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpaper.png
+
+##
 # Bindings
 #
 
@@ -17,13 +23,13 @@ set $mod Mod4
 bindsym $mod+d exec --no-startup-id dmenu_run
 
 # Close a window
-bindsym $mod+Shift+q kill
+bindsym $mod+q kill
 
 # Terminal
 bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
 
 # Open empty window
-bindsym $mod+q exec --no-startup-id i3-msg open
+bindsym $mod+Shift+q exec --no-startup-id i3-msg open
 
 # Set the key to move floating windows along with the mouse
 floating_modifier $mod
@@ -59,7 +65,7 @@ bindsym $mod+w layout tabbed
 bindsym $mod+f floating toggle
 
 # Toggle focus between tiling and floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+x focus mode_toggle
 
 # Fullscreen toggle
 bindsym $mod+t fullscreen toggle
@@ -74,23 +80,47 @@ bindsym $mod+Shift+r restart
 # Workspaces
 #
 
-# Workspaces titles
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
+# First monitor
+set $ws1 "1: Browser"
+set $ws2 "2: Terminal"
+set $ws3 "3: Coding"
+set $ws4 "4: Other"
+workspace $ws1 output HDMI-A-0
+workspace $ws2 output HDMI-A-0
+workspace $ws3 output HDMI-A-0
+workspace $ws4 output HDMI-A-0
+
+# Second monitor
+set $ws5 "1: Browser​"
+set $ws6 "2: Terminal​"
+set $ws7 "3: Coding​"
+set $ws8 "4: Other​"
+workspace $ws5 output DisplayPort-0
+workspace $ws6 output DisplayPort-0
+workspace $ws7 output DisplayPort-0
+workspace $ws8 output DisplayPort-0
 
 # Switch to workspace
-bindsym $mod+1 workspace number $ws1
-bindsym $mod+2 workspace number $ws2
-bindsym $mod+3 workspace number $ws3
-bindsym $mod+4 workspace number $ws4
+bindsym $mod+1 workspace $ws5, workspace $ws1
+bindsym $mod+2 workspace $ws6, workspace $ws2
+bindsym $mod+3 workspace $ws7, workspace $ws3
+bindsym $mod+4 workspace $ws8, workspace $ws4
 
 # Move window to workspace
-bindsym $mod+Shift+1 move container to workspace number $ws1
-bindsym $mod+Shift+2 move container to workspace number $ws2
-bindsym $mod+Shift+3 move container to workspace number $ws3
-bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+
+##
+# Display layout
+#
+
+# Set the first monitor as primary
+exec --no-startup-id xrandr --output HDMI-A-0 --primary
+
+# Change positions
+exec --no-startup-id xrandr --output HDMI-A-0 --left-of DisplayPort-0
 
 ##
 # Fonts
@@ -98,13 +128,6 @@ bindsym $mod+Shift+4 move container to workspace number $ws4
 
 # Window titles
 font pango:monospace 8
-
-##
-# Displays
-#
-
-# Move HDMI to the left of DP
-exec --no-startup-id xrandr --output HDMI-A-0 --auto --left-of DisplayPort-0
 
 ##
 # Lockscreen setup
@@ -161,6 +184,18 @@ bindsym $mod+Pause mode "Power"
 bindsym $mod+l exec --no-startup-id bash -c $lockscreen
 
 ##
+# Workspace bar, i3bar
+#
+
+bar {
+	status_command i3status
+
+	# Remove the number prefixes that keep the workspaces ordered
+	strip_workspace_numbers yes
+}
+
+
+##
 # Other stuff
 #
 
@@ -181,11 +216,3 @@ workspace_auto_back_and_forth yes
 # Set the minimum and maximum size for floating window
 floating_minimum_size 864 x 486
 floating_maximum_size 1280 x 720
-
-##
-# Workspace bar, i3bar
-#
-
-bar {
-	status_command i3status
-}
