@@ -1,0 +1,57 @@
+##
+# Global properties
+#
+
+# Space between separators
+separator_block_width=20
+
+##
+# Volume
+#
+
+[volume]
+label=🔊
+interval=1
+command=$HOME/.config/i3blocks/volume.sh
+
+##
+# Battery
+#
+
+# @todo - have to test on laptop
+#[battery]
+#label=⚡
+#interval=30
+#command=
+
+##
+# Wifi
+#
+
+# @todo - same as battery
+#[wifi]
+#interval=10
+
+##
+# Disk space
+#
+
+[disk]
+label=💾
+interval=40
+command=df -h | awk '/\/$/ {print $(NF-2)}'
+
+##
+# Date
+#
+
+[time]
+interval=5
+command=date +'%d/%m %H:%M'
+
+# Pad from border of the monitor
+separator=false
+separator_block_width=5
+
+[placeholder]
+full_text=​

@@ -89,10 +89,10 @@ workspace $ws3 output HDMI-A-0
 workspace $ws4 output HDMI-A-0
 
 # Second monitor
-set $ws5 "1: Browser​"
-set $ws6 "2: Terminal​"
-set $ws7 "3: Coding​"
-set $ws8 "4: Other​"
+set $ws5 "5: Browser"
+set $ws6 "6: Terminal"
+set $ws7 "7: Coding"
+set $ws8 "8: Other"
 workspace $ws5 output DisplayPort-0
 workspace $ws6 output DisplayPort-0
 workspace $ws7 output DisplayPort-0
@@ -111,11 +111,14 @@ bindsym $mod+Shift+3 move container to workspace $ws3
 bindsym $mod+Shift+4 move container to workspace $ws4
 
 ##
-# Display layout
+# Displays
 #
 
 # Set the first monitor as primary and change positions
 exec --no-startup-id xrandr --output HDMI-A-0 --primary --left-of DisplayPort-0
+
+# Start the compositor to prevent tearing
+exec --no-startup-id compton --config ~/.config/compton.conf
 
 ##
 # Window styles
@@ -143,7 +146,7 @@ set $inactiveborder #404040
 set $splitdirection #292929
 
 # Background and text color for urgent windows
-set $urgentborder #B74C4A
+set $urgentborder #b74C4a
 set $urgenttext #803534
 
 # Set the colors
@@ -157,15 +160,14 @@ client.urgent            $urgentborder   $urgentborder   $urgenttext   $urgentbo
 #
 
 # DMenu colors
-set $dmenuactivetext #BCCBE6
-set $dmenuactivebg #26282E
+set $dmenuactivebg #b74c4a
 
 # DMenu binding
-#bindsym $mod+d exec --no-startup-id "dmenu_run -nf '$activetext' -nb '$activeborder' -sb '$dmenuactivebg' -sf '$dmenuactivetext' -fn '$font-$fontsize'"
+#bindsym $mod+d exec --no-startup-id "dmenu_run -nf '$activetext' -nb '$activeborder' -sb '$dmenuactivebg' -sf '$activetext' -fn '$font-$fontsize'"
 
 # Rofi colors
-set $rofiwidth 30
-set $rofiheight 11
+set $rofiwidth 35
+set $rofiheight 10
 set $rofidpi -1
 set $rofihistorysize 4
 set $rofifontsize 13
@@ -229,16 +231,46 @@ bindsym $mod+Pause mode "Power"
 bindsym $mod+l exec --no-startup-id bash -c $lockscreen
 
 ##
-# Workspace bar, i3bar
+# Workspace bar
 #
 
+# Color of the bar
+set $barbackground #292929
+set $separator #383838
+
 bar {
-	status_command i3status
+
+	# Use i3blocks for the status bar
+	status_command i3blocks -c ~/.config/i3blocks/config
 
 	# Remove the number prefixes that keep the workspaces ordered
 	strip_workspace_numbers yes
+
+	# Set the monitor for the system tray
+	tray_output primary
+
+	separator_symbol "┃"
+	position bottom
+	font pango:$font $fontsize
+
+	colors {
+		background $barbackground
+		separator $separator
+		statusline $inactivetext
+		
+		focused_workspace $barbackground $barbackground $activetext
+		active_workspace $barbackground $barbackground $activetext
+		inactive_workspace $barbackground $barbackground $inactivetext
+		urgent_workspace $urgentborder $urgentborder $urgenttext
+		binding_mode $urgentborder $urgentborder $activetext
+	}
 }
 
+##
+# Window rules
+#
+
+for_window [class="Pavucontrol"] floating enable
 
 ##
 # Other stuff
@@ -255,15 +287,12 @@ mouse_warping none
 
 # Focus the window of the opposide side when trying to focus in
 # a direction with no windows left
-focus_wrapping yes
+focus_wrapping no
 
 # Return to the old workspace after going in another one
 # by pressing the same key combination
 workspace_auto_back_and_forth yes
 
 # Set the minimum and maximum size for floating window
-floating_minimum_size 864 x 486
-floating_maximum_size 1280 x 720
-
-# Start the compositor to prevent tearing
-exec --no-startup-id compton --config ~/.config/compton.conf
+floating_minimum_size 384 x 216
+floating_maximum_size 1600 x 900

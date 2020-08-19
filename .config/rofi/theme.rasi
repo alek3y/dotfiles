@@ -6,7 +6,7 @@
 	accent: #b74c4aff;
 	background: #2f2f2fff;
 	foreground: #dadadaff;
-	selectedforeground: #ffffffff;
+	selectedforeground: @foreground;
 	prompt: #474747bb;
 	input: @foreground;
 	scrollbar: @background;
@@ -39,7 +39,7 @@
 
 #element.selected.normal {
 	background-color: @accent;
-	text-color: @selectedbackground;
+	text-color: @selectedforeground;
 }
 
 #prompt {
