@@ -5,14 +5,14 @@
 #
 
 wallpaper="$HOME/Pictures/lockscreen.png"
-backgroundcolor="000000ff"
-ringcolor="ffffffff"
-insidecolor="ffffff00"
-activecolor="e53935ff"
-verifyingcolor="ffffffaa"
-timecolor="ffffffff"
-datecolor="eeeeeeff"
-font="monospace"
+backgroundcolor="000000ff"		# Background color when no image is loaded
+ringcolor="f2f2f2ff"
+insidecolor="ffffff00"		# Make the inside of the ring transparent
+activecolor="b74c4aff"		# Color of the highlight when typing
+verifyingcolor="f2f2f2aa"		# Ring color when checking for the password
+timecolor="f2f2f2ff"
+datecolor="f2f2f2ff"		# Color of the greeting
+font="DejaVu Sans Mono"
 
 ##
 # Layout

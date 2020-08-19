@@ -161,7 +161,7 @@ set $dmenuactivetext #BCCBE6
 set $dmenuactivebg #26282E
 
 # DMenu binding
-#bindsym $mod+d exec "dmenu_run -nf '$activetext' -nb '$activeborder' -sb '$dmenuactivebg' -sf '$dmenuactivetext' -fn '$font-$fontsize'"
+#bindsym $mod+d exec --no-startup-id "dmenu_run -nf '$activetext' -nb '$activeborder' -sb '$dmenuactivebg' -sf '$dmenuactivetext' -fn '$font-$fontsize'"
 
 # Rofi colors
 set $rofiwidth 30
@@ -172,7 +172,7 @@ set $rofifontsize 13
 set $rofitheme ~/.config/rofi/theme.rasi
 
 # Rofi binding
-bindsym $mod+d exec "rofi -show run -width $rofiwidth -lines $rofiheight -dpi $rofidpi -max-history-size $rofihistorysize -display-run '> ' -display-drun '> ' -scroll-method 1 -font '$font $rofifontsize' -theme '$rofitheme'"
+bindsym $mod+d exec --no-startup-id "rofi -show run -width $rofiwidth -lines $rofiheight -dpi $rofidpi -max-history-size $rofihistorysize -display-run '> ' -display-drun '> ' -scroll-method 1 -font '$font $rofifontsize' -theme '$rofitheme'"
 
 ##
 # Lockscreen setup
