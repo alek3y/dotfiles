@@ -19,9 +19,6 @@ exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpaper.png
 # Super (Win) key
 set $mod Mod4
 
-# Application menu
-bindsym $mod+d exec --no-startup-id dmenu_run
-
 # Close a window
 bindsym $mod+q kill
 
@@ -125,31 +122,57 @@ exec --no-startup-id xrandr --output HDMI-A-0 --primary --left-of DisplayPort-0
 #
 
 # Set window border width in px
-default_border normal 8
+set $windowborder 8
+default_border normal $windowborder
 
 # Font for window titles
-font pango:DejaVu Sans Mono 11
+set $font DejaVu Sans Mono
+set $fontsize 11
+font pango:$font $fontsize
+title_align center
 
 # Color for focused and unfocused window titles
-set $activetext #8494B3
-set $inactivetext #5C616C
+set $activetext #dadada
+set $inactivetext #8f8f8f
 
 # Focused and unfocused window border color
-set $activeborder #2F343F
-set $inactiveborder #404552
+set $activeborder #2f2f2f
+set $inactiveborder #404040
 
 # Color for the indicator of the split direction
-set $splitdirection #1D2026
+set $splitdirection #292929
 
 # Background and text color for urgent windows
-set $urgentborder #804D4D
-set $urgenttext #946565
+set $urgentborder #B74C4A
+set $urgenttext #803534
 
 # Set the colors
 client.focused           $activeborder   $activeborder   $activetext   $splitdirection $activeborder
 client.focused_inactive  $inactiveborder $inactiveborder $inactivetext $inactiveborder $inactiveborder
 client.unfocused         $inactiveborder $inactiveborder $inactivetext $inactiveborder $inactiveborder
 client.urgent            $urgentborder   $urgentborder   $urgenttext   $urgentborder   $urgentborder
+
+##
+# Application launcher
+#
+
+# DMenu colors
+set $dmenuactivetext #BCCBE6
+set $dmenuactivebg #26282E
+
+# DMenu binding
+#bindsym $mod+d exec "dmenu_run -nf '$activetext' -nb '$activeborder' -sb '$dmenuactivebg' -sf '$dmenuactivetext' -fn '$font-$fontsize'"
+
+# Rofi colors
+set $rofiwidth 30
+set $rofiheight 11
+set $rofidpi -1
+set $rofihistorysize 4
+set $rofifontsize 13
+set $rofitheme ~/.config/rofi/theme.rasi
+
+# Rofi binding
+bindsym $mod+d exec "rofi -show run -width $rofiwidth -lines $rofiheight -dpi $rofidpi -max-history-size $rofihistorysize -display-run '> ' -display-drun '> ' -scroll-method 1 -font '$font $rofifontsize' -theme '$rofitheme'"
 
 ##
 # Lockscreen setup
@@ -160,13 +183,13 @@ set $lockminutes 15
 set $blankseconds 1200
 
 # Lockscreen script path
-set $lockscreen "$HOME/.config/i3/lockscreen.sh"
+set $lockscreen "~/.config/i3/lockscreen.sh"
 
 # Set the screen blank time
 exec --no-startup-id xset s $blankseconds $blankseconds
 
 # Start the lock daemon
-set $checker "$HOME/.config/i3/checkbeforelock.sh"
+set $checker "~/.config/i3/checkbeforelock.sh"
 exec --no-startup-id xautolock -secure -detectsleep -time $lockminutes -locker $checker -nowlocker $checker
 
 ##

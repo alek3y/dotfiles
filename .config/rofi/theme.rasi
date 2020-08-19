@@ -1,0 +1,62 @@
+/**
+ Global constants
+*/
+
+* {
+	accent: #b74c4aff;
+	background: #2f2f2fff;
+	foreground: #dadadaff;
+	selectedforeground: #ffffffff;
+	prompt: #474747bb;
+	input: @foreground;
+	scrollbar: @background;
+	scrollbackground: #383838ff;
+	separator: @scrollbackground;
+}
+
+/**
+ Theme style
+*/
+
+* {
+	border-color: @accent;
+	spacing: 4px;
+	padding: 4px;
+	background-color: @background;
+	text-color: @foreground;
+}
+
+#window {
+	border: 8;
+	padding: 8;
+}
+
+#scrollbar {
+	handle-width: 10px;
+	handle-color: @scrollbar;
+	background-color: @scrollbackground;
+}
+
+#element.selected.normal {
+	background-color: @accent;
+	text-color: @selectedbackground;
+}
+
+#prompt {
+	text-color: @prompt;
+}
+
+#entry {
+	text-color: @input;
+}
+
+#inputbar {
+	border: 0px 0px 3px 0px;
+	border-color: @separator;
+	padding: 0px 0px 8px 0px;
+}
+
+#listview {
+	scrollbar: true;
+	padding: 8px 0px 0px 0px;	
+}
