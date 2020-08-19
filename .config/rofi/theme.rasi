@@ -4,13 +4,13 @@
 
 * {
 	accent: #b74c4aff;
-	background: #2f2f2fff;
+	background: #383838ff;
 	foreground: #dadadaff;
 	selectedforeground: @foreground;
-	prompt: #474747bb;
 	input: @foreground;
 	scrollbar: @background;
-	scrollbackground: #383838ff;
+	scrollbackground: #404040ff;
+	prompt: #484848ff;
 	separator: @scrollbackground;
 }
 

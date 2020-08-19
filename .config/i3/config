@@ -250,7 +250,7 @@ bar {
 	tray_output primary
 
 	separator_symbol "┃"
-	position bottom
+	position top
 	font pango:$font $fontsize
 
 	colors {
