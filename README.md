@@ -8,7 +8,7 @@ sudo apt install fonts-powerline gawk mlocate
 
 Next you'll probably have to change the font of the terminal to something that supports powerline, in my case *DejaVu Sans Mono*.
 
-If you want the *cmdotd* working too, you'll have to get the python file from my [cmdotd repo](https://github.com/alek3y/cmdotd). \
+If you want *cmdotd* working too, you'll have to get the python file from my [cmdotd repo](https://github.com/alek3y/cmdotd). \
 In order to run it, bashrc uses `locate` to find the file. If you just downloaded the script you'll have to update the database, otherwise `locate` won't find that file:
 ```bash
 sudo updatedb
@@ -24,7 +24,7 @@ sudo apt install i3 rofi compton i3blocks dunst i3lock libxcb-composite0 fonts-n
 ```
 
 Now logout and select *i3* from the login screen. \
-If you don't have graphical login screen you'll have to search how to install one, that's why I suggest you to get a distro like Xubuntu with one preloaded.
+If you don't have a graphical login screen you'll have to search how to install one, that's why I suggest you to get a distro like Xubuntu with one preloaded.
 
 Open a terminal with `MOD+Return` and follow this commands to copy the files of this repo inside your home directory (doing this will replace the files with the same name):
 ```bash
@@ -37,7 +37,7 @@ Now, if you want, you cant delete the `dotfiles` folder:
 rm -rf dotfiles
 ```
 
-`i3lock` is pretty bad, so I replaced it with `i3lock-color`. \
+*i3lock*` is pretty bad, so I replaced it with [*i3lock-color*](https://github.com/Raymo111/i3lock-color). \
 If you want a working lockscreen with these dotfiles you'll have to replace it too so, grab the latest release binary from [here](https://github.com/Raymo111/i3lock-color/releases) and replace the original with the downloaded file (this will delete the original, so you should either backup or reinstall it if you have problems):
 ```bash
 path="$(which i3lock)"
@@ -50,7 +50,7 @@ sudo chmod +x $path
 To customize the appearance of the system you can use `lxappearance`, but before changing it you'll have to install a theme. \
 My configuration files match the *Mint-Y-Dark-Red* theme from Linux Mint.
 
-Grab the latest version for *mint-y-icons*, *mint-x-icons*, *mint-themes* from [here](http://packages.linuxmint.com/pool/main/m/) and inside the folder containing them run these commands:
+Grab the latest version for *mint-y-icons*, *mint-x-icons*, *mint-themes* from [here](http://packages.linuxmint.com/pool/main/m/) and inside the folder containing them run this command:
 ```bash
 sudo dpkg -i mint-themes*.deb mint-x-icons*.deb mint-y-icons*.deb
 ```
@@ -70,11 +70,11 @@ If you terminal doesn't display the triangles of the PS1, change its font to som
 
 ## Configuration
 i3 is configured to work on **my** system, so you'll have to change some lines to make it working correctly. \
-For a more in depth look you should look at the [i3 Documentation](https://i3wm.org/docs/userguide.html).
+For a more in depth look you should read the [i3 Documentation](https://i3wm.org/docs/userguide.html).
 
-Either way, you'll probably want to change the wallpaper path for i3 and i3lock, the workspace configuration and the display layout using `xrandr` (I suggest you to read the manual for that so you won't face any problem with workspaces and display layout)
+Either way, you'll probably want to change the wallpaper path for i3 and i3lock, the workspace configuration and the display layout using `xrandr` (I suggest you to read the manual for that too so you won't face any problem with workspaces and display layout)
 
-Here's the list where you can find the configuration files:
+Here's the list of where you can find the configuration files:
 - i3: `~/.config/i3/config`
 - i3lock-color: `~/.config/i3/lockscreen.sh`
 - rofi: `~/.config/rofi/theme.rasi`
@@ -107,8 +107,8 @@ First of all, run this command to make sure the sensors are updated and check if
 sudo sensors-detect --auto
 ```
 
-If it doesn't and you're lucky enough you can edit `~/.config/i3blocks/temperature.sh` and get it working changing just one line. \
-In my case the line that I care about of the command `sensors` is:
+If it doesn't and you're lucky enough you can edit `~/.config/i3blocks/temperature.sh` and get it working by changing just one line. \
+In my case the line that I care about from the command `sensors` is:
 ```
 Tdie:         +49.0°C  (high = +70.0°C)
 ```
