@@ -5,6 +5,9 @@
 # Space between separators
 separator_block_width=20
 
+# Allow pango markup
+markup=pango
+
 ##
 # Volume
 #

@@ -267,6 +267,13 @@ bar {
 }
 
 ##
+# Notifications
+#
+
+# Launch dunst with custom config file
+exec --no-startup-id dunst -config ~/.config/dunst.conf
+
+##
 # Window rules
 #
 
