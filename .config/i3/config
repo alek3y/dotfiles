@@ -217,15 +217,15 @@ bindsym $mod+r mode "Resize"
 mode "Power" {
 	bindsym l exec --no-startup-id $lockscreen, mode "default"
 	bindsym e exec --no-startup-id i3-nagbar -t warning -m "Do you really want to logout?" -B "Yup!" "i3-msg exit", mode "default"
-	bindsym s exec --no-startup-id $lockscreen && systemctl suspend, mode "default"
+	bindsym s exec --no-startup-id $lockscreen, exec --no-startup-id systemctl suspend, mode "default"
 	bindsym r exec --no-startup-id i3-nagbar -t warning -m "Do you really want to reboot?" -B "Yup!" "systemctl reboot", mode "default"
 	bindsym p exec --no-startup-id i3-nagbar -t warning -m "Do you really want to poweroff?" -B "Yup!" "systemctl poweroff", mode "default"
 
 	bindsym Escape mode "default"
-	bindsym $mod+Pause mode "default"
+	bindsym $mod+Insert mode "default"
 }
 
-bindsym $mod+Pause mode "Power"
+bindsym $mod+Insert mode "Power"
 
 # Fast shortcut to lock the screen
 bindsym $mod+l exec --no-startup-id bash -c $lockscreen
@@ -265,6 +265,9 @@ bar {
 		binding_mode $urgentborder $urgentborder $activetext
 	}
 }
+
+# Start the network manager applet to report network status
+exec --no-startup-id nm-applet
 
 ##
 # Notifications

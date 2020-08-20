@@ -18,22 +18,22 @@ interval=1
 command=$HOME/.config/i3blocks/volume.sh
 
 ##
+# CPU Temperature
+#
+
+[temperature]
+label=🌡️
+interval=10
+command=$HOME/.config/i3blocks/temperature.sh
+
+##
 # Battery
 #
 
-# @todo - have to test on laptop
-#[battery]
-#label=⚡
-#interval=30
-#command=
-
-##
-# Wifi
-#
-
-# @todo - same as battery
-#[wifi]
-#interval=10
+[battery]
+label=🔋
+interval=4
+command=$HOME/.config/i3blocks/battery.sh
 
 ##
 # Disk space
