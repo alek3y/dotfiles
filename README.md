@@ -37,7 +37,7 @@ Now, if you want, you cant delete the `dotfiles` folder:
 rm -rf dotfiles
 ```
 
-*i3lock*` is pretty bad, so I replaced it with [*i3lock-color*](https://github.com/Raymo111/i3lock-color). \
+*i3lock* is pretty bad, so I replaced it with [*i3lock-color*](https://github.com/Raymo111/i3lock-color). \
 If you want a working lockscreen with these dotfiles you'll have to replace it too so, grab the latest release binary from [here](https://github.com/Raymo111/i3lock-color/releases) and replace the original with the downloaded file (this will delete the original, so you should either backup or reinstall it if you have problems):
 ```bash
 path="$(which i3lock)"
@@ -113,3 +113,8 @@ In my case the line that I care about from the command `sensors` is:
 Tdie:         +49.0°C  (high = +70.0°C)
 ```
 Knowing this I can extract it using 'tdie' as a filter. On the script change that string on `grep` with the name you care about and hope it'll works, otherwise you'll have to debug everything.
+
+### I don't like your setup
+I can't blame you, lol. \
+I made one myself just because I couldn't find any configuration that was worth trying, so I tried to make one as minimal as possible without using a tons of dependencies. \
+If you can't find a good configuration for you, you can always make one yourself. I actually suggest you to try.
