@@ -85,7 +85,7 @@ Here's the list of where you can find the configuration files:
 If you want to customize them you really should read their manual. \
 After reading it you can use [this website](https://thomashunter.name/i3-configurator/) to understand and customize i3's colors.
 
-## Problems
+## Troubleshooting
 
 ### Screen tearing
 If you're facing this issue you should read compton's manual and edit its config file.
@@ -117,4 +117,4 @@ Knowing this I can extract it using 'tdie' as a filter. On the script change tha
 ### I don't like your setup
 I can't blame you, lol. \
 I made one myself just because I couldn't find any configuration that was worth trying, so I tried to make one as minimal as possible without using a tons of dependencies. \
-If you can't find a good configuration for you, you can always make one yourself. I actually suggest you to try.
+If you can't find a good configuration, you can always make one yourself. I actually suggest you to try.
