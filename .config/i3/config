@@ -301,7 +301,8 @@ focus_wrapping no
 
 # Return to the old workspace after going in another one
 # by pressing the same key combination
-workspace_auto_back_and_forth yes
+# (With +2 monitors this won't work correctly)
+workspace_auto_back_and_forth no
 
 # Set the minimum and maximum size for floating window
 floating_minimum_size 384 x 216
