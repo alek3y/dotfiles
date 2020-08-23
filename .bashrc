@@ -59,6 +59,7 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias dd='dd status=progress'
 alias trash='gio trash'
+alias feh='feh --scale-down --auto-zoom'
 alias pkexec='pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY'
 
 ##
