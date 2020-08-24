@@ -227,7 +227,7 @@ bindsym $mod+r mode "Resize"
 mode "Power" {
 	bindsym l exec --no-startup-id $lockscreen, mode "default"
 	bindsym e exec --no-startup-id i3-nagbar -t warning -m "Do you really want to logout?" -B "Yup!" "i3-msg exit", mode "default"
-	bindsym s exec --no-startup-id exec --no-startup-id systemctl suspend, mode "default"
+	bindsym s exec --no-startup-id systemctl suspend, mode "default"
 	bindsym r exec --no-startup-id i3-nagbar -t warning -m "Do you really want to reboot?" -B "Yup!" "systemctl reboot", mode "default"
 	bindsym p exec --no-startup-id i3-nagbar -t warning -m "Do you really want to poweroff?" -B "Yup!" "systemctl poweroff", mode "default"
 
