@@ -40,4 +40,8 @@ esac
 
 brightness=$(xbacklight -get)
 brightness=$(echo "$brightness/1" | bc)
-echo "$brightness%"
+
+# Print only if it was detected
+if [[ "$brightness" ]]; then
+	echo "$brightness%"
+fi

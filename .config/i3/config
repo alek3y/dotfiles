@@ -28,6 +28,15 @@ bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
 # Open empty window
 bindsym $mod+Shift+q exec --no-startup-id i3-msg open
 
+# Increase, decrease and mute volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id BLOCK_BUTTON=4 ~/.config/i3blocks/volume.sh
+bindsym XF86AudioLowerVolume exec --no-startup-id BLOCK_BUTTON=5 ~/.config/i3blocks/volume.sh
+bindsym XF86AudioMute exec --no-startup-id BLOCK_BUTTON=1 ~/.config/i3blocks/volume.sh
+
+# Increase and decrease brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id BLOCK_BUTTON=4 ~/.config/i3blocks/backlight.sh
+bindsym XF86MonBrightnessDown exec --no-startup-id BLOCK_BUTTON=5 ~/.config/i3blocks/backlight.sh
+
 # Set the key to move floating windows along with the mouse
 floating_modifier $mod
 
