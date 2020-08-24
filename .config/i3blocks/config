@@ -27,6 +27,15 @@ interval=10
 command=$HOME/.config/i3blocks/temperature.sh
 
 ##
+# Brightness
+#
+
+[brightness]
+label=🔆
+interval=1
+command=$HOME/.config/i3blocks/brightness.sh
+
+##
 # Battery
 #
 

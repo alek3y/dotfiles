@@ -187,8 +187,9 @@ set $blankseconds 1200
 # Lockscreen script path
 set $lockscreen "~/.config/i3/lockscreen.sh"
 
-# Set the screen blank time
-exec --no-startup-id xset s $blankseconds $blankseconds
+# Set the screen blank time (using dpms)
+exec --no-startup-id xset dpms $blankseconds $blankseconds $blankseconds
+exec --no-startup-id xset s off
 
 # Start the lock daemon
 set $checker "~/.config/i3/checkbeforelock.sh"

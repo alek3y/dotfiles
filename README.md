@@ -20,7 +20,7 @@ Before trying to use i3 without knowing how it works and looks I suggest you to 
 ## Installation
 To make it work correctly you'll need to install these requirements:
 ```bash
-sudo apt install i3 rofi compton i3blocks dunst i3lock libxcb-composite0 fonts-noto-color-emoji xautolock lm-sensors acpi lxappearance pavucontrol gawk
+sudo apt install i3 rofi compton i3blocks dunst i3lock libxcb-composite0 fonts-noto-color-emoji xautolock lm-sensors acpi lxappearance pavucontrol gawk bc
 ```
 
 Now logout and select *i3* from the login screen. \
@@ -89,6 +89,14 @@ After reading it you can use [this website](https://thomashunter.name/i3-configu
 
 ### Screen tearing
 If you're facing this issue you should read compton's manual and edit its config file.
+
+### Screen blanking not working
+Check out [this guide](https://wiki.archlinux.org/index.php/Display_Power_Management_Signaling) and edit the i3 config file accordingly.
+
+### Brightness not working
+If the brightness control is not working correctly, edit `~/.config/i3blocks/brightness.sh` following [this guide](https://wiki.archlinux.org/index.php/Backlight). \
+I used `xrandr` to make it working for both laptops and desktops, but unfortunately software like *Redshift* will restore the brightness to default. \
+If you want, you can try `xbacklight`.
 
 ### Battery not working on i3bar
 If you can't see it, and assuming you know desktop computers don't have a battery, you'll have to check `~/.config/i3blocks/battery.sh` to find what's going on.
