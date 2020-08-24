@@ -17,7 +17,7 @@ function get_brightness {
 		grep -i -E 'Brightness:\s' |
 		head -n 1 |
 		grep -o -E '\S+\.{0,1}\S*$'
-	)	
+	)
 }
 
 function set_brightness {
