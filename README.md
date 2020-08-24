@@ -107,6 +107,32 @@ If instead you see the charging icon when it's not charging, try to remove the s
 In that case you should check what audio server you're using and change the `MIXER` value inside `~/.config/i3blocks/volume.sh`. \
 Or check what is the name of your control device with `amixer`, following its manual page.
 
+### Not locking on lid close and suspend
+To fix this you just have to create a new service to start *i3lock* on suspend. \
+Create a file with these contents on `/etc/systemd/system/lockonsuspend.service` and replace `ale` with your username:
+```
+[Unit]
+Description=Lock screen on suspend
+Before=sleep.target
+
+[Service]
+Type=forking
+User=ale
+Group=ale
+Environment=XAUTHORITY=/home/ale/.Xauthority
+Environment=DISPLAY=:0
+ExecStart=/home/ale/.config/i3/lockscreen.sh
+ExecStartPost=/usr/bin/sleep 1
+
+[Install]
+WantedBy=sleep.target
+```
+
+Now, to apply, just run:
+```bash
+sudo systemctl enable lockonsuspend
+```
+
 ### Temperature not working or visible on i3bar
 Unfortunately, the method to filter the temperature is not universal, as in my case `thermal_zone0` is not the CPU. There are several ways to fix it though.
 
