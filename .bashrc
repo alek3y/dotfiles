@@ -52,11 +52,9 @@ fi
 # Aliases
 #
 
-alias sudo='sudo '		# Allows aliases while using sudo (https://unix.stackexchange.com/a/349290)
+alias sudo='sudo '		# Allows aliases with sudo (https://unix.stackexchange.com/a/349290)
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
 alias dd='dd status=progress'
 alias trash='gio trash'
 alias feh='feh --scale-down --auto-zoom'
@@ -66,26 +64,9 @@ alias pkexec='pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY'
 # Functions
 #
 
-function arec {
-	DEVID="$(pacmd list-sinks | awk '/\*/ { print $NF }')"
-	parec -d $DEVID | lame -r -V0 - $1
-}
-
 function screenshot {
 	file="$(mktemp -u).png"
 	gnome-screenshot -a -f $file
 	xclip -selection clipboard -target image/png $file
 	#rm $file
-}
-
-function brightness {
-	monitors=$(xrandr --listmonitors | awk '/\S+$/ && NR>1 { print $NF }')
-	if [[ -z "$1" && -z "$2" ]]; then
-		echo -e "Usage: brightness < VALUE >"
-		echo -e "Night light causes issues."
-	else
-		for m in $monitors; do
-			xrandr --output $m --brightness $1
-		done
-	fi
 }
