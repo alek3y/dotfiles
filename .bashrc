@@ -11,6 +11,7 @@
 
 HISTSIZE=-1
 HISTFILESIZE=-1
+HISTCONTROL=ignoreboth
 
 ##
 # Terminal options
