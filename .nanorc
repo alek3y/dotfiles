@@ -19,6 +19,7 @@ set softwrap		# Wrap lines when lines are longer than the window
 set suspend		# Allow suspension of nano
 set tabsize 2
 set zap		# Erase selected region without using the cut buffer
+#set mouse		# Pointer controls, useful with smartphones
 
 set titlecolor brightwhite,red		# Title bar
 set statuscolor brightred		# Status feedback
