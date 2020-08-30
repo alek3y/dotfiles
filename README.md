@@ -15,6 +15,7 @@ sudo updatedb
 ```
 
 # i3wm
+<img src="https://i.ibb.co/BtzrS1z/linchad.png" /> \
 Before trying to use i3 without knowing how it works and looks I suggest you to take a look at [this really useful guide](https://www.youtube.com/playlist?list=PL5ze0DjYv5DbCv9vNEzFmP6sU7ZmkGzcf).
 
 ## Installation
