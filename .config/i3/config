@@ -296,6 +296,9 @@ for_window [class="Pavucontrol"] floating enable
 # Other stuff
 #
 
+# Start PolicyKit agent for `pkexec` to work correctly
+exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+
 # Set mouse acceleration
 exec_always --no-startup-id "~/.config/i3/setmouseaccel.sh -0.3"
 
