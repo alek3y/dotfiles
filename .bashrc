@@ -65,9 +65,24 @@ alias pkexec='pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY'
 # Functions
 #
 
+function arec {
+	DEVID="$(pacmd list-sinks | awk '/\*/ { print $NF }')"
+	parec -d $DEVID | lame -r -V0 - $1
+}
+function now {
+	date +%s%N | cut -b -13
+}
 function screenshot {
 	file="$(mktemp -u).png"
 	gnome-screenshot -a -f $file
 	xclip -selection clipboard -target image/png $file
 	#rm $file
+}
+function man {
+	LESS_TERMCAP_md=$'\e[01;31m' \
+	LESS_TERMCAP_me=$'\e[0m' \
+	LESS_TERMCAP_us=$'\e[01;32m' \
+	LESS_TERMCAP_ue=$'\e[0m' \
+	LESS_TERMCAP_se=$'\e[0m' \
+	command man "$@"
 }
