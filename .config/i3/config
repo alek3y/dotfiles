@@ -189,6 +189,9 @@ bindsym $mod+d exec --no-startup-id "rofi -show run -width $rofiwidth -lines $ro
 # Lockscreen setup
 #
 
+# Note: there might be a bug with screen blanking
+# and not locking, gonna have to check that
+
 # Timeout and blank time
 set $lockminutes 15
 set $blankseconds 1200
