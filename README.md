@@ -33,7 +33,7 @@ git clone https://github.com/alek3y/dotfiles
 cp dotfiles/.* ~
 ```
 
-Now, if you want, you cant delete the `dotfiles` folder:
+Now, if you want, you can delete the `dotfiles` folder:
 ```bash
 rm -rf dotfiles
 ```
