@@ -26,19 +26,10 @@ shopt -s checkwinsize		# Continuously check for window size
 
 BOLD="\[\033[1m\]"
 RESET="\[\033[0m\]"
-BCK_RED="\[\033[48;2;179;27;27m\]"
-BCK_GREEN="\[\033[48;2;0;140;124m\]"
-BCK_BLUE="\[\033[48;2;86;157;182m\]"
-FRG_RED="\[\033[38;2;179;27;27m\]"
-FRG_GREEN="\[\033[38;2;0;140;124m\]"
-FRG_BLUE="\[\033[38;2;86;157;182m\]"
-FRG_WHITE="\[\033[38;2;230;230;230m\]"
-
-if [[ "$EUID" != 0 ]]; then
-	PS1="$FRG_WHITE$BOLD$BCK_GREEN \u@\h $RESET$FRG_GREEN$BCK_BLUE$RESET$FRG_WHITE$BOLD$BCK_BLUE \w $RESET$FRG_BLUE$RESET "
-else
-	PS1="$FRG_WHITE$BOLD$BCK_RED \u@\h $RESET$FRG_RED$BCK_BLUE$RESET$FRG_WHITE$BOLD$BCK_BLUE \w $RESET$FRG_BLUE$RESET "
-fi
+FRG_DARK="\[\033[38;2;116;123;135m\]"
+FRG_USER="\[\033[38;2;162;172;189m\]"
+FRG_PATH="\[\033[38;2;178;172;191m\]"
+PS1="$BOLD$FRG_DARK[$FRG_USER \u@\h $FRG_DARK𐌉$FRG_PATH \w $FRG_DARK❱$RESET "
 
 ##
 # Greetings
@@ -85,4 +76,8 @@ function man {
 	LESS_TERMCAP_ue=$'\e[0m' \
 	LESS_TERMCAP_se=$'\e[0m' \
 	command man "$@"
+}
+function detach {
+	command "$@" 2>&1 >/dev/null &
+	disown
 }
