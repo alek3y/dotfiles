@@ -12,6 +12,7 @@
 HISTSIZE=-1
 HISTFILESIZE=-1
 HISTCONTROL=ignoreboth
+export EDITOR=nano
 
 ##
 # Terminal options
