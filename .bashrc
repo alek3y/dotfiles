@@ -80,6 +80,6 @@ function man {
 	command man "$@"
 }
 function detach {
-	command "$@" 2>&1 >/dev/null &
+	command "$@" >/dev/null 2>&1 &
 	disown
 }
