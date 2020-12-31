@@ -90,9 +90,13 @@ After reading it you can use [this website](https://thomashunter.name/i3-configu
 
 ### Resolution is too high
 For me [setting the dpi](https://unix.stackexchange.com/a/413238/386339) of my 13-inch 3:2 UHD display to *130* worked well enough.
+The cursor was also too small, and adding `Xcursor.size: 35` to `.Xresources` worked.
 
 ### Screen tearing
 If you're facing this issue you should read compton's manual and edit its config file.
+
+### Audio popping on headphones
+The best idea I had was to run `aplay -c 2 -f S16_LE /dev/zero` on i3 login, but this would prevent `xautolock` from ever locking the screen.
 
 ### Screen blanking not working
 Check out [this guide](https://wiki.archlinux.org/index.php/Display_Power_Management_Signaling) and edit the i3 config file accordingly.
