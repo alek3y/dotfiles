@@ -88,6 +88,9 @@ After reading it you can use [this website](https://thomashunter.name/i3-configu
 
 ## Troubleshooting
 
+### Resolution is too high
+For me [setting the dpi](https://unix.stackexchange.com/a/413238/386339) of my 13-inch 3:2 UHD display to *130* worked well enough.
+
 ### Screen tearing
 If you're facing this issue you should read compton's manual and edit its config file.
 
