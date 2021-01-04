@@ -1,0 +1,75 @@
+#  _       _
+# | |_ ___| |_ ___ ___
+# | '_| .'| '_|  _|  _|
+# |_,_|__,|_,_|_| |___|
+#
+# This is ale's ~/.config/kak/kakrc
+
+##
+# Key mappings
+#
+
+source "%val{config}/keys.kak"
+
+##
+# Text options
+#
+
+colorscheme tomorrow-night
+add-highlighter global/ number-lines
+set-option global scrolloff 8,5
+set-option global indentwidth 0		# Use tabs
+set-option global tabstop 2
+set-option global incsearch true
+
+##
+# UI options
+#
+
+set-option -add global ui_options ncurses_assistant=cat
+set-option -add global ui_options ncurses_set_title=false
+set-option -add global ui_options ncurses_status_on_top=false
+set-option global startup_info_version -1
+
+set-option global modelinefmt %{ %sh{
+	printf "$kak_bufname"
+	case $kak_modified in
+		*true*)
+			printf "*"
+	esac
+} | {{mode_info}} | %sh{
+	date +"%H:%M %d/%m "
+}}
+
+##
+# Replace command
+#
+
+# Disable the 'repl' command as it's annoying when replacing
+hook global ClientCreate .* %{unalias global repl}
+
+define-command -params 2 -docstring "
+replace <from> <to>: replace manually with 'r' by navigating with 'n' and '<a-n>'
+" replace %{
+	set-register r %arg{2}
+	set-register / %arg{1}
+	execute-keys "<esc>/%arg{1}<ret>"
+}
+
+define-command -params 2 -docstring "
+replaceall <from> <to>: replace globally what matches the `from` regex with the `to` string.
+" replaceall %{
+	set-register t %reg{"}
+	execute-keys \%
+	set-register \" %sh{
+		echo "$kak_reg_dot" | sed -z -E "s/$1/$2/g"
+	}
+	execute-keys "<a-d>P"
+	set-register \" %reg{t}
+}
+
+##
+# Greetings
+#
+
+hook global ClientCreate .* %{info "Welcome ヾ(ᣔ ◡ ᣔ)"}
