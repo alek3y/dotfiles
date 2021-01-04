@@ -22,6 +22,17 @@ set-option global indentwidth 0		# Use tabs
 set-option global tabstop 2
 set-option global incsearch true
 
+# Remove scratch buffer placeholder
+hook global ClientCreate .* %{
+	evaluate-commands %sh{
+		if [ "$kak_bufname" = "*scratch*" ]; then
+			printf "execute-keys 2X<a-d>"
+		else
+			printf "nop"
+		fi
+	}
+}
+
 ##
 # UI options
 #
@@ -73,3 +84,4 @@ replaceall <from> <to>: replace globally what matches the `from` regex with the 
 #
 
 hook global ClientCreate .* %{info "Welcome ヾ(ᣔ ◡ ᣔ)"}
+
