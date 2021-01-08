@@ -28,7 +28,8 @@
 # - d (as <a-d>)
 # - <a-d> (as d)
 # - o, O (as <a-[oO]>)
-# - y, p, r (as R)
+# - y, p
+# - R
 # - <a-j>
 # - >, <
 # - u, U
@@ -37,7 +38,7 @@
 # - | (as !) and ! (as <a-|>)
 
 # Searching:
-# - /, <a-/>
+# - /, <a-/>, r
 # - n and <a-n>
 
 # Goto:
@@ -56,18 +57,15 @@
 # Jump list:
 # - <c-[io]>, <c-s>
 
+# Multiple selections:
+# - <space>
+
 ## Insert mode ##
 
-# TODO: Close pairs automatically
-#map global insert { '{}<esc>hi'
-
-# Map '<a-i>' to '<esc>'
 map global insert <a-n> <esc>
-
-# Map '<a-d>' to '<del>'
 map global insert <a-d> <del>
 
-# Bind movements on insert mode too
+# Bind some movements on insert mode too
 map global insert <a-h> <left>
 map global insert <a-j> <down>
 map global insert <a-k> <up>
@@ -77,104 +75,67 @@ map global insert <a-L> <end>
 map global insert <a-b> '<esc>b;i'
 map global insert <a-w> '<esc>e;i'
 
-# Disable '<c-[rvu]>'
 map global insert <c-r> ''
 map global insert <c-v> ''
 map global insert <c-u> ''
-
-# Disable '<a-;>'
 map global insert '<a-;>' ''
 
 ## Movement ##
 
-# Replace 'w' with 'e' and remove selection on 'w' and 'b'
-map global normal w 'e;'
+map global normal w 'e;'		# Move through words and deselect
+map global normal b 'b;'		# ...
+map global normal W E		# Select word without following whitespaces
 map global normal e ''
-map global normal W E
 map global normal E ''
-map global normal b 'b;'
-
-# Multiline scrolling
-map global normal <c-k> '10k'
-map global normal <ret> '10j'		# Unfortunately, <c-j> is <ret> for ncurses
-
-# Disable '<a-[wbe]>'
+map global normal <c-k> '10k'		# Multiline scrolling
+map global normal <ret> '10j'		# ... Unfortunately, '<c-j>' is '<ret>' for ncurses
 map global normal <a-w> ''
 map global normal <a-b> ''
 map global normal <a-e> ''
-
-# Disable 'f', 't' and '<a-[ft]>'
 map global normal f ''
 map global normal t ''
 map global normal <a-f> ''
 map global normal <a-t> ''
 map global normal <a-.> ''
-
-# Disable 'M' and remove selection on 'm'
 map global normal M ''
-map global normal m 'm;'
-
-# Disable '<a-[mM]>'
+map global normal m 'm;'		# Deselect after moving to matching delimeters
 map global normal <a-m> ''
 map global normal <a-M> ''
-
-# Disable '<a-[xX]>'
 map global normal <a-x> ''
 map global normal <a-X> ''
-
-# Deselect after moving with '<a-[hl]>'
-map global normal <a-h> '<a-h>;'
-map global normal <a-l> '<a-l>l'
-map global normal <home> '<home>;'
-map global normal <end> '<end>l'
-
-# Replace '%' with '<c-a>'
-map global normal <c-a> '%'
+map global normal <a-h> '<a-h>;'		# Deselect after moving
+map global normal <home> '<home>;'		# ...
+map global normal <a-l> '<a-l>l'		# ...
+map global normal <end> '<end>l'		# ...
+map global normal <c-a> '%'		# Select everything with '<c-a>' (as '%')
 map global normal '%' ''
-
-# Disable '<c-[bf]>'
 map global normal <c-b> ''
 map global normal <c-f> ''
-
-# Replace ';' with ','
-map global normal ',' ';'
+map global normal ',' ';'		# Deselect with ',' (as ';')
 map global normal ';' ''
-
-# Replace '<a-;>' with '<a-,>'
-map global normal '<a-,>' '<a-;>'
+map global normal '<a-,>' '<a-;>'		# Flip selection direction with '<a-,>' (as '<a-;>')
 map global normal '<a-;>' ''
-
-# Disable '<a-:>'
 map global normal '<a-:>' ''
 
 ## Changes ##
 
-# Disable 'a', 'c' and '.'
 map global normal a ''
 map global normal c ''
 map global normal . ''
-
-# Replace 'o' with '<a-o>' and 'O' with '<a-O>'
-map global normal o <a-o>
-map global normal O <a-O>
+map global normal o <a-o>		# Add an empty line but do not enter insert mode
+map global normal O <a-O>		# ...
 map global normal <a-o> ''
 map global normal <a-O> ''
-
-# Swap 'd' and '<a-d>'
-map global normal d <a-d>
-map global normal <a-d> d
-
-# Disable 'I' and 'A'
+map global normal d <a-d>		# Delete with 'd' (as '<a-d>')
+map global normal <a-d> d		# Yank and delete with '<a-d>' (as 'd')
 map global normal I ''
 map global normal A ''
-
-# Replace 'P' with 'p' and disable 'P' and '<a-[pP]>'
-map global normal p P
+map global normal p P		# Paste before selection using 'p' (as 'P')
 map global normal P ''
 map global normal <a-p> ''
 map global normal <a-P> ''
 
-# Replace 'R' with 'r' and use register 'r' instead of '"'
+# Replace next (from replace command) with 'r' but use register 'r' instead of '"'
 map global normal r %{
 	: set-register t %reg{/}<ret>
 	: set-register u %reg{"}<ret>
@@ -186,69 +147,39 @@ map global normal r %{
 	: set-register / %reg{t}<ret>
 }
 
-# Disable 'R', '<a-[rR]>'
-map global normal R ''		# Do what 'r' does but delete whole sel and put next entered char
+map global normal R r
 map global normal <a-R> ''
 map global normal <a-r> ''
-
-# Disable '<a-J>' and remove selection on '<a-j>'
-map global normal <a-j> '<a-j>;'
+map global normal <a-j> '<a-j>;'		# Join lines and remove selection
 map global normal <a-J> ''
-
-# Disable '<a-_>', '<a->>' and '<a-<>'
 map global normal '<a-_>' ''
 map global normal '<a-gt>' ''
 map global normal '<a-lt>' ''
-
-# Remove multiple selections on 'u' and 'U'
-map global normal u 'u; '
-map global normal U 'U; '
-
-# Disable '<a-[uU]>' as pressing '[uU]' multiple times works
+map global normal u 'u; '		# Undo and remove selection
+map global normal U 'U; '		# ...
 map global normal <a-u> ''
 map global normal <a-U> ''
-
-# Disable '&' and '<a-&>'
 map global normal & ''
 map global normal <a-&> ''
-
-# Replace '<a-`>' with '`'
-map global normal ` <a-`>
-
-# Disable '~', '<a-`>'
+map global normal ` <a-`>		# Swap case with '`' (as '<a-`>')
 map global normal ~ ''
 map global normal <a-`> ''
-
-# Disable '@', '<a-@>'
 map global normal @ ''
 map global normal <a-@> ''
-
-# Disable '<a-)>' and '<a-(>'
 map global normal <a-)> ''
 map global normal <a-(> ''
-
-# Replace '!' with '|' and '<a-|>' with '!'
 map global normal | !
 map global normal ! <a-|>
-
-# Disable '<a-|>' and '<a-!>'
 map global normal <a-|> ''
 map global normal <a-!> ''
 
 ## Searching ##
 
-# Select and search with '<a-/>'
-map global normal <a-/> '<a-*>/'
-
-# Disable '?', '<a-?>'
+map global normal <a-/> '<a-*>/'		# Search selection
 map global normal ? ''
 map global normal <a-?> ''
-
-# Disable 'N', '<a-N>'
 map global normal N ''
 map global normal <a-N> ''
-
-# Disable '*', '<a-*>'
 map global normal * ''
 map global normal <a-*> ''
 
@@ -256,5 +187,20 @@ map global normal <a-*> ''
 
 map global normal <a-Z> ''
 
-# TODO: https://github.com/mawww/kakoune/blob/master/doc/pages/keys.asciidoc#multiple-selections
-# TODO: Replace ':' with '.' on prompt section (?)
+## Multiple selections ##
+
+map global normal s ''
+map global normal S ''
+map global normal <a-s> ''
+map global normal <a-S> ''
+map global normal C ''
+map global normal <a-C> ''
+map global normal <a-space> ''
+map global normal <a-k> ''
+map global normal <a-K> ''
+map global normal $ ''
+map global normal ) ''
+map global normal ( ''
+
+# TODO: https://github.com/mawww/kakoune/blob/master/doc/pages/keys.asciidoc#object-selection
+map global normal . :		# Keeping ':' to get used to '.'

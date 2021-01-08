@@ -23,7 +23,6 @@ set-option global indentwidth 0		# Use tabs
 set-option global tabstop 2
 set-option global incsearch true
 
-# Set colorscheme depending on $TERM
 evaluate-commands %sh{
 	if [ "$TERM" = "xterm-256color" ]; then
 		echo "colorscheme tomorrow-night"
@@ -32,7 +31,7 @@ evaluate-commands %sh{
 face global LineNumbersWrapped +d@LineNumbers
 
 # Remove scratch buffer placeholder
-hook global ClientCreate .* %{
+hook global BufCreate .* %{
 	evaluate-commands %sh{
 		if [ "$kak_bufname" = "*scratch*" ]; then
 			printf "execute-keys 2X<a-d>"
