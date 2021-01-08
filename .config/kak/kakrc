@@ -15,12 +15,23 @@ source "%val{config}/keys.kak"
 # Text options
 #
 
-colorscheme tomorrow-night
 add-highlighter global/ number-lines
+add-highlighter global/ wrap
+add-highlighter global/show-trailing-whitespaces regex '\h+$' 0:Error		# Thanks to @alexherbo2 (#2175)
 set-option global scrolloff 8,5
 set-option global indentwidth 0		# Use tabs
 set-option global tabstop 2
 set-option global incsearch true
+
+# Set colorscheme depeding on the terminal
+evaluate-commands %sh{
+	if [ "$TERM" = "xterm-256color" ]; then
+		echo "colorscheme tomorrow-night"
+		echo "face global LineNumbersWrapped rgb:4e4e4e,rgb:272727+d"
+	else
+		echo "face global LineNumbersWrapped default+d"
+	fi
+}
 
 # Remove scratch buffer placeholder
 hook global ClientCreate .* %{
