@@ -2,28 +2,38 @@
 # |   | .'|   | . |  _|  _|
 # |_|_|__,|_|_|___|_| |___|
 #
-# This is ale's ~/.nanorc
+# This is ale's ~/.nanorc (for +5.5)
 
-include /usr/share/nano/*.nanorc
+include /usr/local/share/nano/*.nanorc
 
-#set backup		# Enable backup of the file being edited
-#set backupdir "~/.nanobackups"		# Backup location
+set errorcolor bold,white,latte
+set functioncolor italic,white
+set keycolor bold,latte
+set numbercolor bold,black
+set promptcolor bold,white,latte
+set scrollercolor black
+set selectedcolor lightwhite,latte
+set statuscolor bold,latte
+set titlecolor bold,white,black
+
+set afterends
+set atblanks
 set autoindent
+set casesensitive
+set historylog
+set indicator
 set linenumbers
-set locking		# Warn the user when opening an already opened file
-#set nonewlines		# Disable the newline at the end of the file
-set positionlog		# Remember the cursor position for the next session
-set smarthome		# Adapt the Home key to indentation
-set smooth		# Set smooth scrolling
-set softwrap		# Wrap lines when lines are longer than the window
-set suspend		# Allow suspension of nano
+set locking
+set markmatch
+#set mouse
+set multibuffer
+#set nohelp
+#set nonewlines
+set positionlog
+set regexp
+set smarthome
+set softwrap
+#set suspendable		# FIXME: ^z should be rebinded to undo
 set tabsize 2
-set zap		# Erase selected region without using the cut buffer
-#set mouse		# Pointer controls, useful with smartphones
-
-set titlecolor brightwhite,red		# Title bar
-set statuscolor brightred		# Status feedback
-set selectedcolor brightwhite,red		# Selection
-set numbercolor brightblack		# Line numbers
-set keycolor brightred		# Help key shortcuts
-set functioncolor white		# Help text
+set zap
+#set mouse		# Useful on smartphones
