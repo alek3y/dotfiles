@@ -6,15 +6,19 @@
 
 include /usr/local/share/nano/*.nanorc
 
-set errorcolor bold,white,latte
+## UI Style ##
+
+set errorcolor bold,white,magenta
 set functioncolor italic,white
-set keycolor bold,latte
+set keycolor bold,magenta
 set numbercolor bold,black
-set promptcolor bold,white,latte
-set scrollercolor black
-set selectedcolor lightwhite,latte
-set statuscolor bold,latte
+set promptcolor bold,white,magenta
+set scrollercolor lightblack
+set selectedcolor lightwhite,magenta
+set statuscolor bold,magenta
 set titlecolor bold,white,black
+
+## Options ##
 
 set afterends
 set atblanks
@@ -25,7 +29,7 @@ set indicator
 set linenumbers
 set locking
 set markmatch
-#set mouse
+#set mouse		# Useful on smartphones
 set multibuffer
 #set nohelp
 #set nonewlines
@@ -33,7 +37,23 @@ set positionlog
 set regexp
 set smarthome
 set softwrap
-#set suspendable		# FIXME: ^z should be rebinded to undo
+#set suspendable		# FIXME: rebind suspend as ^Z is undo
 set tabsize 2
 set zap
-#set mouse		# Useful on smartphones
+
+## Key mappings ##
+
+bind M-H help main
+bind ^Q exit main
+bind ^S savefile main
+bind ^W writeout main
+bind ^O insert main
+bind ^F whereis main
+bind ^R replace main
+bind ^K cut main		# For now I'll keep ^X as the secondary exit key
+bind ^V paste main
+bind ^E execute main
+
+# TODO: ^J
+
+bind ^C copy main
