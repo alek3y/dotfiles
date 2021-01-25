@@ -12,7 +12,8 @@
 HISTSIZE=-1
 HISTFILESIZE=-1
 HISTCONTROL=ignoreboth
-export EDITOR=nano
+export EDITOR=kak
+#export LS_COLORS+=":ow=01;34"		# Fix ugly folders color on NTFS drives
 
 ##
 # Terminal options
@@ -31,8 +32,7 @@ FRG_DARK="\[\033[38;2;116;123;135m\]"
 FRG_USER="\[\033[38;2;162;172;189m\]"
 FRG_PATH="\[\033[38;2;178;172;191m\]"
 SEP="𐌉"		# Needs an alternative on wls.exe (i.e. '❘')
-END="❱"
-PS1="$BOLD$FRG_DARK[$FRG_USER \u@\h $FRG_DARK$SEP$FRG_PATH \w $FRG_DARK$END$RESET "
+PS1="\[\r\]$BOLD$FRG_DARK[$FRG_USER \u@\h $FRG_DARK$SEP$FRG_PATH \w $FRG_DARK❱$RESET "
 
 ##
 # Greetings
@@ -51,6 +51,7 @@ alias sudo='sudo '		# Allows aliases with sudo (https://unix.stackexchange.com/a
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias dd='dd status=progress'
+alias bc='bc -lq'
 alias trash='gio trash'
 alias feh='feh --scale-down --auto-zoom'
 alias pkexec='pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY'
@@ -83,4 +84,9 @@ function man {
 function detach {
 	command "$@" >/dev/null 2>&1 &
 	disown
+}
+function vyt {
+	url=$(echo "$1" | sed 's/[&\?]list=.*//g')		# Remove playlist link
+	stream=($(youtube-dl -g "$url"))
+	detach vlc "${stream[0]}" --input-slave "${stream[1]}"
 }
