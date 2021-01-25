@@ -60,6 +60,9 @@ set-option global modelinefmt %{ %sh{
 	date +"%H:%M %d/%m "
 }}
 
+# Use this version on Windows, as calling `bash` is pretty slow
+#set-option global modelinefmt %{ %val{bufname} {{context_info}} |  {{mode_info}}  }
+
 ##
 # Replace command
 #
@@ -92,4 +95,3 @@ replaceall <from> <to>: replace globally what matches the `from` regex with the 
 #
 
 hook global ClientCreate .* %{info "Welcome ヾ(ᣔ ◡ ᣔ)"}
-
