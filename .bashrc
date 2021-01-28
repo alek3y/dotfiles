@@ -6,13 +6,13 @@
 # This is ale's ~/.bashrc
 
 ##
-# Bash variables
+# Environment variables
 #
 
-HISTSIZE=-1
-HISTFILESIZE=-1
-HISTCONTROL=ignoreboth
-export EDITOR=kak
+HISTSIZE="-1"
+HISTFILESIZE="-1"
+HISTCONTROL="ignoreboth"
+export EDITOR="kak"
 #export LS_COLORS+=":ow=01;34"		# Fix ugly folders color on NTFS drives
 
 ##
@@ -47,14 +47,14 @@ fi
 # Aliases
 #
 
-alias sudo='sudo '		# Allows aliases with sudo (https://unix.stackexchange.com/a/349290)
-alias ls='ls --color=auto'
-alias grep='grep --color=auto'
-alias dd='dd status=progress'
-alias bc='bc -lq'
-alias trash='gio trash'
-alias feh='feh --scale-down --auto-zoom'
-alias pkexec='pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY'
+alias sudo="sudo "		# Allows aliases with sudo (https://unix.stackexchange.com/a/349290)
+alias ls="ls --color=auto"
+alias grep="grep --color=auto"
+alias dd="dd status=progress"
+alias bc="bc -lq"
+alias trash="gio trash"
+alias feh="feh --scale-down --auto-zoom"
+alias pkexec="pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY"
 
 ##
 # Functions
@@ -86,7 +86,7 @@ function detach {
 	disown
 }
 function vyt {
-	url=$(echo "$1" | sed 's/[&\?]list=.*//g')		# Remove playlist link
+	url=$(echo "$1" | sed 's/&list=.*//g')		# Remove playlist link
 	stream=($(youtube-dl -g "$url"))
 	detach vlc "${stream[0]}" --input-slave "${stream[1]}"
 }
