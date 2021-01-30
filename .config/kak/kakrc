@@ -50,18 +50,7 @@ set-option -add global ui_options ncurses_set_title=false
 set-option -add global ui_options ncurses_status_on_top=false
 set-option global startup_info_version -1
 
-set-option global modelinefmt %{ %sh{
-	printf "$kak_bufname"
-	case $kak_modified in
-		*true*)
-			printf "*"
-	esac
-} | {{mode_info}} | %sh{
-	date +"%H:%M %d/%m "
-}}
-
-# Use this version on Windows, as calling `bash` is pretty slow
-#set-option global modelinefmt %{ %val{bufname} {{context_info}} |  {{mode_info}}  }
+set-option global modelinefmt %{ %val{bufname} {{context_info}} |  {{mode_info}}  }
 
 ##
 # Replace command
