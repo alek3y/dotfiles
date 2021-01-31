@@ -17,6 +17,7 @@ source "%val{config}/keys.kak"
 
 add-highlighter global/ number-lines
 add-highlighter global/ wrap
+add-highlighter global/ show-matching
 add-highlighter global/show-trailing-whitespaces regex '\h+$' 0:Error		# Thanks to @alexherbo2 (#2175)
 set-option global scrolloff 8,5
 set-option global indentwidth 0		# Use tabs
@@ -29,6 +30,7 @@ evaluate-commands %sh{
 	fi
 }
 face global LineNumbersWrapped +d@LineNumbers
+face global MatchingChar +u
 
 # Remove scratch buffer placeholder
 hook global BufCreate .* %{
