@@ -32,7 +32,7 @@ evaluate-commands %sh{
 }
 face global LineNumbersWrapped +d@LineNumbers
 face global MatchingChar +u
-face global Whitespace +d@LineNumbers
+face global Whitespace rgb:4b4c4b+d@Default
 
 # Remove scratch buffer placeholder
 hook global BufCreate .* %{
