@@ -137,14 +137,14 @@ map global normal <a-P> ''
 
 # Replace next (from replace command) with 'r' but use register 'r' instead of '"'
 map global normal r %{
-	: set-register t %reg{/}<ret>
-	: set-register u %reg{"}<ret>
+: set-register t %reg{/}<ret>
+: set-register u %reg{"}<ret>
 
-	: set-register \" %reg{r}<ret>
-	: evaluate-commands %sh{if [ -n "$kak_reg_dquote" ]; then printf "execute-keys R"; else printf "nop"; fi}<ret>
+: set-register \" %reg{r}<ret>
+: evaluate-commands %sh{if [ -n "$kak_reg_dquote" ]; then printf "execute-keys R"; else printf "nop"; fi}<ret>
 
-	: set-register \" %reg{u}<ret>
-	: set-register / %reg{t}<ret>
+: set-register \" %reg{u}<ret>
+: set-register / %reg{t}<ret>
 }
 
 map global normal R r
@@ -203,4 +203,5 @@ map global normal ) ''
 map global normal ( ''
 
 # TODO: https://github.com/mawww/kakoune/blob/master/doc/pages/keys.asciidoc#object-selection
-map global normal . :		# Keeping ':' to get used to '.'
+map global normal . :
+map global normal : ''
