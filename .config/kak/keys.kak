@@ -18,7 +18,7 @@
 # - m (without sel)
 # - x, X
 # - <a-[hl]> and <home>, <end> (both without sel)
-# - <c-a> (as %)
+# - a (as %)
 # - <c-[ud]>
 # - , (as ;)
 # - <a-,> (as <a-;>)
@@ -38,7 +38,7 @@
 # - | (as !) and ! (as <a-|>)
 
 # Searching:
-# - /, <a-/>, r
+# - /, <a-/>, *, r
 # - n and <a-n>
 
 # Goto:
@@ -107,7 +107,7 @@ map global normal <a-h> '<a-h>;'		# Deselect after moving
 map global normal <home> '<home>;'		# ...
 map global normal <a-l> '<a-l>l'		# ...
 map global normal <end> '<end>l'		# ...
-map global normal <c-a> '%'		# Select everything with '<c-a>' (as '%')
+map global normal a '%'		# Select everything with 'a' (as '%')
 map global normal '%' ''
 map global normal <c-b> ''
 map global normal <c-f> ''
@@ -119,7 +119,6 @@ map global normal '<a-:>' ''
 
 ## Changes ##
 
-map global normal a ''
 map global normal c ''
 map global normal . ''
 map global normal o <a-o>		# Add an empty line but do not enter insert mode
@@ -137,14 +136,14 @@ map global normal <a-P> ''
 
 # Replace next (from replace command) with 'r' but use register 'r' instead of '"'
 map global normal r %{
-: set-register t %reg{/}<ret>
-: set-register u %reg{"}<ret>
+: set-register t "%reg{/}"<ret>
+: set-register u "%reg{dquote}"<ret>
 
-: set-register \" %reg{r}<ret>
+: set-register dquote "%reg{r}"<ret>
 : evaluate-commands %sh{if [ -n "$kak_reg_dquote" ]; then printf "execute-keys R"; else printf "nop"; fi}<ret>
 
-: set-register \" %reg{u}<ret>
-: set-register / %reg{t}<ret>
+: set-register dquote "%reg{u}"<ret>
+: set-register / "%reg{t}"<ret>
 }
 
 map global normal R r
@@ -175,12 +174,12 @@ map global normal <a-!> ''
 
 ## Searching ##
 
-map global normal <a-/> '<a-*>/'		# Search selection
+map global normal <a-/> '/(?i)'		# Case insensitive search
 map global normal ? ''
 map global normal <a-?> ''
 map global normal N ''
 map global normal <a-N> ''
-map global normal * ''
+map global normal * '<a-*>/<up>'		# Search current selection
 map global normal <a-*> ''
 
 ## Marks ##

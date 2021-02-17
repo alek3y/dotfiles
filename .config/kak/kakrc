@@ -66,21 +66,21 @@ hook global ClientCreate .* %{unalias global repl}
 define-command -params 2 -docstring "
 replace <from> <to>: replace manually with 'r' by navigating with 'n' and '<a-n>'
 " replace %{
-	set-register r %arg{2}
-	set-register / %arg{1}
+	set-register r "%arg{2}"
+	set-register / "%arg{1}"
 	execute-keys "<esc>/%arg{1}<ret>"
 }
 
 define-command -params 2 -docstring "
 replaceall <from> <to>: replace globally what matches the `from` regex with the `to` string.
 " replaceall %{
-	set-register t %reg{"}
+	set-register t "%reg{dquote}"
 	execute-keys \%
-	set-register \" %sh{
+	set-register dquote %sh{
 		printf "%s" "$kak_reg_dot" | sed -z -E "s/$1/$2/g"
 	}
 	execute-keys "<a-d>P"
-	set-register \" %reg{t}
+	set-register dquote "%reg{t}"
 }
 
 ##
