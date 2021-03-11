@@ -17,7 +17,9 @@
 # - w (as e), b (both without sel)
 # - m (without sel)
 # - x, X
-# - <a-[hl]> and <home>, <end> (both without sel)
+# - <a-h>, <home> (both as gi)
+# - <a-l>, <end> (both without sel)
+# - <a-[HL]> (with sel)
 # - a (as %)
 # - <c-[ud]>
 # - , (as ;)
@@ -30,7 +32,6 @@
 # - o, O (as <a-[oO]>)
 # - y, p
 # - R
-# - <a-j>
 # - >, <
 # - u, U
 # - ` (as <a-`>)
@@ -70,7 +71,7 @@ map global insert <a-h> <left>
 map global insert <a-j> <down>
 map global insert <a-k> <up>
 map global insert <a-l> <right>
-map global insert <a-H> <home>
+map global insert <a-H> '<esc>gii'
 map global insert <a-L> <end>
 map global insert <a-b> '<esc>b;i'
 map global insert <a-w> '<esc>e;i'
@@ -103,10 +104,11 @@ map global normal <a-m> ''
 map global normal <a-M> ''
 map global normal <a-x> ''
 map global normal <a-X> ''
-map global normal <a-h> '<a-h>;'		# Deselect after moving
-map global normal <home> '<home>;'		# ...
+map global normal <a-h> 'gi'		# Move to non blank start
+map global normal <home> 'gi'		# ...
 map global normal <a-l> '<a-l>l'		# ...
 map global normal <end> '<end>l'		# ...
+map global normal <a-H> 'Gi'		# Select to non blank start
 map global normal a '%'		# Select everything with 'a' (as '%')
 map global normal '%' ''
 map global normal <c-b> ''
@@ -149,7 +151,7 @@ map global normal r %{
 map global normal R r
 map global normal <a-R> ''
 map global normal <a-r> ''
-map global normal <a-j> '<a-j>;'		# Join lines and remove selection
+map global normal <a-j> ''
 map global normal <a-J> ''
 map global normal '<a-_>' ''
 map global normal '<a-gt>' ''
