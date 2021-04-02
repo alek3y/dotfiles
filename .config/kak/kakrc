@@ -27,9 +27,10 @@ set-option global tabstop 2
 set-option global incsearch true
 
 evaluate-commands %sh{
-	if [ "$TERM" = "xterm-256color" ]; then
-		printf "colorscheme tomorrow-night"
-	fi
+	case "$TERM" in
+		*256color*)
+			printf "colorscheme tomorrow-night";;
+	esac
 }
 face global LineNumbersWrapped +d@LineNumbers
 face global MatchingChar +u
