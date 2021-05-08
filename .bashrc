@@ -28,9 +28,9 @@ shopt -s checkwinsize		# Continuously check for window size
 
 BOLD="\[\033[1m\]"
 RESET="\[\033[0m\]"
-FRG_DARK="\[\033[38;2;116;123;135m\]"
-FRG_USER="\[\033[38;2;162;172;189m\]"
-FRG_PATH="\[\033[38;2;178;172;191m\]"
+FRG_DARK="\[\033[38;5;242m\]"
+FRG_USER="\[\033[38;5;12m\]"
+FRG_PATH="\[\033[38;5;13m\]"		# Or 103m
 SEP="𐌉"		# Needs an alternative on wls.exe (i.e. '❘')
 PS1="$BOLD$FRG_DARK[$FRG_USER \u@\h $FRG_DARK$SEP$FRG_PATH \w $FRG_DARK❱$RESET "
 
@@ -38,7 +38,7 @@ PS1="$BOLD$FRG_DARK[$FRG_USER \u@\h $FRG_DARK$SEP$FRG_PATH \w $FRG_DARK❱$RESET
 # Greetings
 #
 
-cmdotd="$(locate cmdotd.py | awk '/.+\.py$/')"		# Might have to `updatedb` or install `mlocate`
+#cmdotd="$(locate cmdotd.py | awk '/.+\.py$/')"		# Might have to `updatedb` or install `mlocate`
 if [[ "$EUID" != 0 && ! "$ASCIINEMA_REC" && ! "$TMUX" && "$cmdotd" ]]; then
 	python3 $cmdotd
 fi
@@ -55,6 +55,7 @@ alias bc="bc -lq"
 alias trash="gio trash"
 alias feh="feh --scale-down --auto-zoom"
 alias pkexec="pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY"
+alias cal="ncal -b -M"
 
 ##
 # Functions
