@@ -4,7 +4,7 @@
 #
 # This is ale's ~/.nanorc (for +5.5)
 
-include /usr/local/share/nano/*.nanorc
+include /usr/share/nano/*.nanorc
 
 ## UI Style ##
 
@@ -15,6 +15,7 @@ set numbercolor bold,black
 set promptcolor bold,white,magenta
 set scrollercolor lightblack
 set selectedcolor lightwhite,magenta
+set spotlightcolor lightwhite,magenta
 set statuscolor bold,magenta
 set titlecolor bold,white,black
 
@@ -28,7 +29,6 @@ set historylog
 set indicator
 set linenumbers
 set locking
-set markmatch
 #set mouse		# Useful on smartphones
 set multibuffer
 #set nohelp
