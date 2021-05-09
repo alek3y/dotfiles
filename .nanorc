@@ -43,17 +43,15 @@ set zap
 
 ## Key mappings ##
 
-bind M-H help main
-bind ^Q exit main
-bind ^S savefile main
-bind ^W writeout main
-bind ^O insert main
-bind ^F whereis main
-bind ^R replace main
-bind ^K cut main		# For now I'll keep ^X as the secondary exit key
-bind ^V paste main
-bind ^E execute main
-
+#bind M-H help main
+#bind ^Q exit main
+#bind ^S savefile main
+#bind ^W writeout main
+#bind ^O insert main
+#bind ^F whereis main
+#bind ^R replace main
+#bind ^K cut main		# For now I'll keep ^X as the secondary exit key
+#bind ^V paste main
+#bind ^E execute main
 # TODO: ^J
-
-bind ^C copy main
+#bind ^C copy main
