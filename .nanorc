@@ -8,15 +8,15 @@ include /usr/share/nano/*.nanorc
 
 ## UI Style ##
 
-set errorcolor bold,white,magenta
+set errorcolor bold,white,red
 set functioncolor italic,white
-set keycolor bold,magenta
+set keycolor bold,red
 set numbercolor bold,black
-set promptcolor bold,white,magenta
-set scrollercolor lightblack
-set selectedcolor lightwhite,magenta
-set spotlightcolor lightwhite,magenta
-set statuscolor bold,magenta
+set promptcolor bold,white,red
+set scrollercolor black
+set selectedcolor lightwhite,red
+set spotlightcolor lightred,lightwhite
+set statuscolor bold,red
 set titlecolor bold,white,black
 
 ## Options ##
