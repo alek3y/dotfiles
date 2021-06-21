@@ -31,8 +31,10 @@
 # - <a-d> (as d)
 # - o, O (as <a-[oO]>)
 # - y, p
-# - R
+# - Y, P (with `xclip`)
+# - r, R
 # - >, <
+# - t
 # - u, U
 # - ` (as <a-`>)
 # - _
@@ -49,7 +51,7 @@
 # - v, V (all)
 
 # Marks:
-# - Z, z
+# - z (as Z), <a-Z> (as z)
 # - <a-z> (all)
 
 # Macros:
@@ -132,7 +134,18 @@ map global normal <a-d> d		# Yank and delete with '<a-d>' (as 'd')
 map global normal I ''
 map global normal A ''
 map global normal p P		# Paste before selection using 'p' (as 'P')
-map global normal P ''
+
+# Paste with `xclip`
+map global normal P %{
+! xclip -sel c -o<ret>
+}
+
+# Copy with `xclip`
+map global normal Y %{
+<a-|> xclip -sel c<ret>
+:echo "yanked to system clipboard"
+}
+
 map global normal <a-p> ''
 map global normal <a-P> ''
 
@@ -151,6 +164,12 @@ map global normal r %{
 map global normal R r
 map global normal <a-R> ''
 map global normal <a-r> ''
+
+# Indent *empty line* with the previous one
+map global normal t %{
+i<backspace><ret><esc>
+}
+
 map global normal <a-j> ''
 map global normal <a-J> ''
 map global normal '<a-_>' ''
@@ -186,6 +205,9 @@ map global normal <a-*> ''
 
 ## Marks ##
 
+map global normal z Z
+map global normal <a-z> z
+map global normal Z ''
 map global normal <a-Z> ''
 
 ## Multiple selections ##
