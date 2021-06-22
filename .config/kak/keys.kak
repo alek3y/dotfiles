@@ -143,7 +143,7 @@ map global normal P %{
 # Copy with `xclip`
 map global normal Y %{
 <a-|> xclip -sel c<ret>
-:echo "yanked to system clipboard"
+: echo "yanked to system clipboard"
 }
 
 map global normal <a-p> ''
