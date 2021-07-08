@@ -21,7 +21,7 @@ add-highlighter global/ show-matching
 add-highlighter global/ show-whitespaces -tab "│" -lf " " -spc " " -nbsp " "
 add-highlighter global/show-trailing-whitespaces regex '\h+$' 0:Error		# Thanks to @alexherbo2 (#2175)
 set-option global disabled_hooks .*-trim-indent		# Thanks to @vbauerster (#2020)
-set-option global scrolloff 8,5
+set-option global scrolloff 4,5
 set-option global indentwidth 0		# Use tabs
 set-option global tabstop 2
 set-option global incsearch true
