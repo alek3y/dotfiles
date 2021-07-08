@@ -123,7 +123,6 @@ map global normal '<a-:>' ''
 
 ## Changes ##
 
-map global normal c ''
 map global normal . ''
 map global normal o <a-o>		# Add an empty line but do not enter insert mode
 map global normal O <a-O>		# ...
@@ -202,6 +201,9 @@ map global normal N ''
 map global normal <a-N> ''
 map global normal * '<a-*>/<up>'		# Search current selection
 map global normal <a-*> ''
+
+## View ##
+map global normal c 'vc'
 
 ## Marks ##
 
