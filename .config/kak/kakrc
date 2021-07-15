@@ -51,9 +51,9 @@ hook global BufCreate .* %{
 # UI options
 #
 
-set-option -add global ui_options ncurses_assistant=cat
-set-option -add global ui_options ncurses_set_title=false
-set-option -add global ui_options ncurses_status_on_top=false
+set-option -add global ui_options terminal_assistant=cat
+set-option -add global ui_options terminal_set_title=false
+set-option -add global ui_options terminal_status_on_top=false
 set-option global startup_info_version -1
 
 set-option global modelinefmt %{ %val{bufname} {{context_info}} |  {{mode_info}}  }
