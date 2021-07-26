@@ -19,6 +19,7 @@ export EDITOR="kak"
 # Terminal options
 #
 
+source /etc/profile.d/vte.sh		# Use last tab working directory for new tabs
 shopt -s histappend		# Append to history file
 shopt -s checkwinsize		# Continuously check for window size
 
