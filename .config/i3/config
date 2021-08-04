@@ -180,7 +180,7 @@ set $rofifontsize 13
 set $rofitheme ~/.config/rofi/theme.rasi
 
 # Rofi binding
-bindsym $mod+d exec --no-startup-id "rofi -show run -width $rofiwidth -lines $rofiheight -dpi $rofidpi -max-history-size $rofihistorysize -display-run '> ' -display-drun '> ' -scroll-method 1 -font '$font $rofifontsize' -theme '$rofitheme'"
+bindsym $mod+d exec --no-startup-id "rofi -show drun -width $rofiwidth -lines $rofiheight -dpi $rofidpi -max-history-size $rofihistorysize -display-run '> ' -display-drun '> ' -scroll-method 1 -font '$font $rofifontsize' -theme '$rofitheme'"
 
 ##
 # Lockscreen setup
