@@ -290,7 +290,10 @@ exec --no-startup-id dunst -config ~/.config/dunst.conf
 # Window rules
 #
 
+# Use `xprop` to get the class
 for_window [class="Pavucontrol"] floating enable
+for_window [class="Nemo"] floating enable
+for_window [class="Xviewer"] floating enable
 
 ##
 # Other stuff
