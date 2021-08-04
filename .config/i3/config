@@ -25,6 +25,9 @@ bindsym $mod+q kill
 # Terminal
 bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
 
+# File manager
+bindsym $mod+e exec --no-startup-id xdg-open ~
+
 # Open empty window
 bindsym $mod+Shift+q exec --no-startup-id i3-msg open
 
@@ -64,7 +67,7 @@ bindsym $mod+a focus parent
 # - split: Tiling layout (default)
 # - stacking: Focused window with vertical stacked list
 # - tabbed: Focused window with horizontal stacked list
-bindsym $mod+e layout toggle split
+bindsym $mod+z layout toggle split
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 
@@ -168,12 +171,6 @@ client.urgent            $urgentborder   $urgentborder   $urgenttext   $urgentbo
 # Application launcher
 #
 
-# DMenu colors
-set $dmenuactivebg #b74c4a
-
-# DMenu binding
-#bindsym $mod+d exec --no-startup-id "dmenu_run -nf '$activetext' -nb '$activeborder' -sb '$dmenuactivebg' -sf '$activetext' -fn '$font-$fontsize'"
-
 # Rofi colors
 set $rofiwidth 35
 set $rofiheight 10
@@ -270,7 +267,7 @@ bar {
 		background $barbackground
 		separator $separator
 		statusline $inactivetext
-		
+
 		focused_workspace $barbackground $barbackground $activetext
 		active_workspace $barbackground $barbackground $activetext
 		inactive_workspace $barbackground $barbackground $inactivetext
