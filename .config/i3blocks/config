@@ -13,7 +13,7 @@ markup=pango
 #
 
 [volume]
-label=🔊
+label=🔊 
 interval=1
 command=$HOME/.config/i3blocks/volume.sh
 
@@ -22,7 +22,7 @@ command=$HOME/.config/i3blocks/volume.sh
 #
 
 [temperature]
-label=🌡️
+label=🔥 
 interval=10
 command=$HOME/.config/i3blocks/temperature.sh
 
@@ -31,7 +31,7 @@ command=$HOME/.config/i3blocks/temperature.sh
 #
 
 [brightness]
-label=🔆
+label=🔆 
 interval=1
 command=$HOME/.config/i3blocks/backlight.sh
 
@@ -40,7 +40,7 @@ command=$HOME/.config/i3blocks/backlight.sh
 #
 
 [battery]
-label=🔋
+label=🔋 
 interval=4
 command=$HOME/.config/i3blocks/battery.sh
 
@@ -49,7 +49,7 @@ command=$HOME/.config/i3blocks/battery.sh
 #
 
 [disk]
-label=💾
+label=💾 
 interval=40
 command=df -h | awk '/\/$/ {print $(NF-2)}'
 
