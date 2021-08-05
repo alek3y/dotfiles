@@ -56,7 +56,7 @@ alias bc="bc -lq"
 alias trash="gio trash"
 alias feh="feh --scale-down --auto-zoom"
 alias pkexec="pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY"
-alias cal="ncal -b -M"
+alias cal="cal -m"
 
 ##
 # Functions
