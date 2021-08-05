@@ -28,6 +28,9 @@ bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
 # File manager
 bindsym $mod+e exec --no-startup-id xdg-open ~
 
+# Screenshot
+bindsym --release Print exec --no-startup-id "scrot -fse 'xclip -sel c -t image/png -i $f; rm $f'"
+
 # Open empty window
 bindsym $mod+Shift+q exec --no-startup-id i3-msg open
 

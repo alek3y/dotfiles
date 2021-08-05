@@ -21,7 +21,7 @@ Before trying to use i3 without knowing how it works and looks I suggest you to 
 ## Installation
 To make it work correctly you'll need to install these requirements:
 ```bash
-sudo apt install i3 rofi compton i3blocks dunst i3lock libxcb-composite0 fonts-noto-color-emoji xautolock lm-sensors acpi lxappearance pavucontrol gawk bc xbacklight policykit-1-gnome feh
+sudo apt install i3 rofi compton i3blocks dunst i3lock libxcb-composite0 fonts-noto-color-emoji xautolock lm-sensors acpi lxappearance pavucontrol gawk bc xbacklight policykit-1-gnome feh scrot
 ```
 
 Now logout and select *i3* from the login screen. \
