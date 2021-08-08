@@ -203,6 +203,7 @@ map global normal * '<a-*>/<up>'		# Search current selection
 map global normal <a-*> ''
 
 ## View ##
+
 map global normal c 'vc'
 
 ## Marks ##
