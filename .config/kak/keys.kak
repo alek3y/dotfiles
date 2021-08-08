@@ -15,7 +15,7 @@
 # - h, j, k, l
 # - <c-[jk]> (multiline scrolling)
 # - w (as e), b (both without sel)
-# - m (without sel)
+# - M (as m), m (without sel)
 # - x, X
 # - <a-h>, <home> (both as gi)
 # - <a-l>, <end> (both without sel)
@@ -100,7 +100,7 @@ map global normal t ''
 map global normal <a-f> ''
 map global normal <a-t> ''
 map global normal <a-.> ''
-map global normal M ''
+map global normal M 'm'
 map global normal m 'm;'		# Deselect after moving to matching delimeters
 map global normal <a-m> ''
 map global normal <a-M> ''
