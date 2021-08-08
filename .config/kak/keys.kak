@@ -63,6 +63,9 @@
 # Multiple selections:
 # - <space>
 
+# Miscellaneous
+# - s
+
 ## Insert mode ##
 
 map global insert <a-n> <esc>
@@ -96,7 +99,6 @@ map global normal <a-w> ''
 map global normal <a-b> ''
 map global normal <a-e> ''
 map global normal f ''
-map global normal t ''
 map global normal <a-f> ''
 map global normal <a-t> ''
 map global normal <a-.> ''
@@ -215,7 +217,6 @@ map global normal <a-Z> ''
 
 ## Multiple selections ##
 
-map global normal s ''
 map global normal S ''
 map global normal <a-s> ''
 map global normal <a-S> ''
@@ -227,6 +228,11 @@ map global normal <a-K> ''
 map global normal $ ''
 map global normal ) ''
 map global normal ( ''
+
+## Miscellaneous ##
+
+# Get character count of selected text
+map global normal s %{: echo %sh{printf "length: "; printf "%s" "$kak_selection" | wc -m}<ret>}
 
 # TODO: https://github.com/mawww/kakoune/blob/master/doc/pages/keys.asciidoc#object-selection
 map global normal . :
