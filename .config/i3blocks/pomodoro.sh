@@ -15,6 +15,7 @@ status=($(cat "$pomodoro_filepath"))
 seconds=${status[0]}
 running=${status[1]}
 
+elapsed=0
 case $BLOCK_BUTTON in
 
 	# Pause and resume with left click
@@ -45,6 +46,7 @@ case $BLOCK_BUTTON in
 	*)
 		if [[ $running -eq 1 ]]; then
 			seconds=$(($seconds - 1))
+			elapsed=1
 		fi
 esac
 
@@ -52,6 +54,9 @@ esac
 if [[ $seconds -lt 0 ]]; then
 	seconds=0
 	running=0
+	if [[ $elapsed -eq 1 ]]; then
+		notify-send -u critical -t 0 "Pomodoro" "Yoo, break time ヽ(＾▽＾)ノ"
+	fi
 fi
 printf "%s %s" $seconds $running > "$pomodoro_filepath"
 
