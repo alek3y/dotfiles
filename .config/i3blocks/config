@@ -9,6 +9,15 @@ separator_block_width=20
 markup=pango
 
 ##
+# Pomodoro timer
+#
+
+[pomodoro]
+label=🍅 
+interval=1
+command=$HOME/.config/i3blocks/pomodoro.sh
+
+##
 # Volume
 #
 
