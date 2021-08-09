@@ -86,6 +86,18 @@ replaceall <from> <to>: replace globally what matches the `from` regex with the 
 }
 
 ##
+# Custom commands
+#
+
+define-command -params 1 -docstring "
+math <expr>: write result of `expr` expression
+" math %{
+	execute-keys i
+	execute-keys %sh{python3 -c "print($1, end='')"}
+	execute-keys <esc>
+}
+
+##
 # Greetings
 #
 

@@ -65,6 +65,7 @@
 
 # Miscellaneous
 # - s
+# - ?
 
 ## Insert mode ##
 
@@ -167,9 +168,7 @@ map global normal <a-R> ''
 map global normal <a-r> ''
 
 # Indent *empty line* with the previous one
-map global normal t %{
-i<backspace><ret><esc>
-}
+map global normal t %{i<backspace><ret><esc>}
 
 map global normal <a-j> ''
 map global normal <a-J> ''
@@ -233,6 +232,9 @@ map global normal ( ''
 
 # Get character count of selected text
 map global normal s %{: echo %sh{printf "length: "; printf "%s" "$kak_selection" | wc -m}<ret>}
+
+# Ask for math expression
+map global normal ? %{: prompt "math:" %{math %val{text}}<ret>}
 
 # TODO: https://github.com/mawww/kakoune/blob/master/doc/pages/keys.asciidoc#object-selection
 map global normal . :
