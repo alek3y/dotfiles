@@ -9,9 +9,9 @@
 # Environment variables
 #
 
-HISTSIZE="-1"
-HISTFILESIZE="-1"
-HISTCONTROL="ignoreboth"
+export HISTSIZE=
+export HISTFILESIZE=
+export HISTCONTROL="ignoreboth"
 export EDITOR="kak"
 #export LS_COLORS+=":ow=01;34"		# Fix ugly folders color on NTFS drives
 
