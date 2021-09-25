@@ -32,8 +32,7 @@ RESET="\[\033[0m\]"
 FRG_DARK="\[\033[38;5;242m\]"
 FRG_USER="\[\033[38;5;12m\]"
 FRG_PATH="\[\033[38;5;13m\]"		# Or 103m
-SEP="𐌉"		# Needs an alternative on wls.exe (i.e. '❘')
-PS1="$BOLD$FRG_DARK[$FRG_USER \u@\h $FRG_DARK$SEP$FRG_PATH \w $FRG_DARK❱$RESET "
+PS1="$BOLD$FRG_DARK[$FRG_USER \u@\h $FRG_DARK][$FRG_PATH \w $FRG_DARK] »$RESET "
 
 ##
 # Greetings
