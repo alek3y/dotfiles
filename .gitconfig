@@ -1,0 +1,4 @@
+[credential]
+	helper = store
+[alias]
+	graph = log --graph --all --reflog --format='%h %s' --abbrev-commit
