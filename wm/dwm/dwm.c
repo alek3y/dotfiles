@@ -194,6 +194,7 @@ static void pushdown(const Arg *arg);
 static void pushup(const Arg *arg);
 static void quit(const Arg *arg);
 static Monitor *recttomon(int x, int y, int w, int h);
+static void resetnmaster(const Arg *arg);
 static void resize(Client *c, int x, int y, int w, int h, int interact);
 static void resizeclient(Client *c, int x, int y, int w, int h);
 static void resizemouse(const Arg *arg);
@@ -1342,6 +1343,13 @@ recttomon(int x, int y, int w, int h)
 			r = m;
 		}
 	return r;
+}
+
+void
+resetnmaster(const Arg *arg)
+{
+	selmon->nmaster = 1;
+	arrange(selmon);
 }
 
 void

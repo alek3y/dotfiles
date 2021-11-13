@@ -1,0 +1,38 @@
+diff --git a/wm/dwm/config.def.h b/wm/dwm/config.def.h
+index a2ac963..d796e48 100644
+--- a/wm/dwm/config.def.h
++++ b/wm/dwm/config.def.h
+@@ -69,6 +69,7 @@ static Key keys[] = {
+ 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
+ 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
+ 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
++	{ MODKEY,                       XK_o,      resetnmaster,   {0} },
+ 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
+ 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+ 	{ MODKEY,                       XK_Return, zoom,           {0} },
+diff --git a/wm/dwm/dwm.c b/wm/dwm/dwm.c
+index 5e4d494..4f39fda 100644
+--- a/wm/dwm/dwm.c
++++ b/wm/dwm/dwm.c
+@@ -189,6 +189,7 @@ static void pop(Client *);
+ static void propertynotify(XEvent *e);
+ static void quit(const Arg *arg);
+ static Monitor *recttomon(int x, int y, int w, int h);
++static void resetnmaster(const Arg *arg);
+ static void resize(Client *c, int x, int y, int w, int h, int interact);
+ static void resizeclient(Client *c, int x, int y, int w, int h);
+ static void resizemouse(const Arg *arg);
+@@ -1266,6 +1267,13 @@ recttomon(int x, int y, int w, int h)
+ 	return r;
+ }
+ 
++void
++resetnmaster(const Arg *arg)
++{
++	selmon->nmaster = 1;
++	arrange(selmon);
++}
++
+ void
+ resize(Client *c, int x, int y, int w, int h, int interact)
+ {
