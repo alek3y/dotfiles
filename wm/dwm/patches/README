@@ -8,4 +8,17 @@ Here's a list of other interesting patches that might come in handy:
 - killunsel
 - launcher
 - leftstack
+- singletagset
+- spawnprograms
+- stackmfact
+- staticstatus
+- status2d
+- statusbutton
+- sticky
+- stickyindicator
+- tagintostack
+- tapresize, which can be avoided as two fingers tap and drag works as expected
+- underlinetags
+- urgentborder
+- viewontag
 You can find them at https://dwm.suckless.org/patches.
