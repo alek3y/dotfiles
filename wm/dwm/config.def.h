@@ -115,6 +115,10 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 };
 
+/* horizontal scrolling buttons */
+#define Button6 6
+#define Button7 7
+
 /* button definitions */
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static Button buttons[] = {
@@ -125,6 +129,10 @@ static Button buttons[] = {
 	{ ClkStatusText,        0,              Button1,        spawn,          {.v = statuscmd } },
 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = statuscmd } },
 	{ ClkStatusText,        0,              Button3,        spawn,          {.v = statuscmd } },
+	{ ClkStatusText,        0,              Button4,        spawn,          {.v = statuscmd } },
+	{ ClkStatusText,        0,              Button5,        spawn,          {.v = statuscmd } },
+	{ ClkStatusText,        0,              Button6,        spawn,          {.v = statuscmd } },
+	{ ClkStatusText,        0,              Button7,        spawn,          {.v = statuscmd } },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
