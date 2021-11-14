@@ -3,6 +3,7 @@
 # Configuration
 readonly KEYMAP=it
 readonly RESOLUTION=(1440 960 60)
+readonly WALLPAPER=~/.local/opt/wm/wallpaper.*
 
 # Keyboard
 setxkbmap $KEYMAP
@@ -17,6 +18,9 @@ if [[ ${#RESOLUTION[@]} -gt 0 ]]; then
 	xrandr --addmode $monitor $modename
 	xrandr --output $monitor --mode $modename
 fi
+
+# Wallpaper
+feh --bg-fill $WALLPAPER
 
 # Window manager
 exec dwm
