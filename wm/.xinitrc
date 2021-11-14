@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # Configuration
 readonly KEYMAP=it
 readonly RESOLUTION=(1440 960 60)
