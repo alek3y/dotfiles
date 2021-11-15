@@ -71,7 +71,8 @@ static const char *shutdowncmd[] = { "systemctl", "poweroff", NULL };
 
 /* commands spawned when clicking statusbar, the mouse button pressed is exported as BUTTON */
 static const StatusCmd statuscmds[] = {
-	{ "notify-send Mouse$BUTTON", 1 },
+	{ NULL, 1 },                       /* separator */
+	{ "notify-send Mouse$BUTTON", 2 },
 };
 static const char *statuscmd[] = { "/bin/sh", "-c", NULL, NULL };
 
