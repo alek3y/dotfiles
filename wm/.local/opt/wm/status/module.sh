@@ -1,14 +1,15 @@
 #!/bin/bash
 
 readonly SEPARATOR="⎪"
-readonly REFRESH=2		# TODO: Add to .xinitrc
+readonly REFRESH=2
 
-# 1 is reserved as separator
-declare -rA BLOCKS=(
-	["",2]="volume.sh"		# TODO: Move icons to .sh files
-	["",3]="battery.sh"
+readonly BLOCKS=(
+	"volume.sh"
+	"battery.sh"
+	"brightness.sh"
 )
 
+readonly STATUSCMDS_START_ID=2		# See dwm/config.def.h
 readonly PID_FILE=$(dirname "$(mktemp -u)")/wm_status.pid
 
 function to_byte {
@@ -44,16 +45,9 @@ done
 script_location=$(dirname "$BASH_SOURCE")
 
 if [[ $update -eq 1 ]]; then
-
-	# TODO: Simplify this?
-	for key in ${!BLOCKS[@]}; do
-		key_id=$(echo $key | cut -d "," -f 2)
-
-		if [[ $key_id -eq $block ]]; then
-			bash "$script_location/${BLOCKS[$key]}" "$button"
-			break
-		fi
-	done
+	if [[ ! -z $block ]]; then
+		bash "$script_location/${BLOCKS[$block]}" "$button"
+	fi
 
 	kill -s SIGUSR1 $(cat "$PID_FILE") 2>/dev/null
 fi
@@ -65,20 +59,25 @@ if [[ $listen -eq 1 ]]; then
 	fi
 	echo "$$" > "$PID_FILE"
 
+	block_last_idx=$((${#BLOCKS[@]} - 1))
+
 	trap 'continue' SIGUSR1
 	while true; do
 		status=
-		for key in ${!BLOCKS[@]}; do
-			key_icon=$(echo $key | cut -d "," -f 1)
-			key_id=$(echo $key | cut -d "," -f 2)
+		for i in $(seq 0 $block_last_idx); do
+			statuscmd_id=$(($i + $STATUSCMDS_START_ID))
+			status+=$(to_byte $statuscmd_id)
 
-			value=$(bash "$script_location/${BLOCKS[$key]}")
+			output=$(bash "$script_location/${BLOCKS[$i]}")
+			status+=$(printf '%s' "$output")
 
-			status+=$(to_byte $key_id)
-			status+=$(printf '%s %s\x1 %s ' "$key_icon" "$value" "$SEPARATOR")		# TODO: Fix this ugly mess
+			status+=$(to_byte 1)
+			if [[ $i -lt $block_last_idx ]]; then
+				status+=$(printf ' %s ' "$SEPARATOR")
+			fi
 		done
 
-		xsetroot -name " $status"		# TODO: Fix ugly missing space
+		xsetroot -name " $status "
 
 		sleep $REFRESH &
 		wait $!
