@@ -61,9 +61,10 @@ if [[ $listen -eq 1 ]]; then
 
 	block_last_idx=$((${#BLOCKS[@]} - 1))
 
-	trap 'continue' SIGUSR1
+	trap '[[ $loading_status -eq 0 ]] && continue' SIGUSR1
 	while true; do
 		status=
+		loading_status=1
 		for i in $(seq 0 $block_last_idx); do
 			statuscmd_id=$(($i + $STATUSCMDS_START_ID))
 			status+=$(to_byte $statuscmd_id)
@@ -76,6 +77,7 @@ if [[ $listen -eq 1 ]]; then
 				status+=$(printf ' %s ' "$SEPARATOR")
 			fi
 		done
+		loading_status=0
 
 		xsetroot -name " $status "
 
