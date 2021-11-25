@@ -11,7 +11,8 @@ function map {
 		printf "r="
 		printf "((%d - %d)/" $input $in_min
 		printf "(%d - %d))*" $in_max $in_min
-		printf "(%d - %d)+%d;" $out_max $out_min $out_min
+		printf "(%d - %d)" $out_max $out_min
+		printf "+%d+0.5;" $out_min
 		printf "scale=0;"
 		printf "r/1\n"
 	) | bc -l
