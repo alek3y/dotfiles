@@ -80,6 +80,8 @@ static const StatusCmd statuscmds[] = {
 	{ NULL, STATUSOFFSET-1 },  /* separator */
 	STATUSMODULE(0, STATUSOFFSET),
 	STATUSMODULE(1, STATUSOFFSET),
+	STATUSMODULE(2, STATUSOFFSET),
+	STATUSMODULE(3, STATUSOFFSET),
 };
 static const char *statuscmd[] = { "/bin/bash", "-c", NULL, NULL };
 

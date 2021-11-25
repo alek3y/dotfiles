@@ -7,6 +7,7 @@ readonly BLOCKS=(
 	"volume.sh"
 	"battery.sh"
 	"brightness.sh"
+	"date.sh"
 )
 
 readonly STATUSCMDS_START_ID=2		# See dwm/config.def.h
