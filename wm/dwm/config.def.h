@@ -69,12 +69,19 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char *shutdowncmd[] = { "systemctl", "poweroff", NULL };
 
+#define STR_AUX(x) #x
+#define STR(x) STR_AUX(x)
+
+#define STATUSOFFSET 2
+#define STATUSMODULE(blocknum, offset) { "~/.local/opt/wm/status/module.sh -u " STR(blocknum) ",$BUTTON", blocknum + offset }
+
 /* commands spawned when clicking statusbar, the mouse button pressed is exported as BUTTON */
 static const StatusCmd statuscmds[] = {
-	{ NULL, 1 },                       /* separator */
-	{ "notify-send Mouse$BUTTON", 2 },
+	{ NULL, STATUSOFFSET-1 },  /* separator */
+	STATUSMODULE(0, STATUSOFFSET),
+	STATUSMODULE(1, STATUSOFFSET),
 };
-static const char *statuscmd[] = { "/bin/sh", "-c", NULL, NULL };
+static const char *statuscmd[] = { "/bin/bash", "-c", NULL, NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
