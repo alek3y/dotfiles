@@ -1,7 +1,7 @@
 #!/bin/bash
 
 readonly SEPARATOR="⎪"
-readonly REFRESH=2
+readonly REFRESH=1.5
 
 readonly BLOCKS=(
 	"volume.sh"
