@@ -44,10 +44,11 @@ while [[ $i -lt ${#args[@]} ]]; do
 done
 
 script_location=$(dirname "$BASH_SOURCE")
+cd $script_location
 
 if [[ $update -eq 1 ]]; then
 	if [[ ! -z $block ]]; then
-		bash "$script_location/${BLOCKS[$block]}" "$button"
+		bash "${BLOCKS[$block]}" "$button"
 	fi
 
 	kill -s SIGUSR1 $(cat "$PID_FILE") 2>/dev/null
@@ -70,7 +71,7 @@ if [[ $listen -eq 1 ]]; then
 			statuscmd_id=$(($i + $STATUSCMDS_START_ID))
 			status+=$(to_byte $statuscmd_id)
 
-			output=$(bash "$script_location/${BLOCKS[$i]}")
+			output=$(bash "${BLOCKS[$i]}")
 			status+=$(printf '%s' "$output")
 
 			status+=$(to_byte 1)
