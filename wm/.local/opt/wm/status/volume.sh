@@ -1,8 +1,10 @@
 #!/bin/bash
 
+source util.sh
+
 readonly DEFAULT=30
 readonly STEP=5
-readonly LEVELS=("墳" "" "")
+readonly LEVELS=("" "墳")
 readonly MUTED="婢"
 
 sink=$(pamixer --get-default-sink)
@@ -40,7 +42,8 @@ case $button in
 		if pamixer --get-mute >/dev/null; then
 			icon=$MUTED
 		else
-			icon=$LEVELS
+			icon_index=$(map $volume 0 100 0 $((${#LEVELS[@]} - 1)))
+			icon="${LEVELS[$icon_index]}"
 		fi
 
 		echo "$icon $volume%"

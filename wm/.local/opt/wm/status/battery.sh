@@ -1,9 +1,16 @@
 #!/bin/bash
 
-level=$(acpi -b | grep -ioP '[0-9]+%')
+source util.sh
+
+readonly CHARGING=""
+readonly LEVELS=("" "" "" "" "" "" "" "" "" "")
+readonly MISSING=""
+
+level=$(acpi -b | grep -ioP '[0-9]+(?=%)')
 
 if [[ -z $level ]]; then
-	echo " N/A"
+	echo "$MISSING N/A"
 else
-	echo " $level"
+	icon_index=$(map $level 0 100 0 $((${#LEVELS[@]} - 1)))
+	echo "${LEVELS[$icon_index]} $level%"
 fi
