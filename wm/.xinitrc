@@ -30,5 +30,8 @@ xinput set-prop $touchpad "libinput Tapping Enabled" 1
 # Wallpaper
 feh --bg-fill $WALLPAPER
 
+# Statusbar handler
+~/.local/opt/wm/status/module.sh -l &
+
 # Window manager
 exec dwm
