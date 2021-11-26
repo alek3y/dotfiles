@@ -19,6 +19,14 @@ if [[ ${#RESOLUTION[@]} -gt 0 ]]; then
 	xrandr --output $monitor --mode $modename
 fi
 
+# Touchpad
+touchpad=$(xinput list --short | \
+	grep -iP '(?<=touchpad)\s*id=' | \
+	grep -ioP '(?<=id=)[0-9]+')
+
+xinput set-prop $touchpad "libinput Natural Scrolling Enabled" 1
+xinput set-prop $touchpad "libinput Tapping Enabled" 1
+
 # Wallpaper
 feh --bg-fill $WALLPAPER
 
