@@ -6,9 +6,15 @@ readonly DEFAULT=30
 readonly STEP=5
 readonly LEVELS=("" "墳")
 readonly MUTED="婢"
+readonly MISSING=""
 
-sink=$(pamixer --get-default-sink)
+sink=$(pamixer --get-default-sink | tr '[:upper:]' '[:lower:]')
 volume=$(pamixer --get-volume)
+
+if [[ $sink == *"dummy"* ]]; then
+	echo "$MISSING N/A"
+	exit 1
+fi
 
 button=$1
 case $button in
