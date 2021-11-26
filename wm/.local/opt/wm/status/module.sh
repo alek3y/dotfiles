@@ -4,9 +4,9 @@ readonly SEPARATOR="⎪"
 readonly REFRESH=1.5
 
 readonly BLOCKS=(
+	"brightness.sh"
 	"volume.sh"
 	"battery.sh"
-	"brightness.sh"
 	"date.sh"
 )
 
