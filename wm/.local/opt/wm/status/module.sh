@@ -71,7 +71,7 @@ if [[ $listen -eq 1 ]]; then
 			statuscmd_id=$(($i + $STATUSCMDS_START_ID))
 			status+=$(to_byte $statuscmd_id)
 
-			output=$(bash "${BLOCKS[$i]}")
+			output=$(bash "${BLOCKS[$i]}" 2>/dev/null)
 			status+=$(printf '%s' "$output")
 
 			status+=$(to_byte 1)
@@ -81,7 +81,10 @@ if [[ $listen -eq 1 ]]; then
 		done
 		loading_status=0
 
-		xsetroot -name " $status "
+		xsetroot -name " $status " 2>/dev/null
+		if [[ $? -ne 0 ]]; then
+			break
+		fi
 
 		sleep $REFRESH &
 		wait $!
