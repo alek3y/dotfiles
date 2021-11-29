@@ -32,6 +32,7 @@ extra/feh
 extra/pavucontrol
 extra/xclip
 community/lxappearance
+community/xbindkeys
 
 aur/mocu-xcursor
 extra/gnome-themes-extra

@@ -1,0 +1,17 @@
+"pamixer --default-source -t"
+	XF86AudioMicMute
+
+"pamixer -t"
+	XF86AudioMute
+
+"pamixer -d 5"
+	XF86AudioLowerVolume
+
+"pamixer -i 5"
+	XF86AudioRaiseVolume
+
+"xbacklight -time 0 -steps 1 -dec 5"
+	XF86MonBrightnessDown
+
+"xbacklight -time 0 -steps 1 -inc 5"
+	XF86MonBrightnessUp

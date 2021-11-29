@@ -1,7 +1,7 @@
 #!/bin/bash
 
 readonly DEFAULT=30
-readonly STEP=5
+readonly STEP=5		# See ~/.xbindkeysrc
 readonly ICON=""
 
 brightness=$(xbacklight | grep -ioP '^[0-9]+')

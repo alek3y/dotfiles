@@ -3,7 +3,7 @@
 source util.sh
 
 readonly DEFAULT=30
-readonly STEP=5
+readonly STEP=5		# See ~/.xbindkeysrc
 readonly LEVELS=("" "墳")
 readonly MUTED="婢"
 readonly MISSING=""
