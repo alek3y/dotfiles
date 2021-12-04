@@ -24,7 +24,11 @@ set list
 set listchars=tab:\┊\ ,extends:»,precedes:«,nbsp:⎵
 highlight SpecialKey ctermbg=NONE ctermfg=darkgray
 
-"set hidden	" Ignore unsaved buffer when opening new files
+" Remember cursor position
+autocmd BufReadPost * if line("'\"") | execute("normal `\"") | endif
+
+set hidden	" Ignore unsaved buffer when opening new files
+set confirm
 set fileformat=unix
 set scrolloff=3
 
