@@ -26,6 +26,7 @@ highlight SpecialKey ctermbg=NONE ctermfg=darkgray
 
 "set hidden	" Ignore unsaved buffer when opening new files
 set fileformat=unix
+set scrolloff=3
 
 set wildmenu	" Show partial commands in the bottom right of the screen
 set laststatus=2
