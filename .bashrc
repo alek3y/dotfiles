@@ -12,7 +12,7 @@ shopt -s histappend
 
 # Environment variables
 export PATH="$PATH:~/.local/bin"
-export EDITOR="kak"
+export EDITOR="vim"
 #export LS_COLORS+=":ow=01;34"		# Hide ugly o+w color (on NTFS)
 
 # PS1
