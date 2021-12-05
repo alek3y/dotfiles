@@ -37,6 +37,7 @@ set laststatus=2
 set showcmd
 set cmdheight=1
 set ruler
+set splitright
 
 set number
 set autoindent
@@ -44,7 +45,9 @@ set ignorecase
 set smartcase
 set backspace=indent,eol,start
 set nostartofline	" Remeber column when moving through lines
+
 "set hlsearch	" Highlight searches
+set incsearch
 
 " Use Vim internal visual bell and disable it completely
 set visualbell
