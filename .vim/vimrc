@@ -15,14 +15,25 @@ if has('syntax')
 	syntax on
 endif
 
+" Set up plugins
+call plug#begin(expand('~/.vim/plugins'))
+Plug 'ackyshake/spacegray.vim'
+call plug#end()
+
+" Colors
+set background=dark
+set cursorline
+colorscheme spacegray
+highlight Normal ctermbg=234
+
 " Highlight trailing whitespaces
-highlight WhiteSpaces ctermbg=red guibg=red
+highlight WhiteSpaces ctermbg=red
 match WhiteSpaces /\s\+$/
 
 " Highlight special characters
 set list
 set listchars=tab:\┊\ ,extends:»,precedes:«,nbsp:⎵
-highlight SpecialKey ctermbg=NONE ctermfg=darkgray
+highlight SpecialKey ctermbg=NONE ctermfg=238
 
 " Remember cursor position
 autocmd BufReadPost * if line("'\"") | execute("normal `\"") | endif
