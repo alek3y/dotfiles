@@ -38,6 +38,14 @@ highlight SpecialKey ctermbg=NONE ctermfg=238
 " Remember cursor position
 autocmd BufReadPost * if line("'\"") | execute("normal `\"") | endif
 
+" Use hard tabs
+set noexpandtab
+set shiftwidth=4
+set tabstop=4
+
+" Force hard tabs on every filetype
+autocmd FileType * setlocal noexpandtab
+
 set hidden	" Ignore unsaved buffer when opening new files
 set confirm
 set fileformat=unix
@@ -71,10 +79,6 @@ endif
 
 " Quickly time out on keycodes
 set notimeout ttimeout ttimeoutlen=200
-
-" Use Hard tabs
-set shiftwidth=4
-set tabstop=4
 
 " Redraw the screen and remove highlighting matches with ^L
 nnoremap <C-L> :nohl<CR><C-L>
