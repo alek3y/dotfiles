@@ -25,6 +25,7 @@ set background=dark
 set cursorline
 colorscheme spacegray
 highlight Normal ctermbg=234
+highlight PmenuSel ctermbg=137 ctermfg=NONE
 
 " Highlight trailing whitespaces
 highlight WhiteSpaces ctermbg=red
@@ -76,6 +77,9 @@ set t_vb=
 if has('mouse')
 	set mouse=nvc
 endif
+
+" Always open the menu and autocomplete to common text
+set completeopt=longest,menuone
 
 " Quickly time out on keycodes
 set notimeout ttimeout ttimeoutlen=200
