@@ -24,7 +24,8 @@ call plug#end()
 set background=dark
 set cursorline
 colorscheme spacegray
-highlight Normal ctermbg=234
+highlight Normal ctermbg=233
+highlight CursorLine ctermbg=234
 highlight PmenuSel ctermbg=137 ctermfg=NONE
 
 " Highlight trailing whitespaces
