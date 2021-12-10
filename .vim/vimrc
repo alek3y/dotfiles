@@ -66,7 +66,7 @@ set smartcase
 set backspace=indent,eol,start
 set nostartofline	" Remeber column when moving through lines
 
-"set hlsearch	" Highlight searches
+set hlsearch
 set incsearch
 
 " Use Vim internal visual bell and disable it completely
@@ -77,6 +77,9 @@ set t_vb=
 if has('mouse')
 	set mouse=nvc
 endif
+
+" Allow cursor to move at EOL
+"set virtualedit=onemore
 
 " Always open the menu and autocomplete to common text
 set completeopt=longest,menuone
