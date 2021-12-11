@@ -7,86 +7,82 @@
 
 set nocompatible
 
-if has('filetype')
-	filetype indent plugin on
-endif
-
-if has('syntax')
-	syntax on
-endif
-
-" Set up plugins
+" Plugins
+filetype off
 call plug#begin(expand('~/.vim/plugins'))
 Plug 'ackyshake/spacegray.vim'
 call plug#end()
 
-" Colors
+filetype plugin indent on
+
+" Indentation
+set autoindent
+set noexpandtab
+set tabstop=3 shiftwidth=3 softtabstop=3
+autocmd FileType * setlocal
+	\ noexpandtab
+	\ tabstop=3 shiftwidth=3 softtabstop=3
+
+" Appearance
+syntax on
 set background=dark
-set cursorline
 colorscheme spacegray
 highlight Normal ctermbg=233
-highlight CursorLine ctermbg=234
 highlight PmenuSel ctermbg=137 ctermfg=NONE
+
+" Cursorline
+set cursorline
+highlight CursorLine ctermbg=234
+
+" Set marks
+set list
+set listchars=tab:\┊\ ,extends:»,precedes:«,nbsp:⎵
+highlight SpecialKey ctermbg=NONE ctermfg=238
 
 " Highlight trailing whitespaces
 highlight WhiteSpaces ctermbg=red
 match WhiteSpaces /\s\+$/
 
-" Highlight special characters
-set list
-set listchars=tab:\┊\ ,extends:»,precedes:«,nbsp:⎵
-highlight SpecialKey ctermbg=NONE ctermfg=238
-
-" Remember cursor position
+" Save cursor
 autocmd BufReadPost * if line("'\"") | execute("normal `\"") | endif
 
-" Use hard tabs
-set noexpandtab
-set shiftwidth=4
-set tabstop=4
-
-" Force hard tabs on every filetype
-autocmd FileType * setlocal noexpandtab
-
-set hidden	" Ignore unsaved buffer when opening new files
+" Behaviour
+set hidden
 set confirm
 set fileformat=unix
-set scrolloff=3
-
-set wildmenu	" Show partial commands in the bottom right of the screen
-set laststatus=2
-set showcmd
-set cmdheight=1
-set ruler
-set splitright
-
-set number
-set autoindent
-set ignorecase
-set smartcase
 set backspace=indent,eol,start
-set nostartofline	" Remeber column when moving through lines
+set nostartofline
 
-set hlsearch
-set incsearch
-
-" Use Vim internal visual bell and disable it completely
-set visualbell
-set t_vb=
-
-" Keep mouse enabled, except for when in Insert mode
 if has('mouse')
 	set mouse=nvc
 endif
 
-" Allow cursor to move at EOL
+" Visual settings
+set number
+set scrolloff=3
+set splitright
 "set virtualedit=onemore
 
-" Always open the menu and autocomplete to common text
+" Statusline
+set wildmenu
+set showcmd
+set cmdheight=1
+set laststatus=2
+set ruler
 set completeopt=longest,menuone
 
-" Quickly time out on keycodes
+" Search
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
+" Keys timeout
 set notimeout ttimeout ttimeoutlen=200
 
-" Redraw the screen and remove highlighting matches with ^L
+" Bell
+set visualbell
+set t_vb=
+
+" Mappings
 nnoremap <C-L> :nohl<CR><C-L>
