@@ -7,7 +7,7 @@ readonly LEVELS=("" "" "" "" "" "" "" "" "" "")
 readonly MISSING=""
 
 level=$(acpi -b | grep -ioP '[0-9]+(?=%)')
-status=$(acpi -b | grep -ioP '(dis)?charging' | tr '[:upper:]' '[:lower:]')
+status=$(acpi -b | grep -ioP '((dis)?charging|full)' | tr '[:upper:]' '[:lower:]')
 
 if [[ -z $level || -z $status ]]; then
 	echo "$MISSING N/A"
