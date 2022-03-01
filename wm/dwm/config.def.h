@@ -71,7 +71,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", tags_bg, "-nf", tags_fg, "-sb", accent, "-sf", title_fg, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
-static const char *shutdowncmd[] = { "systemctl", "poweroff", NULL };
+static const char *shutdowncmd[] = { "sudo", "systemctl", "poweroff", NULL };
 
 #define STR_AUX(x) #x
 #define STR(x) STR_AUX(x)
