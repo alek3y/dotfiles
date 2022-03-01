@@ -36,5 +36,8 @@ feh --bg-fill $WALLPAPER
 # Statusbar handler
 ~/.local/opt/wm/status/module.sh -l &
 
+# Network Manager
+nm-applet &
+
 # Window manager
 exec dwm

@@ -19,6 +19,7 @@ aur/nerd-fonts-source-code-pro
 extra/xorg-xsetroot
 extra/pulseaudio
 extra/networkmanager
+extra/network-manager-applet
 extra/thunar
 community/alacritty
 aur/ly
