@@ -17,8 +17,9 @@ Here's a list of other interesting patches that might come in handy:
 - sticky
 - stickyindicator
 - tagintostack
-- tapresize, which can be avoided as two fingers tap and drag works as expected
+- tapresize, which can be avoided as two fingers tap and drag works
 - underlinetags
 - urgentborder
 - viewontag
-You can find them at https://dwm.suckless.org/patches.
+
+You can find more at https://dwm.suckless.org/patches.
