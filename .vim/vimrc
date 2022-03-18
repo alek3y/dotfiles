@@ -30,9 +30,10 @@ colorscheme spacegray
 highlight Normal ctermbg=233
 highlight PmenuSel ctermbg=137 ctermfg=NONE
 
-" Cursorline
+" Cursorline and ruler
 set cursorline
 highlight CursorLine ctermbg=234
+set colorcolumn=86
 
 " Set marks
 set list
