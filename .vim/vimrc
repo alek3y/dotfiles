@@ -85,5 +85,11 @@ set notimeout ttimeout ttimeoutlen=200
 set visualbell
 set t_vb=
 
-" Mappings
+" Clear the search highlighting and redraw the screen
 nnoremap <C-L> :nohl<CR><C-L>
+
+" Set Alt-n to Escape
+exec "set <M-n>=\en"
+noremap <M-n> <Esc>
+inoremap <M-n> <Esc>
+cnoremap <M-n> <C-\><C-n>
