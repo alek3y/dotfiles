@@ -10,7 +10,14 @@ set nocompatible
 " Plugins
 filetype off
 call plug#begin(expand('~/.vim/plugins'))
+Plug 'sainnhe/gruvbox-material'
+Plug 'ghifarit53/tokyonight-vim'
+Plug 'tomasiser/vim-code-dark'
 Plug 'ackyshake/spacegray.vim'
+Plug 'bluz71/vim-moonfly-colors'
+Plug 'sainnhe/everforest'
+Plug 'romainl/Apprentice'
+Plug 'sainnhe/edge'
 call plug#end()
 
 filetype plugin indent on
@@ -26,22 +33,20 @@ autocmd FileType * setlocal
 " Appearance
 syntax on
 set background=dark
-colorscheme spacegray
-highlight Normal ctermbg=233
-highlight PmenuSel ctermbg=137 ctermfg=NONE
-
-" Cursorline and ruler
 set cursorline
-highlight CursorLine ctermbg=234
 set colorcolumn=86
 
-" Set marks
+if &t_Co >= 256
+	set termguicolors
+endif
+colorscheme gruvbox-material
+
+" Show tabs
 set list
 set listchars=tab:\┊\ ,extends:»,precedes:«,nbsp:⎵
-highlight SpecialKey ctermbg=NONE ctermfg=238
 
-" Highlight trailing whitespaces
-highlight WhiteSpaces ctermbg=red
+" Show trailing whitespaces
+highlight WhiteSpaces ctermbg=red guibg=#cc6666
 match WhiteSpaces /\s\+$/
 
 " Save cursor
