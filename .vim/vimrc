@@ -94,7 +94,7 @@ set t_vb=
 nnoremap <C-L> :nohl<CR><C-L>
 
 " Set Alt-n to Escape
-exec "set <M-n>=\en"
-noremap <M-n> <Esc>
-inoremap <M-n> <Esc>
-cnoremap <M-n> <C-\><C-n>
+"exec "set <M-n>=\en"
+"noremap <M-n> <Esc>
+"inoremap <M-n> <Esc>
+"cnoremap <M-n> <C-\><C-n>
