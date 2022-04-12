@@ -7,9 +7,14 @@
 
 set nocompatible
 
-" Plugins
 filetype off
 call plug#begin(expand('~/.vim/plugins'))
+
+" Plugins
+"Plug 'vimsence/vimsence'
+Plug 'jiangmiao/auto-pairs'
+
+" Themes
 Plug 'sainnhe/gruvbox-material'
 Plug 'ghifarit53/tokyonight-vim'
 Plug 'tomasiser/vim-code-dark'
@@ -18,8 +23,8 @@ Plug 'bluz71/vim-moonfly-colors'
 Plug 'sainnhe/everforest'
 Plug 'romainl/Apprentice'
 Plug 'sainnhe/edge'
-call plug#end()
 
+call plug#end()
 filetype plugin indent on
 
 " Indentation
