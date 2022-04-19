@@ -35,6 +35,10 @@ autocmd FileType * setlocal
 	\ noexpandtab
 	\ tabstop=3 shiftwidth=3 softtabstop=3
 
+" Show trailing whitespaces
+autocmd ColorScheme * highlight WhiteSpaces ctermbg=red guibg=#cc6666
+autocmd InsertEnter,InsertLeave,BufWinEnter * match WhiteSpaces /\s\+$/
+
 " Appearance
 syntax on
 set background=dark
@@ -49,10 +53,6 @@ colorscheme gruvbox-material
 " Show tabs
 set list
 set listchars=tab:\┊\ ,extends:»,precedes:«,nbsp:⎵
-
-" Show trailing whitespaces
-highlight WhiteSpaces ctermbg=red guibg=#cc6666
-match WhiteSpaces /\s\+$/
 
 " Save cursor
 autocmd BufReadPost * if line("'\"") | execute("normal `\"") | endif
