@@ -13,7 +13,7 @@ shopt -s histappend
 # Environment variables
 export PATH="$PATH:~/.local/bin"
 export EDITOR="vim"
-#export LS_COLORS+=":ow=01;34"		# Hide ugly o+w color (on NTFS)
+#export LS_COLORS+=":ow=01;34"	# Hide ugly o+w color (on NTFS)
 
 # PS1
 BOLD="\[\033[1m\]"
@@ -34,7 +34,7 @@ FACES=(
 echo ${FACES[$(shuf -n 1 -i 0-$((${#FACES[@]} - 1)))]}
 
 # Aliases
-alias sudo="sudo "		# https://unix.stackexchange.com/a/349290
+alias sudo="sudo "	# https://unix.stackexchange.com/a/349290
 alias ls="ls --color=auto"
 alias grep="grep --color=auto"
 alias dd="dd status=progress"
