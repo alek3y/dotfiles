@@ -13,6 +13,7 @@ call plug#begin(expand('~/.vim/plugins'))
 " Plugins
 "Plug 'vimsence/vimsence'
 Plug 'jiangmiao/auto-pairs'
+Plug 'roxma/SimpleAutoComplPop'
 
 " Themes
 Plug 'sainnhe/gruvbox-material'
@@ -26,6 +27,13 @@ Plug 'sainnhe/edge'
 
 call plug#end()
 filetype plugin indent on
+
+" Add SimpleAutoComplPop support for all filetypes and file completion
+let g:sacpDefaultFileTypesEnable = {}
+autocmd FileType * call sacp#enableForThisBuffer({"matches": [
+	\ {'=~': '\v\w{3}$', 'feedkeys': "\<C-x>\<C-n>"},
+	\ {'=~': '\v\/\S*$', 'feedkeys': "\<C-x>\<C-f>", 'ignoreCompletionMode': 1}
+	\ ]})
 
 " Indentation
 set autoindent
