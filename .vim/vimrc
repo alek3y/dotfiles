@@ -34,7 +34,7 @@ let g:AutoPairsCenterLine = 0
 " Add SimpleAutoComplPop support for all filetypes and file completion
 let g:sacpDefaultFileTypesEnable = {}
 autocmd FileType * call sacp#enableForThisBuffer({"matches": [
-	\ {'=~': '\v\w{3}$', 'feedkeys': "\<C-x>\<C-n>"},
+	\ {'=~': '\v\w{3}$', 'feedkeys': "\<C-n>"},
 	\ {'=~': '\v\/\S*$', 'feedkeys': "\<C-x>\<C-f>", 'ignoreCompletionMode': 1}
 	\ ]})
 
