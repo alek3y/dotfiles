@@ -12,7 +12,7 @@ call plug#begin(expand('~/.vim/plugins'))
 
 " Plugins
 "Plug 'vimsence/vimsence'
-Plug 'jiangmiao/auto-pairs'
+Plug 'vim-scripts/auto-pairs-gentle'
 Plug 'roxma/SimpleAutoComplPop'
 
 " Themes
@@ -27,6 +27,9 @@ Plug 'sainnhe/edge'
 
 call plug#end()
 filetype plugin indent on
+
+" Stop AutoPairs from centering the view
+let g:AutoPairsCenterLine = 0
 
 " Add SimpleAutoComplPop support for all filetypes and file completion
 let g:sacpDefaultFileTypesEnable = {}
