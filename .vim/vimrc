@@ -20,9 +20,7 @@ Plug 'sainnhe/gruvbox-material'
 Plug 'ghifarit53/tokyonight-vim'
 Plug 'tomasiser/vim-code-dark'
 Plug 'ackyshake/spacegray.vim'
-Plug 'bluz71/vim-moonfly-colors'
 Plug 'sainnhe/everforest'
-Plug 'romainl/Apprentice'
 Plug 'sainnhe/edge'
 
 call plug#end()
@@ -54,7 +52,7 @@ autocmd InsertEnter,InsertLeave,BufWinEnter * match WhiteSpaces /\s\+$/
 syntax on
 set background=dark
 set cursorline
-set colorcolumn=86
+"set colorcolumn=86
 
 if &t_Co >= 256
 	set termguicolors
