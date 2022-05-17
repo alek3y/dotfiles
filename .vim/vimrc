@@ -13,7 +13,7 @@ call plug#begin(expand('~/.vim/plugins'))
 " Plugins
 "Plug 'vimsence/vimsence'
 Plug 'alek3y/auto-pairs-gentle'
-Plug 'roxma/SimpleAutoComplPop'
+Plug 'alek3y/vim-auto-popmenu'
 
 " Themes
 Plug 'sainnhe/gruvbox-material'
@@ -30,12 +30,12 @@ filetype plugin indent on
 let g:AutoPairsCenterLine = 0	" Stop it from centering the view
 let g:AutoPairsCompleteOnNonWords = 1
 
-" Add SimpleAutoComplPop support for all filetypes and file completion
-let g:sacpDefaultFileTypesEnable = {}
-autocmd BufEnter * call sacp#enableForThisBuffer({"matches": [
-	\ {'=~': '\v\w{3}$', 'feedkeys': "\<C-n>"},
-	\ {'=~': '\v\/\S*$', 'feedkeys': "\<C-x>\<C-f>", 'ignoreCompletionMode': 1}
-	\ ]})
+" Popup menu settings
+let g:apc_enable_ft = {'*': 1}
+let g:apc_cr_confirm = 1
+let g:apc_enable_tab = 0
+set completeopt=menu,menuone,noselect
+set shortmess+=c
 
 " Indentation
 set autoindent
@@ -82,6 +82,7 @@ endif
 set number
 set scrolloff=3
 set splitright
+set splitbelow
 "set virtualedit=onemore
 
 " Statusline
@@ -90,7 +91,6 @@ set showcmd
 set cmdheight=1
 set laststatus=2
 set ruler
-set completeopt=longest,menuone
 
 " Search
 set hlsearch
