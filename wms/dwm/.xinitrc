@@ -3,7 +3,7 @@
 # Configuration
 readonly KEYMAP=it
 readonly RESOLUTION=(1440 960 60)
-readonly WALLPAPER=~/.local/opt/wm/wallpaper.*
+readonly WALLPAPER=~/.local/opt/dwm/wallpaper.*
 
 # Keyboard
 setxkbmap $KEYMAP
@@ -34,7 +34,7 @@ xbindkeys --poll-rc
 feh --bg-fill $WALLPAPER
 
 # Statusbar handler
-~/.local/opt/wm/status/module.sh -l &
+~/.local/opt/dwm/status/module.sh -l &
 
 # Network Manager
 nm-applet &

@@ -77,7 +77,7 @@ static const char *shutdowncmd[] = { "sudo", "systemctl", "poweroff", NULL };
 #define STR(x) STR_AUX(x)
 
 #define STATUSOFFSET 2
-#define STATUSMODULE(blocknum, offset) { "~/.local/opt/wm/status/module.sh -u " STR(blocknum) ",$BUTTON", blocknum + offset }
+#define STATUSMODULE(blocknum, offset) { "~/.local/opt/dwm/status/module.sh -u " STR(blocknum) ",$BUTTON", blocknum + offset }
 
 /* commands spawned when clicking statusbar, the mouse button pressed is exported as BUTTON */
 static const StatusCmd statuscmds[] = {

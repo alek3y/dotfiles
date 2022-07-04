@@ -1,0 +1,7 @@
+Issues
+------
+I noticed PolicyKit was not working properly, but I was able to fix it by adding the following line to the sudoers file with visudo (and with commit #66bb63f):
+	%wheel ALL=(ALL) NOPASSWD: /usr/bin/systemctl poweroff,/usr/bin/systemctl reboot
+
+I also had an issue with the headphones, making a pop sound after some time of no sound playing.
+That was pretty easy to fix, thanks to https://askubuntu.com/a/1230834
