@@ -1,0 +1,39 @@
+env:
+  TERM: xterm-256color
+
+window:
+  dynamic_title: false
+
+font:
+  normal:
+    family: SauceCodePro Nerd Font
+
+  size: 8.5
+
+colors:
+  primary:
+    background: '#282828'
+    foreground: '#d3d3d3'
+
+  normal:
+    black:   '#252525'
+    red:     '#a54242'
+    green:   '#8c9440'
+    yellow:  '#de935f'
+    blue:    '#5f819d'
+    magenta: '#85678f'
+    cyan:    '#5e8d87'
+    white:   '#bdbfbe'
+
+  bright:
+    black:   '#494a4d'
+    red:     '#cc6666'
+    green:   '#b5bd68'
+    yellow:  '#efc674'
+    blue:    '#81a2be'
+    magenta: '#b294bb'
+    cyan:    '#8abeb7'
+    white:   '#e3e6e3'
+
+mouse:
+  hide_when_typing: true

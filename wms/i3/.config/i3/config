@@ -1,0 +1,129 @@
+#  _ ___             ___ _
+# |_|_  |___ ___ ___|  _|_|___
+# | |_  |  _| . |   |  _| | . |
+# |_|___|___|___|_|_|_| |_|_  |
+#                         |___|
+#
+# This is ale's ~/.config/i3/config
+
+# Basic settings
+
+set $wallpaper ~/.local/opt/i3/wallpaper.*
+set $terminal alacritty
+set $accent #bf7737
+
+set $touchpad "ELAN962C:00 04F3:30D0 Touchpad"
+set $touchpad_natural_scrolling 1
+
+# Windows style
+
+set $window_font NotoSansMono Nerd Font
+set $window_font_size 12
+set $window_border 8
+
+set $window_font_color #dadada
+set $window_font_color_inactive #8f8f8f
+set $window_border_color #2f2f2f
+set $window_border_color_inactive #404040
+
+# Color for the split direction indicator
+set $window_border_split_color #292929
+
+set $window_border_color_urgent #b74c4a
+set $window_font_color_urgent #803534
+
+# Application launcher style
+
+set $launcher_width 35
+set $launcher_height 10
+set $launcher_dpi -1
+set $launcher_history_size 4
+set $launcher_font_size 13
+set $launcher_theme ~/.config/rofi/theme.rasi
+
+# Keybindings settings
+
+set $key_launcher Mod4+d
+set $key_i3_restart Mod4+Shift+r
+set $key_window_close Mod4+q
+set $key_terminal Mod4+Return
+set $key_files Mod4+e
+set $key_screenshot Print
+set $key_empty_window Mod4+Shift+q
+set $key_lockscreen Mod4+l
+
+set $key_floating_toggle Mod4+f
+set $key_floating_focus Mod4+c
+set $key_floating_modifier Mod4
+set $key_fullscreen_toggle Mod4+t
+set $key_split_toggle Mod4+x
+
+set $key_layout_split Mod4+z
+set $key_layout_stacking Mod4+s
+set $key_layout_tabbed Mod4+w
+
+set $key_volume_raise XF86AudioRaiseVolume
+set $key_volume_lower XF86AudioLowerVolume
+set $key_volume_mute XF86AudioMute
+set $key_brightness_raise XF86MonBrightnessUp
+set $key_brightness_lower XF86MonBrightnessDown
+
+set $key_focus_up Mod4+Up
+set $key_focus_right Mod4+Right
+set $key_focus_down Mod4+Down
+set $key_focus_left Mod4+Left
+set $key_focus_parent Mod4+a
+
+set $key_focus_move_up Mod4+Shift+Up
+set $key_focus_move_right Mod4+Shift+Right
+set $key_focus_move_down Mod4+Shift+Down
+set $key_focus_move_left Mod4+Shift+Left
+
+# Status bar
+
+set $bar_separator "|"
+set $bar_color #292929
+set $bar_color_separator #383838
+
+# Workspaces names
+
+set $workspace_1st "1:  "
+set $workspace_1st_focus Mod4+1
+set $workspace_1st_move Mod4+Shift+1
+
+set $workspace_2nd "2:  "
+set $workspace_2nd_focus Mod4+2
+set $workspace_2nd_move Mod4+Shift+2
+
+set $workspace_3rd "3: ﬦ "
+set $workspace_3rd_focus Mod4+3
+set $workspace_3rd_move Mod4+Shift+3
+
+set $workspace_4th "4:  "
+set $workspace_4th_focus Mod4+4
+set $workspace_4th_move Mod4+Shift+4
+
+# Modes settings
+
+set $mode_resize Mod4+r
+set $mode_resize_up Up
+set $mode_resize_right Right
+set $mode_resize_down Down
+set $mode_resize_left Left
+
+set $mode_power Mod4+Insert
+set $mode_power_lockscreen l
+set $mode_power_logout e
+set $mode_power_suspend s
+set $mode_power_reboot r
+set $mode_power_poweroff p
+
+# Include configurations
+
+include keys.conf
+include windows.conf
+include workspaces.conf
+include bar.conf
+include modes.conf
+include rules.conf
+include other.conf
