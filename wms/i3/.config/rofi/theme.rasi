@@ -1,0 +1,38 @@
+* {
+	spacing: 0.2em;
+	padding: 0.2em;
+	text-color: ${FOREGROUND};
+	background-color: inherit;
+}
+
+window {
+	border: 0.35em;
+	border-color: ${ACCENT};
+	padding: 0.6em;
+	width: ${WIDTH};
+	background-color: ${BACKGROUND};
+}
+
+inputbar {
+	border: 0 0 0.2em 0;
+	border-color: ${SHADING_LIGHT};
+	padding: 0 0 0.6em 0;
+}
+
+listview {
+	scrollbar: true;
+	fixed-height: true;
+	lines: ${LINES};
+	padding: 0.6em 0 0 0;
+}
+
+scrollbar {
+	margin: 0 0 0 0.3em;
+	handle-width: 10px;
+	handle-color: ${BACKGROUND};
+	background-color: ${SHADING_LIGHT};
+}
+
+element.selected {
+	background-color: ${SHADING_DARK};
+}

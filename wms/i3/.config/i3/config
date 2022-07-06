@@ -34,11 +34,11 @@ set $window_font_color_urgent #803534
 
 # Application launcher style
 
-set $launcher_width 35
-set $launcher_height 10
-set $launcher_dpi -1
-set $launcher_history_size 4
-set $launcher_font_size 13
+set $launcher_prompt ""
+set $launcher_lines 8
+set $launcher_width 26em
+set $launcher_font_size 12
+set $launcher_history_size 5
 set $launcher_theme ~/.config/rofi/theme.rasi
 
 # Keybindings settings
