@@ -9,7 +9,6 @@
 # Basic settings
 
 set $wallpaper ~/.local/opt/i3/wallpaper.*
-set $terminal alacritty
 set $accent #bf7737
 
 set $touchpad "ELAN962C:00 04F3:30D0 Touchpad"
