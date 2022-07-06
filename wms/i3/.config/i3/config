@@ -27,7 +27,7 @@ set $window_border_color #2f2f2f
 set $window_border_color_inactive #404040
 
 # Color for the split direction indicator
-set $window_border_split_color #292929
+set $window_border_split_color #4e4135
 
 set $window_border_color_urgent #b74c4a
 set $window_font_color_urgent #803534
