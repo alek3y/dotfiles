@@ -1,3 +1,7 @@
 Installation
 ------------
 The i3 configuration and pkglist.txt files are based off of the environment set up by archinstall on Arch (heh, lazy :P).
+
+Fonts
+-----
+Apparently nerd-fonts v2.1.0 are completely broken (#509), so make sure to use the .local/share/fonts/update.py script to download them from master.

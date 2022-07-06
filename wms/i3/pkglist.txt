@@ -1,7 +1,5 @@
 extra/noto-fonts
 extra/noto-fonts-emoji
-aur/nerd-fonts-noto-sans-mono
-aur/nerd-fonts-source-code-pro
 
 community/scrot
 extra/xclip
