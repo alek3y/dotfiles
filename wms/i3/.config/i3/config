@@ -40,6 +40,15 @@ set $launcher_font_size 12
 set $launcher_history_size 5
 set $launcher_theme ~/.config/rofi/theme.rasi
 
+# Notifications style
+
+set $notifs_timeout 8
+set $notifs_idle 120
+set $notifs_width 320
+set $notifs_height_max 150
+set $notifs_gap 10
+set $notifs_offset 12x42
+
 # Keybindings settings
 
 set $key_launcher Mod4+d

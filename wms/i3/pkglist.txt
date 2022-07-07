@@ -7,3 +7,4 @@ extra/network-manager-applet
 extra/feh
 community/alacritty
 community/picom
+community/dunst
