@@ -49,44 +49,6 @@ set $notifs_height_max 150
 set $notifs_gap 10
 set $notifs_offset 12x42
 
-# Keybindings settings
-
-set $key_launcher Mod4+d
-set $key_i3_restart Mod4+Shift+r
-set $key_window_close Mod4+q
-set $key_terminal Mod4+Return
-set $key_files Mod4+e
-set $key_screenshot Print
-set $key_empty_window Mod4+Shift+q
-set $key_lockscreen Mod4+l
-
-set $key_floating_toggle Mod4+f
-set $key_floating_focus Mod4+c
-set $key_floating_modifier Mod4
-set $key_fullscreen_toggle Mod4+t
-set $key_split_toggle Mod4+x
-
-set $key_layout_split Mod4+z
-set $key_layout_stacking Mod4+s
-set $key_layout_tabbed Mod4+w
-
-set $key_volume_raise XF86AudioRaiseVolume
-set $key_volume_lower XF86AudioLowerVolume
-set $key_volume_mute XF86AudioMute
-set $key_brightness_raise XF86MonBrightnessUp
-set $key_brightness_lower XF86MonBrightnessDown
-
-set $key_focus_up Mod4+Up
-set $key_focus_right Mod4+Right
-set $key_focus_down Mod4+Down
-set $key_focus_left Mod4+Left
-set $key_focus_parent Mod4+a
-
-set $key_focus_move_up Mod4+Shift+Up
-set $key_focus_move_right Mod4+Shift+Right
-set $key_focus_move_down Mod4+Shift+Down
-set $key_focus_move_left Mod4+Shift+Left
-
 # Status bar
 
 set $bar_separator "|"
@@ -111,15 +73,58 @@ set $workspace_4th "4:  "
 set $workspace_4th_focus Mod4+4
 set $workspace_4th_move Mod4+Shift+4
 
+set $workspace_next_focus Mod4+period
+set $workspace_prev_focus Mod4+comma
+set $workspace_next_move Mod4+Shift+period
+set $workspace_prev_move Mod4+Shift+comma
+
+# Keybindings settings
+
+set $key_launcher Mod4+p
+set $key_i3_restart Mod4+Shift+r
+set $key_window_close Mod4+q
+set $key_terminal Mod4+Return
+set $key_files Mod4+e
+set $key_screenshot Print
+set $key_empty_window Mod4+Shift+q
+set $key_lockscreen Mod4+l
+
+set $key_floating_toggle Mod4+f
+set $key_floating_focus Mod4+c
+set $key_floating_modifier Mod4
+set $key_fullscreen_toggle Mod4+z
+set $key_split_toggle Mod4+x
+
+set $key_layout_split Mod4+s
+set $key_layout_stacking Mod4+v
+set $key_layout_tabbed Mod4+t
+
+set $key_volume_raise XF86AudioRaiseVolume
+set $key_volume_lower XF86AudioLowerVolume
+set $key_volume_mute XF86AudioMute
+set $key_brightness_raise XF86MonBrightnessUp
+set $key_brightness_lower XF86MonBrightnessDown
+
+set $key_focus_up Mod4+k
+set $key_focus_right Mod4+l
+set $key_focus_down Mod4+j
+set $key_focus_left Mod4+h
+set $key_focus_parent Mod4+a
+
+set $key_focus_move_up Mod4+Shift+k
+set $key_focus_move_right Mod4+Shift+l
+set $key_focus_move_down Mod4+Shift+j
+set $key_focus_move_left Mod4+Shift+h
+
 # Modes settings
 
 set $mode_bar_font_size 11
 
 set $mode_resize Mod4+r
-set $mode_resize_up Up
-set $mode_resize_right Right
-set $mode_resize_down Down
-set $mode_resize_left Left
+set $mode_resize_up k
+set $mode_resize_right l
+set $mode_resize_down j
+set $mode_resize_left h
 
 set $mode_power Mod4+Insert
 set $mode_power_lockscreen l
