@@ -4,6 +4,7 @@ py3status {
 
 order += "audio"
 order += "brightness"
+order += "charge"
 order += "time"
 
 audio {

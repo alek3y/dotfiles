@@ -12,3 +12,4 @@ community/dunst
 community/brightnessctl
 community/pamixer
 extra/pavucontrol
+community/acpi
