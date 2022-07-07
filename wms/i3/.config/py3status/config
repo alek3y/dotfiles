@@ -9,10 +9,15 @@ order += "time"
 
 audio {
 	natural_scrolling = ${NATURAL_SCROLLING}
+	step = ${AUDIO_STEP}
+	default = ${AUDIO_DEFAULT}
 }
 
 brightness {
 	natural_scrolling = ${NATURAL_SCROLLING}
+	command = "${BRIGHTNESS_COMMAND}"
+	step = ${BRIGHTNESS_STEP}
+	default = ${BRIGHTNESS_DEFAULT}
 }
 
 time {

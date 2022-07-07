@@ -55,6 +55,12 @@ set $bar_separator "|"
 set $bar_color #292929
 set $bar_color_separator #383838
 
+set $bar_module_audio_default 20
+set $bar_module_audio_step 5
+set $bar_module_brightness_command brightnessctl -c backlight -n1200
+set $bar_module_brightness_default 20
+set $bar_module_brightness_step 5
+
 # Workspaces names
 
 set $workspace_1st "1:  "
@@ -102,6 +108,7 @@ set $key_layout_tabbed Mod4+t
 set $key_volume_raise XF86AudioRaiseVolume
 set $key_volume_lower XF86AudioLowerVolume
 set $key_volume_mute XF86AudioMute
+set $key_microphone_mute XF86AudioMicMute
 set $key_brightness_raise XF86MonBrightnessUp
 set $key_brightness_lower XF86MonBrightnessDown
 
