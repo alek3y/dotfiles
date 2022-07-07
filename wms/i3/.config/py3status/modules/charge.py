@@ -6,7 +6,7 @@ class Py3status:
 	icon_steps = ["", "", "", "", "", "", "", "", "", ""]
 	icon_charging = ""
 	icon_missing = ""
-	refresh = 1
+	refresh = 2
 
 	def charge(self):
 		status = self.py3.command_output(f"{self.command}").lower()

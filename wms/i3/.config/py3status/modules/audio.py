@@ -6,7 +6,7 @@ class Py3status:
 	icon_muted = "婢"
 	default = 20
 	step = 5
-	refresh = 0.3
+	refresh = 0.5
 	natural_scrolling = False
 
 	def audio(self):
