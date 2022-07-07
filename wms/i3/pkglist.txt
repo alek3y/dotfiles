@@ -9,3 +9,4 @@ extra/feh
 community/alacritty
 community/picom
 community/dunst
+community/brightnessctl

@@ -1,0 +1,15 @@
+py3status {
+	separator_block_width = 30
+}
+
+order += "brightness"
+order += "time"
+
+brightness {
+	natural_scrolling = ${NATURAL_SCROLLING}
+}
+
+time {
+	format = "%time"
+	format_time = "%H:%M %d/%m"
+}
