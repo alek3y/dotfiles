@@ -113,6 +113,8 @@ set $workspace_4th_move Mod4+Shift+4
 
 # Modes settings
 
+set $mode_bar_font_size 11
+
 set $mode_resize Mod4+r
 set $mode_resize_up Up
 set $mode_resize_right Right
