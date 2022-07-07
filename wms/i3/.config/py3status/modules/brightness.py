@@ -1,6 +1,6 @@
 class Py3status:
 	command = "brightnessctl -c backlight -n1200"
-	format = " {value}%"
+	format = " {value}"
 	default = 20
 	step = 5
 	refresh = 0.3
@@ -19,7 +19,7 @@ class Py3status:
 		percentage = round(current * 100 / maximum)
 
 		return {
-			"full_text": self.py3.safe_format(self.format, {"value": percentage}),
+			"full_text": self.py3.safe_format(self.format, {"value": f"{percentage}%"}),
 			"cached_until": self.py3.time_in(self.refresh),
 		}
 

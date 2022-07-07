@@ -10,3 +10,5 @@ community/alacritty
 community/picom
 community/dunst
 community/brightnessctl
+community/pamixer
+extra/pavucontrol

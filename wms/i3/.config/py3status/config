@@ -2,8 +2,13 @@ py3status {
 	separator_block_width = 30
 }
 
+order += "audio"
 order += "brightness"
 order += "time"
+
+audio {
+	natural_scrolling = ${NATURAL_SCROLLING}
+}
 
 brightness {
 	natural_scrolling = ${NATURAL_SCROLLING}
