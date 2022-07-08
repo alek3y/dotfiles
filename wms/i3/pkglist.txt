@@ -13,6 +13,8 @@ community/brightnessctl
 community/pamixer
 extra/pavucontrol
 community/acpi
+aur/xidlehook
+aur/i3lock-color
 
 community/lxappearance
 aur/mint-themes

@@ -8,11 +8,26 @@
 
 # Basic settings
 
-set $wallpaper ~/.local/opt/i3/wallpaper.*
+set $wallpaper ~/.local/opt/i3/wallpaper.jpg
 set $accent #b98757
 
 set $touchpad "ELAN962C:00 04F3:30D0 Touchpad"
 set $touchpad_natural_scrolling 1
+
+# Lockscreen style
+
+set $lockscreen_wallpaper ~/.local/opt/i3/lockscreen.jpg
+
+set $lockscreen ~/.local/opt/i3/lockscreen.sh
+set $lockscreen_time_lock 300
+set $lockscreen_time_suspend 600
+set $lockscreen_color_ring #f2f2f2
+set $lockscreen_color_verify #f2f2f2
+set $lockscreen_color_time #f2f2f2
+set $lockscreen_color_prompt #f2f2f2
+
+# Used by the lockscreen to load the variables
+set $lockscreen_config_file /tmp/i3lock.env
 
 # Windows style
 
@@ -93,7 +108,7 @@ set $key_terminal Mod4+Return
 set $key_files Mod4+e
 set $key_screenshot Print
 set $key_empty_window Mod4+Shift+q
-set $key_lockscreen Mod4+l
+set $key_lockscreen Mod4+Control+l
 
 set $key_floating_toggle Mod4+f
 set $key_floating_focus Mod4+c
