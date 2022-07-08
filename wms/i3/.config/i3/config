@@ -9,7 +9,7 @@
 # Basic settings
 
 set $wallpaper ~/.local/opt/i3/wallpaper.*
-set $accent #bf7737
+set $accent #b98757
 
 set $touchpad "ELAN962C:00 04F3:30D0 Touchpad"
 set $touchpad_natural_scrolling 1
@@ -26,7 +26,7 @@ set $window_border_color #2f2f2f
 set $window_border_color_inactive #404040
 
 # Color for the split direction indicator
-set $window_border_split_color #4e4135
+set $window_border_split_color #564739
 
 set $window_border_color_urgent #b74c4a
 set $window_font_color_urgent #803534

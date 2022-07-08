@@ -13,3 +13,8 @@ community/brightnessctl
 community/pamixer
 extra/pavucontrol
 community/acpi
+
+community/lxappearance
+aur/mint-themes
+aur/mint-y-icons
+aur/mocu-xcursor
