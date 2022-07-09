@@ -1,11 +1,15 @@
 extra/noto-fonts
 extra/noto-fonts-emoji
 community/polkit-gnome
+core/python
+extra/python-pip
 
 community/scrot
 extra/xclip
 extra/network-manager-applet
 extra/feh
+community/py3status
+community/rofi
 community/alacritty
 community/picom
 community/dunst
