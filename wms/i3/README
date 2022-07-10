@@ -9,3 +9,11 @@ Apparently nerd-fonts v2.1.0 are completely broken (#509), so make sure to use t
 Theme
 -----
 As for the theme, I chose Mint-Y-Dark-Orange with its matching Mint-Y-Dark-Orange icon theme and the Mocu Black Right cursor theme.
+
+Headphones
+----------
+In order for the headphones to work correctly the following command must be run
+	sudo sh -c "echo 'options snd-hda-intel model=alc255-acer,dell-headset-multi' >> /etc/modprobe.d/sound.conf"
+which comes from the repo (https://github.com/nekr0z/linux-on-huawei-matebook-13-2019#soundcard) of my laptop.
+
+If there's any popping involved, you can fix it with https://askubuntu.com/a/1230834.
