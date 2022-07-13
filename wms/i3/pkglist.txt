@@ -1,5 +1,6 @@
 extra/noto-fonts
 extra/noto-fonts-emoji
+extra/noto-fonts-cjk
 community/polkit-gnome
 core/python
 extra/python-pip
