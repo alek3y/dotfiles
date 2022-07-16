@@ -7,6 +7,7 @@ class Py3status:
 	icon_charging = ""
 	icon_missing = ""
 	refresh = 2
+	max_retries = 10
 
 	def charge(self):
 		status = self.py3.command_output(f"{self.command}").lower()
@@ -15,9 +16,18 @@ class Py3status:
 		mode_match = re.search(r"((dis)?charging|full)", status)
 
 		if not level_match or not mode_match:
+			retries = self.py3.storage_get("retries")
+
+			updated_retries = 1
+			if retries != None:
+				updated_retries = retries + 1
+
+			self.py3.storage_set("retries", updated_retries)
+			stop_retrying = updated_retries > self.max_retries
+
 			return {
 				"full_text": self.py3.safe_format(self.format, {"icon": self.icon_missing, "value": "N/A"}),
-				"cached_until": self.py3.CACHE_FOREVER
+				"cached_until": self.py3.CACHE_FOREVER if stop_retrying else self.py3.time_in(0.5)
 			}
 
 		level = int(level_match.group())

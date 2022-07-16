@@ -8,14 +8,27 @@ class Py3status:
 	step = 5
 	refresh = 0.5
 	natural_scrolling = False
+	max_retries = 10
 
 	def audio(self):
-		sink = self.py3.command_output(f"{self.command} --get-default-sink")
+		try:
+			sink = self.py3.command_output(f"{self.command} --get-default-sink")
+		except self.py3.CommandError:
+			sink = None
 
-		if "dummy" in sink.lower():
+		if not sink or "dummy" in sink.lower():
+			retries = self.py3.storage_get("retries")
+
+			updated_retries = 1
+			if retries != None:
+				updated_retries = retries + 1
+
+			self.py3.storage_set("retries", updated_retries)
+			stop_retrying = updated_retries > self.max_retries
+
 			return {
 				"full_text": self.py3.safe_format(self.format, {"icon": self.icon_missing, "value": "N/A"}),
-				"cached_until": self.py3.CACHE_FOREVER
+				"cached_until": self.py3.CACHE_FOREVER if stop_retrying else self.py3.time_in(0.5)
 			}
 
 		volume = int(self.py3.command_output(f"{self.command} --get-volume"))
