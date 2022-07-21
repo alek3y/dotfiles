@@ -14,6 +14,7 @@ call plug#begin(expand('~/.vim/plugins'))
 "Plug 'vimsence/vimsence'
 Plug 'alek3y/auto-pairs-gentle'
 Plug 'alek3y/vim-auto-popmenu'
+Plug 'junegunn/fzf.vim'
 
 " Themes
 Plug 'sainnhe/gruvbox-material'
@@ -36,6 +37,23 @@ let g:apc_cr_confirm = 1
 let g:apc_enable_tab = 0
 set completeopt=menu,menuone,noselect
 set shortmess+=c
+
+" Special keybindings (including plugins)
+let mapleader = "\\"
+
+nnoremap <leader>ff :Files<CR>
+nnoremap <leader>fb :Buffers<CR>
+nnoremap <leader>fw :Windows<CR>
+nnoremap <leader>fl :Lines<CR>
+nnoremap <leader>ft :Filetypes<CR>
+nnoremap <leader>fc :Colors<CR>
+
+nnoremap <leader>fgf :GFiles<CR>
+nnoremap <leader>fgc :Commits<CR>
+nnoremap <leader>fgb :BCommits<CR>
+
+" Clear the search highlighting and redraw the screen
+nnoremap <C-L> :nohl<CR><C-L>
 
 " Indentation
 set autoindent
@@ -104,12 +122,3 @@ set notimeout ttimeout ttimeoutlen=200
 " Bell
 set visualbell
 set t_vb=
-
-" Clear the search highlighting and redraw the screen
-nnoremap <C-L> :nohl<CR><C-L>
-
-" Set Alt-n to Escape
-"exec "set <M-n>=\en"
-"noremap <M-n> <Esc>
-"inoremap <M-n> <Esc>
-"cnoremap <M-n> <C-\><C-n>
