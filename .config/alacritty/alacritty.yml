@@ -1,14 +1,26 @@
 env:
+  WINIT_X11_SCALE_FACTOR: '1'
   TERM: xterm-256color
 
 window:
   dynamic_title: false
 
+  padding:
+    x: 5
+    y: 5
+
+  dimensions:
+    columns: 109
+    lines: 29
+
 font:
   normal:
     family: SauceCodePro Nerd Font
 
-  size: 8.5
+  size: 11
+
+mouse:
+  hide_when_typing: true
 
 colors:
   primary:
@@ -34,6 +46,3 @@ colors:
     magenta: '#b294bb'
     cyan:    '#8abeb7'
     white:   '#e3e6e3'
-
-mouse:
-  hide_when_typing: true
