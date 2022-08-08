@@ -10,6 +10,13 @@ Theme
 -----
 As for the theme, I chose Mint-Y-Dark-Orange with its matching Mint-Y-Dark-Orange icon theme and the Mocu Black Right cursor theme.
 
+Suspend
+-------
+For the laptop to suspend when the lid gets closed the line
+	HandleLidSwitch=suspend
+has to be uncommented inside of the /etc/systemd/logind.conf file.
+After this change make sure to restart the systemd-logind service.
+
 Headphones
 ----------
 In order for the headphones to work correctly the following command must be run

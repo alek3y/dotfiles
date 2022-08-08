@@ -20,6 +20,7 @@ extra/pavucontrol
 community/acpi
 aur/xidlehook
 aur/i3lock-color
+community/xss-lock
 
 community/lxappearance
 aur/mint-themes
