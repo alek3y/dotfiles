@@ -15,6 +15,9 @@ call plug#begin(expand('~/.vim/plugins'))
 Plug 'alek3y/auto-pairs-gentle'
 Plug 'alek3y/vim-auto-popmenu'
 Plug 'junegunn/fzf.vim'
+Plug 'iamcco/markdown-preview.nvim', {
+	\ 'do': {-> mkdp#util#install()},
+	\ 'for': ['vim-plug', 'markdown']}
 
 " Themes
 Plug 'sainnhe/gruvbox-material'
@@ -30,6 +33,7 @@ filetype plugin indent on
 " Auto pairs settings
 let g:AutoPairsCenterLine = 0	" Stop it from centering the view
 let g:AutoPairsCompleteOnNonWords = 1
+let g:AutoPairsCompleteNewline = 0
 
 " Popup menu settings
 let g:apc_enable_ft = {'*': 1}
@@ -51,6 +55,8 @@ nnoremap <leader>fc :Colors<CR>
 nnoremap <leader>fgf :GFiles<CR>
 nnoremap <leader>fgc :Commits<CR>
 nnoremap <leader>fgb :BCommits<CR>
+
+nnoremap <leader>m :MarkdownPreviewToggle<CR>
 
 " Clear the search highlighting and redraw the screen
 nnoremap <C-L> :nohl<CR><C-L>
