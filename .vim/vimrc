@@ -42,6 +42,9 @@ let g:apc_enable_tab = 0
 set completeopt=menu,menuone,noselect
 set shortmess+=c
 
+" Markdown preview settings
+let g:mkdp_auto_close = 0
+
 " Special keybindings (including plugins)
 let mapleader = "\\"
 
