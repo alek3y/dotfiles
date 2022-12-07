@@ -126,6 +126,9 @@ set incsearch
 set ignorecase
 set smartcase
 
+" Spell checker
+set spelllang=it,en
+
 " Keys timeout
 set notimeout ttimeout ttimeoutlen=200
 
