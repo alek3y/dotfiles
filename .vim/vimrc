@@ -11,21 +11,24 @@ filetype off
 call plug#begin(expand('~/.vim/plugins'))
 
 " Plugins
-"Plug 'vimsence/vimsence'
+Plug 'Raimondi/yaifa'
 Plug 'alek3y/auto-pairs-gentle'
 Plug 'alek3y/vim-auto-popmenu'
 Plug 'junegunn/fzf.vim'
-Plug 'iamcco/markdown-preview.nvim', {
-	\ 'do': {-> mkdp#util#install()},
-	\ 'for': ['vim-plug', 'markdown']}
+
+"Plug 'vimsence/vimsence'
+"Plug 'iamcco/markdown-preview.nvim', {
+"	\ 'do': {-> mkdp#util#install()},
+"	\ 'for': ['vim-plug', 'markdown']}
 
 " Themes
 Plug 'sainnhe/gruvbox-material'
 Plug 'ghifarit53/tokyonight-vim'
-Plug 'tomasiser/vim-code-dark'
 Plug 'ackyshake/spacegray.vim'
-Plug 'sainnhe/everforest'
 Plug 'sainnhe/edge'
+Plug 'sainnhe/everforest'
+Plug 'ashervb/synthwave.vim'
+Plug 'tomasiser/vim-code-dark'
 
 call plug#end()
 filetype plugin indent on
@@ -69,9 +72,9 @@ nnoremap <C-L> :nohl<CR><C-L>
 set autoindent
 set noexpandtab
 set tabstop=3 shiftwidth=3 softtabstop=3
-autocmd FileType * setlocal
-	\ noexpandtab
-	\ tabstop=3 shiftwidth=3 softtabstop=3
+let g:yaifa_expandtab = 0
+let g:yaifa_shiftwidth = 3
+let g:yaifa_tabstop = 3
 
 " Show trailing whitespaces
 autocmd ColorScheme * highlight WhiteSpaces ctermbg=red guibg=#cc6666
