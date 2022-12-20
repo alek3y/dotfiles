@@ -70,8 +70,9 @@ nnoremap <C-L> :nohl<CR><C-L>
 
 " Indentation
 set autoindent
-set noexpandtab
-set tabstop=3 shiftwidth=3 softtabstop=3
+autocmd FileType * setlocal
+	\ noexpandtab
+	\ tabstop=3 shiftwidth=3 softtabstop=3
 let g:yaifa_expandtab = 0
 let g:yaifa_shiftwidth = 3
 let g:yaifa_tabstop = 3
