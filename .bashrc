@@ -11,8 +11,9 @@ export HISTCONTROL="ignoreboth"
 shopt -s histappend
 
 # Environment variables
-export PATH="$PATH:~/.local/bin"
+export PATH="$PATH:$HOME/.local/bin"
 export EDITOR="vim"
+export PYTHONSTARTUP="$HOME/.pyrc"
 #export LS_COLORS+=":ow=01;34"	# Hide ugly o+w color (on NTFS)
 
 # PS1
@@ -38,6 +39,7 @@ alias sudo="sudo "	# https://unix.stackexchange.com/a/349290
 alias ls="ls --color=auto"
 alias grep="grep --color=auto"
 alias dd="dd status=progress"
+alias crypt="openssl aes-256-cbc -pbkdf2 -a -A"	# -e/-d for encrypt/decrypt
 
 # Functions
 function now {
