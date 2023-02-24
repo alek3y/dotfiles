@@ -76,6 +76,7 @@ autocmd FileType * setlocal
 let g:yaifa_expandtab = 0
 let g:yaifa_shiftwidth = 3
 let g:yaifa_tabstop = 3
+autocmd BufEnter * if empty(&filetype) | Yaifa | endif
 
 " Show trailing whitespaces
 autocmd ColorScheme * highlight WhiteSpaces ctermbg=red guibg=#cc6666
@@ -90,7 +91,8 @@ set cursorline
 if &t_Co >= 256
 	set termguicolors
 endif
-colorscheme gruvbox-material
+colorscheme spacegray
+highlight CursorLine ctermbg=black guibg=#171a1c
 
 " Show tabs
 set list
