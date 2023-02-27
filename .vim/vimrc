@@ -24,7 +24,7 @@ Plug 'junegunn/fzf.vim'
 " Themes
 Plug 'sainnhe/gruvbox-material'
 Plug 'ghifarit53/tokyonight-vim'
-Plug 'ackyshake/spacegray.vim'
+Plug 'alek3y/spacegray.vim'
 Plug 'sainnhe/edge'
 Plug 'sainnhe/everforest'
 Plug 'ashervb/synthwave.vim'
