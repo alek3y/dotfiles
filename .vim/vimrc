@@ -12,7 +12,7 @@ call plug#begin(expand('~/.vim/plugins'))
 
 " Plugins
 Plug 'Raimondi/yaifa'
-Plug 'alek3y/auto-pairs-gentle'
+Plug 'Raimondi/delimitMate'
 Plug 'alek3y/vim-auto-popmenu'
 Plug 'junegunn/fzf.vim'
 
@@ -34,9 +34,8 @@ call plug#end()
 filetype plugin indent on
 
 " Auto pairs settings
-let g:AutoPairsCenterLine = 0	" Stop it from centering the view
-let g:AutoPairsCompleteOnNonWords = 1
-let g:AutoPairsCompleteNewline = 0
+let g:delimitMate_expand_cr = 1
+let g:delimitMate_balance_matchpairs = 1
 
 " Popup menu settings
 let g:apc_enable_ft = {'*': 1}
