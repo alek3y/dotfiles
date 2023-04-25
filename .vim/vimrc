@@ -11,7 +11,7 @@ filetype off
 call plug#begin(expand('~/.vim/plugins'))
 
 " Plugins
-Plug 'Raimondi/yaifa'
+Plug 'tpope/vim-sleuth'
 Plug 'Raimondi/delimitMate'
 Plug 'alek3y/vim-auto-popmenu'
 Plug 'junegunn/fzf.vim'
@@ -36,6 +36,12 @@ filetype plugin indent on
 " Auto pairs settings
 let g:delimitMate_expand_cr = 1
 let g:delimitMate_balance_matchpairs = 1
+
+" Sleuth indentation settings
+set autoindent
+autocmd BufEnter,FileType *
+	\ let b:sleuth_defaults = "noexpandtab tabstop=3 shiftwidth=3" |
+	\ if empty(&filetype) && !exists("b:sleuth") | silent Sleuth | endif
 
 " Popup menu settings
 let g:apc_enable_ft = {'*': 1}
@@ -66,16 +72,6 @@ nnoremap <leader>ms :MarkdownPreviewStop<CR>
 
 " Clear the search highlighting and redraw the screen
 nnoremap <C-L> :nohl<CR><C-L>
-
-" Indentation
-set autoindent
-autocmd FileType * setlocal
-	\ noexpandtab
-	\ tabstop=3 shiftwidth=3 softtabstop=3
-let g:yaifa_expandtab = 0
-let g:yaifa_shiftwidth = 3
-let g:yaifa_tabstop = 3
-autocmd BufEnter * if empty(&filetype) | Yaifa | endif
 
 " Show trailing whitespaces
 autocmd ColorScheme * highlight WhiteSpaces ctermbg=red guibg=#cc6666
