@@ -36,6 +36,7 @@ filetype plugin indent on
 " Auto pairs settings
 let g:delimitMate_expand_cr = 1
 let g:delimitMate_balance_matchpairs = 1
+let g:delimitMate_excluded_regions = ""
 
 " Sleuth indentation settings
 set autoindent
