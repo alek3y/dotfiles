@@ -5,6 +5,10 @@
 #
 # This is ale's ~/.bashrc
 
+#if command -v tmux &> /dev/null && [ -z "$TMUX" ] && [[ "$-" =~ i ]]; then
+#	exec tmux
+#fi
+
 # Bash
 export HISTSIZE=-1
 export HISTCONTROL="ignoreboth"
