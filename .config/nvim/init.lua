@@ -11,7 +11,6 @@ require("plugins")({
 	"savq/paq-nvim",
 	"ethanholz/nvim-lastplace",
 	"windwp/nvim-autopairs",
-	"tpope/vim-sleuth",
 
 	"hrsh7th/nvim-cmp",
 	"hrsh7th/cmp-buffer",
@@ -21,15 +20,6 @@ require("plugins")({
 
 require("nvim-lastplace").setup({})
 require("nvim-autopairs").setup({})
-
-vim.api.nvim_create_autocmd({"BufEnter", "FileType"}, {
-	callback = function()
-		vim.b.sleuth_defaults = "noexpandtab tabstop=3 shiftwidth=3"
-		if vim.bo.filetype and not vim.b.sleuth then
-			vim.cmd("silent Sleuth")
-		end
-	end
-})
 
 local cmp = require("cmp")
 cmp.setup({
@@ -56,6 +46,16 @@ vim.opt.listchars = {tab = "┊ ", nbsp = "⎵", extends = "»", precedes = "«"
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.spelllang = {"en", "it"}
+
+::Indentation::
+
+require("indent")({
+	defaults = {
+		expandtab = false,
+		tabstop = 3,
+		shiftwidth = 3
+	}
+})
 
 ::Theme::
 
