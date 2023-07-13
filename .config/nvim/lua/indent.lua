@@ -191,14 +191,19 @@ local function apply(bufnr, config)
 		return false
 	end
 
-	local applied = config_get(config, {"defaults"})
-	for option, value in pairs(applied) do
-		vim.bo[bufnr][option] = value
+	local applied = {}
+	for option, value in pairs(config_default.defaults) do
+		applied[option] = value
+	end
+	for option, value in pairs(config_get(config, {"defaults"})) do
+		applied[option] = value
+	end
+	for option, value in pairs(detect(bufnr)) do
+		applied[option] = value
 	end
 
-	for option, value in pairs(detect(bufnr)) do
+	for option, value in pairs(applied) do
 		vim.bo[bufnr][option] = value
-		applied[option] = value
 	end
 
 	vim.b[bufnr].indent_applied = applied
