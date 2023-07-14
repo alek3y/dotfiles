@@ -3,9 +3,9 @@
 import os, sys
 import requests
 
-OUTPUT = os.path.dirname(sys.argv[0])
+OUTPUT = os.path.dirname(os.path.abspath(sys.argv[0]))
 
-REPO_URL = "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/"
+REPO_URL = "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/196f78789a3ee9e5ff9d0f2cdc9b6c3fd41d6e8e/"
 FONTS = {
 	"patched-fonts/Noto/Sans-Mono/complete/Noto%20Sans%20Mono%20": {
 		"Bold%20Nerd%20Font%20Complete.ttf": "NotoSansMono-Black-Nerd-Font-Complete.ttf",
