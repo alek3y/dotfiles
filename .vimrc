@@ -32,7 +32,13 @@ set list
 set listchars=tab:\┊\ ,extends:»,precedes:«,nbsp:⎵
 
 " Save cursor
-autocmd BufReadPost * if line("'\"") | execute("normal `\"") | endif
+autocmd BufReadPost * if line("'\"") | execute("normal `\"zz") | endif
+
+" Indentation
+set noexpandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=0
 
 " Behaviour
 set hidden
