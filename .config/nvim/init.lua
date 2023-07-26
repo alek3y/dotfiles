@@ -7,10 +7,13 @@
 
 ::Plugins::
 
+vim.g.mapleader = "\\"
+
 require("plugins")({
 	"savq/paq-nvim",
 	"ethanholz/nvim-lastplace",
 	"windwp/nvim-autopairs",
+	"tamton-aquib/duck.nvim",
 
 	"hrsh7th/nvim-cmp",
 	"hrsh7th/cmp-buffer",
@@ -30,6 +33,24 @@ cmp.setup({
 		{name = "buffer"}
 	})
 })
+
+local ducks = {
+	{"🦆", 8}, {"🪿", 14},
+	{"🐖", 6}, {"🦌", 10},
+	{"🐤", 6}, {"🐢", 3},
+	{"🦀", 6}, {"🦉", 4}
+}
+vim.keymap.set("n", "<leader>dd", function()
+	math.randomseed(os.time())
+	local duck = ducks[math.random(#ducks)]
+	require("duck").hatch(duck[1], duck[2])
+end)
+vim.keymap.set("n", "<leader>dk", function()
+	local module = require("duck")
+	for i = 1,#module.ducks_list do
+		module.cook()
+	end
+end)
 
 ::Options::
 
