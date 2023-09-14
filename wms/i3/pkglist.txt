@@ -8,6 +8,8 @@ python-pip
 scrot
 xclip
 network-manager-applet
+matebook-applet
+blueman
 xviewer
 feh
 py3status
