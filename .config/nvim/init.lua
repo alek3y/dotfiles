@@ -13,11 +13,14 @@ require("plugins")({
 	"savq/paq-nvim",
 	"ethanholz/nvim-lastplace",
 	"windwp/nvim-autopairs",
-	"tamton-aquib/duck.nvim",
 
 	"hrsh7th/nvim-cmp",
 	"hrsh7th/cmp-buffer",
 
+	"nvim-lua/plenary.nvim",
+	"j-morano/buffer_manager.nvim",
+
+	"tamton-aquib/duck.nvim",
 	"rebelot/kanagawa.nvim"
 })
 
@@ -33,6 +36,19 @@ cmp.setup({
 		{name = "buffer"}
 	})
 })
+
+vim.keymap.set("n", "<leader>b", function()
+	require("buffer_manager").setup({	-- Reapplies for runtime changes
+		select_menu_item_commands = {
+			v = {key = "<C-v>", command = "vsplit"},
+			h = {key = "<C-h>", command = "split"}
+		},
+		highlight = "NormalFloat:Normal",
+		win_extra_options = {statuscolumn = vim.o.statuscolumn}
+	})
+	require("buffer_manager.ui").toggle_quick_menu()
+	vim.o.winhighlight = "NormalFloat:Normal"
+end)
 
 local ducks = {
 	{"🦆", 8}, {"🪿", 14},
