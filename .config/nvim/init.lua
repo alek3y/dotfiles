@@ -48,7 +48,21 @@ cmp.setup({
 		["<C-e>"] = cmp.mapping.abort()
 	}),
 	sources = cmp.config.sources({
-		{name = "buffer"}
+		{
+			name = "buffer",
+			option = {
+				keyword_pattern = [[\k\+]],
+				get_bufnrs = function()
+					local bufs = {}
+					for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
+						if vim.fn.buflisted(bufnr) == 1 then
+							table.insert(bufs, bufnr)
+						end
+					end
+					return bufs
+				end
+			}
+		}
 	})
 })
 
