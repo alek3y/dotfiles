@@ -99,7 +99,7 @@ vim.api.nvim_create_autocmd({"InsertEnter", "InsertLeave", "BufWinEnter"}, {
 
 vim.g.mapleader = "\\"
 
-vim.keymap.set("v", "<leader>=", "s<C-r>=<C-r>\"<CR><Esc>")
+vim.keymap.set("v", "<leader>=", "s<C-r>=luaeval(getreg('\"'))<CR><Esc>")
 
 vim.keymap.set("n", "<leader>b", function()
 	require("buffer_manager.ui").toggle_quick_menu()
