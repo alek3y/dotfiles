@@ -17,6 +17,7 @@ shopt -s histappend
 # Environment variables
 export PATH="$PATH:$HOME/.local/bin"
 export EDITOR="nvim"
+export LESS="-RFi"
 export PYTHONSTARTUP="$HOME/.pyrc"
 #export LS_COLORS+=":ow=01;34"	# Hide ugly o+w color (on NTFS)
 

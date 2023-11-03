@@ -1,5 +1,6 @@
 [core]
 	editor = nvim
+	pager = less -X
 [credential]
 	helper = store
 [alias]
