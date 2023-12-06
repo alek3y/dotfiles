@@ -19,6 +19,7 @@ export PATH="$PATH:$HOME/.local/bin"
 export EDITOR="nvim"
 export LESS="-RFi"
 export PYTHONSTARTUP="$HOME/.pyrc"
+export GOPATH="$HOME/.go"
 #export LS_COLORS+=":ow=01;34"	# Hide ugly o+w color (on NTFS)
 
 # PS1
