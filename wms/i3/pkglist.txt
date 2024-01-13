@@ -24,6 +24,7 @@ acpi
 xidlehook
 i3lock-color
 xss-lock
+jq
 
 lxappearance
 mint-themes
