@@ -1,0 +1,47 @@
+[colors.bright]
+black = "#494a4d"
+blue = "#81a2be"
+cyan = "#8abeb7"
+green = "#b5bd68"
+magenta = "#b294bb"
+red = "#cc6666"
+white = "#e3e6e3"
+yellow = "#efc674"
+
+[colors.normal]
+black = "#252525"
+blue = "#5f819d"
+cyan = "#5e8d87"
+green = "#8c9440"
+magenta = "#85678f"
+red = "#a54242"
+white = "#bdbfbe"
+yellow = "#de935f"
+
+[colors.primary]
+background = "#1e1e1e"
+foreground = "#bebebe"
+
+[env]
+TERM = "xterm-256color"
+WINIT_X11_SCALE_FACTOR = "1"
+
+[font]
+size = 11
+
+[font.normal]
+family = "Source Code Pro"
+
+[mouse]
+hide_when_typing = true
+
+[window]
+dynamic_title = false
+
+[window.dimensions]
+columns = 109
+lines = 29
+
+[window.padding]
+x = 5
+y = 5
