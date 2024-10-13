@@ -39,7 +39,9 @@ FACES=(
 	'( •-•)' '( °.°)' '( ×_×)'
 	'( ~_~)' '( #-#)' '( T-T)'
 )
-echo ${FACES[$(shuf -n 1 -i 0-$((${#FACES[@]} - 1)))]}
+if [[ "$-" =~ i ]]; then	# Show only if shell is interactive
+	echo ${FACES[$(shuf -n 1 -i 0-$((${#FACES[@]} - 1)))]}
+fi
 
 # Aliases
 alias sudo="sudo "	# See https://unix.stackexchange.com/a/349290
