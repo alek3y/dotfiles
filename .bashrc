@@ -20,6 +20,7 @@ export EDITOR="nvim"
 export LESS="-RFi"
 export PYTHONSTARTUP="$HOME/.pyrc"
 export GOPATH="$HOME/.go"
+export MANROFFOPT="-c"	# See https://bbs.archlinux.org/viewtopic.php?pid=2113876#p2113876
 #export LS_COLORS+=":ow=01;34"	# Hide ugly o+w color (on NTFS)
 
 # PS1
@@ -41,7 +42,7 @@ FACES=(
 echo ${FACES[$(shuf -n 1 -i 0-$((${#FACES[@]} - 1)))]}
 
 # Aliases
-alias sudo="sudo "	# https://unix.stackexchange.com/a/349290
+alias sudo="sudo "	# See https://unix.stackexchange.com/a/349290
 alias ls="ls --color=auto"
 alias grep="grep --color=auto"
 alias dd="dd status=progress"
