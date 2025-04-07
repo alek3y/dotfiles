@@ -49,6 +49,8 @@ alias ls="ls --color=auto"
 alias grep="grep --color=auto"
 alias dd="dd status=progress"
 alias crypt="openssl aes-256-cbc -pbkdf2 -a -A"	# -e/-d for encrypt/decrypt
+alias sandbox="unshare --map-current-user --map-auto bwrap --unshare-all --bind / / --proc /proc --dev /dev"
+alias bottles-cli="flatpak run --command=bottles-cli com.usebottles.bottles"
 
 # Functions
 function now {
@@ -65,4 +67,9 @@ function man {
 function detach {
 	command "$@" >/dev/null 2>&1 &
 	disown
+}
+function overlay {
+	parent=$(mktemp -d "/tmp/overlay.XXXXXXXXXX")
+	mkdir $parent/{changes,buffer}
+	sudo bwrap --bind / / --overlay-src / --overlay $parent/changes $parent/buffer / --proc /proc --dev /dev $@
 }
