@@ -38,6 +38,13 @@ FACES=(
 	"( '.')" '( +_+)' '( o_o)'
 	'( •-•)' '( °.°)' '( ×_×)'
 	'( ~_~)' '( #-#)' '( T-T)'
+	'( n_n)' '( -_-)' '( ;_;)'
+	'( @_@)' '( O_O)' '( *.*)'
+	'( >_<)' '( ^o^)' '( x.x)'
+	'( =_=)' '( *-*)' '( !.!)'
+	'( o_O)' '( *O*)' '( .o.)'
+	"( '_')" '( u_u)' '( >o<)'
+	'( -_o)' '( 9_9)' '( >.>)'
 )
 if [[ "$-" =~ i ]]; then	# Show only if shell is interactive
 	echo ${FACES[$(shuf -n 1 -i 0-$((${#FACES[@]} - 1)))]}
@@ -49,7 +56,6 @@ alias ls="ls --color=auto"
 alias grep="grep --color=auto"
 alias dd="dd status=progress"
 alias crypt="openssl aes-256-cbc -pbkdf2 -a -A"	# -e/-d for encrypt/decrypt
-alias sandbox="unshare --map-current-user --map-auto bwrap --unshare-all --bind / / --proc /proc --dev /dev"
 alias bottles-cli="flatpak run --command=bottles-cli com.usebottles.bottles"
 
 # Functions
@@ -68,8 +74,33 @@ function detach {
 	command "$@" >/dev/null 2>&1 &
 	disown
 }
+function sandbox {
+	parent=$(mktemp -d "/tmp/sandbox.XXXXXXXXXX")
+	unshare \
+		--map-current-user --map-auto \
+		bwrap \
+			--bind / / --proc /proc --dev /dev \
+			--bind $parent "$HOME" \
+			--bind-try "$XDG_RUNTIME_DIR" "$XDG_RUNTIME_DIR" \
+			--ro-bind-try "$XAUTHORITY" "$HOME/.Xauthority" \
+			--unshare-all --share-net --clearenv \
+			--setenv HOME "$HOME" \
+			--setenv TERM "${TERM:-linux}" \
+			--setenv DISPLAY "$DISPLAY" \
+			--setenv XAUTHORITY "${HOME:+$HOME/.Xauthority}" \
+			--setenv XDG_RUNTIME_DIR "$XDG_RUNTIME_DIR" \
+			--setenv DBUS_SESSION_BUS_ADDRESS "$DBUS_SESSION_BUS_ADDRESS" \
+			$@
+	rm -rf $parent
+}
 function overlay {
 	parent=$(mktemp -d "/tmp/overlay.XXXXXXXXXX")
 	mkdir $parent/{changes,buffer}
-	sudo bwrap --bind / / --overlay-src / --overlay $parent/changes $parent/buffer / --proc /proc --dev /dev $@
+	sudo bash -c "
+		bwrap \
+			--bind / / --proc /proc --dev /dev \
+			--overlay-src / --overlay $parent/changes $parent/buffer / \
+			$@
+		rm -rf $parent
+	"
 }
