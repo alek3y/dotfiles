@@ -74,32 +74,6 @@ function detach {
 	command "$@" >/dev/null 2>&1 &
 	disown
 }
-function sandbox {
-	if [[ -z "$SANDBOX" ]]; then
-		home=$(mktemp -d --tmpdir "sandbox.XXXXXXXXXX")
-	else
-		home="$SANDBOX"
-		mkdir -p "$home"
-	fi
-	unshare \
-		--map-current-user --map-auto \
-		bwrap \
-			--bind / / --proc /proc --dev /dev \
-			--bind "$home" "$HOME" \
-			--bind-try "$XDG_RUNTIME_DIR" "$XDG_RUNTIME_DIR" \
-			--ro-bind-try "$XAUTHORITY" "$HOME/.Xauthority" \
-			--unshare-all --share-net --clearenv \
-			--setenv HOME "$HOME" \
-			--setenv TERM "${TERM:-linux}" \
-			--setenv DISPLAY "$DISPLAY" \
-			--setenv XAUTHORITY "${HOME:+$HOME/.Xauthority}" \
-			--setenv XDG_RUNTIME_DIR "$XDG_RUNTIME_DIR" \
-			--setenv DBUS_SESSION_BUS_ADDRESS "$DBUS_SESSION_BUS_ADDRESS" \
-			$@
-	if [[ -z "$SANDBOX" ]]; then
-		rm -rf "$home"
-	fi
-}
 function overlay {
 	parent=$(mktemp -d "/tmp/overlay.XXXXXXXXXX")
 	mkdir $parent/{changes,buffer}

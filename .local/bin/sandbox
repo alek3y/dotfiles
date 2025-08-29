@@ -1,0 +1,101 @@
+#!/bin/bash
+
+set -e
+IFS=$'\n'
+
+function usage {
+	printf 'Usage: %s [OPTION...] [COMMAND]\n\n' "$(basename "$0")"
+	printf 'Options:\n'
+	printf '  -p, --prefix PREFIX   Change the home to PREFIX\n'
+	printf '  -s, --share SRC:DST   Bind SRC to DST within the container\n'
+	printf '  -o, --offline         Disable network access\n'
+	printf '  -h, --help            Show this help message\n'
+	exit ${1:-1}
+}
+
+prefix=
+share=
+offline=0
+positional=()
+delimited=0
+while [[ $# -gt 0 ]]; do
+	case "$1" in
+		-p|--prefix)
+			prefix="$2"
+			if ! shift 2; then usage 1; fi
+			;;
+		-s|--share)
+			share="$2"
+			if ! shift 2; then usage 1; fi
+			;;
+		-o|--offline)
+			offline=1
+			shift
+			;;
+		-h|--help)
+			usage 0
+			shift
+			;;
+		--)
+			delimited=1
+			shift
+			;;
+		*)
+			if [[ $delimited -ne 1 && "$1" == "-"* ]]; then
+				usage 1
+			else
+				positional+=("$1")
+			fi
+			shift
+			;;
+	esac
+done
+
+temporary=0
+if [[ -z "$prefix" ]]; then
+	prefix=$(mktemp -d --tmpdir "sandbox.XXXXXXXXXX")
+	temporary=1
+fi
+
+flags=()
+if [[ ! -z "$share" ]]; then
+	IFS=':' read -r src dst <<< "$share"
+	flags+=(--bind "$src" "$dst")
+fi
+if [[ $offline -eq 1 ]]; then
+	flags+=(--unshare-net)
+fi
+
+if [[ ${#positional[@]} -eq 0 ]]; then
+	positional=(bash)
+fi
+
+mkdir -p "$prefix"
+
+unshare \
+	--user --map-current-user --map-auto \
+	bwrap \
+		--bind / / --proc /proc \
+		--dev /dev --dev-bind /dev/dri /dev/dri \
+		--tmpfs /tmp --tmpfs /var/tmp --tmpfs /var/lib/flatpak --tmpfs "$XDG_RUNTIME_DIR" \
+		--bind-try /tmp/.X11-unix /tmp/.X11-unix \
+		--bind "$prefix" "$HOME" \
+		--bind-try "$XDG_RUNTIME_DIR/pulse/native" "$HOME/.pulse" \
+		--ro-bind-try "$XAUTHORITY" "$HOME/.Xauthority" \
+		--unshare-pid --clearenv \
+		--setenv HOME "$HOME" \
+		--setenv TERM "${TERM:-linux}" \
+		--setenv DISPLAY "$DISPLAY" \
+		--setenv XAUTHORITY "${XAUTHORITY:+$HOME/.Xauthority}" \
+		--setenv XDG_RUNTIME_DIR "$XDG_RUNTIME_DIR" \
+		--setenv PULSE_SERVER "unix:$HOME/.pulse" \
+		"${flags[@]}" \
+		sh -c "
+			export \$(dbus-launch)
+			flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo &>/dev/null
+			exec $(printf '%q ' "${positional[@]}")
+		"
+
+if [[ $temporary -eq 1 ]]; then
+	rm -rf "$prefix"
+fi
