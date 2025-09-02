@@ -14,7 +14,7 @@ function usage {
 }
 
 prefix=
-share=
+shares=()
 offline=0
 positional=()
 delimited=0
@@ -25,7 +25,7 @@ while [[ $# -gt 0 ]]; do
 			if ! shift 2; then usage 1; fi
 			;;
 		-s|--share)
-			share="$2"
+			shares+=("$2")
 			if ! shift 2; then usage 1; fi
 			;;
 		-o|--offline)
@@ -58,10 +58,15 @@ if [[ -z "$prefix" ]]; then
 fi
 
 flags=()
-if [[ ! -z "$share" ]]; then
-	IFS=':' read -r src dst <<< "$share"
-	flags+=(--bind "$src" "$dst")
+if [[ ${#shares[@]} -gt 0 ]]; then
+	for share in "${shares[@]}"; do
+		IFS=':' read -r src dst <<< "$share"
+		src="$(realpath "${src/#~/$HOME}")"
+		dst="$(realpath "${dst/#~/$HOME}")"
+		flags+=(--bind "$src" "$dst")
+	done
 fi
+
 if [[ $offline -eq 1 ]]; then
 	flags+=(--unshare-net)
 fi
