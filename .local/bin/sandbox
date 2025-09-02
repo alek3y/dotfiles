@@ -70,7 +70,12 @@ if [[ ${#positional[@]} -eq 0 ]]; then
 	positional=(bash)
 fi
 
+function cleanup {
+	[[ $temporary -eq 1 ]] && rm -rf "$prefix"
+}
+
 mkdir -p "$prefix"
+trap cleanup SIGINT
 
 unshare \
 	--user --map-current-user --map-auto \
@@ -96,6 +101,4 @@ unshare \
 			exec $(printf '%q ' "${positional[@]}")
 		"
 
-if [[ $temporary -eq 1 ]]; then
-	rm -rf "$prefix"
-fi
+cleanup
