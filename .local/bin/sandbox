@@ -92,7 +92,7 @@ unshare \
 		--bind "$prefix" "$HOME" \
 		--bind-try "$XDG_RUNTIME_DIR/pulse/native" "$HOME/.pulse" \
 		--ro-bind-try "$XAUTHORITY" "$HOME/.Xauthority" \
-		--unshare-pid --clearenv \
+		--unshare-pid --die-with-parent --clearenv \
 		--setenv HOME "$HOME" \
 		--setenv TERM "${TERM:-linux}" \
 		--setenv DISPLAY "$DISPLAY" \
@@ -103,6 +103,7 @@ unshare \
 		sh -c "
 			export \$(dbus-launch)
 			flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo &>/dev/null
+			trap 'pkill -9 .*' EXIT
 			exec $(printf '%q ' "${positional[@]}")
 		"
 
