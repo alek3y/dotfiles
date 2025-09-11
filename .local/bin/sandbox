@@ -95,6 +95,7 @@ unshare \
 		--unshare-pid --die-with-parent --clearenv \
 		--setenv HOME "$HOME" \
 		--setenv TERM "${TERM:-linux}" \
+		--setenv PATH "${PATH:-/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin}" \
 		--setenv DISPLAY "$DISPLAY" \
 		--setenv XAUTHORITY "${XAUTHORITY:+$HOME/.Xauthority}" \
 		--setenv XDG_RUNTIME_DIR "$XDG_RUNTIME_DIR" \
