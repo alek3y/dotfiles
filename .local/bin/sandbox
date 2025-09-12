@@ -80,7 +80,7 @@ function cleanup {
 }
 
 mkdir -p "$prefix"
-trap cleanup SIGINT
+trap cleanup EXIT
 
 unshare \
 	--user --map-current-user --map-auto \
@@ -107,5 +107,3 @@ unshare \
 			trap 'pkill -9 .*' EXIT
 			exec $(printf '%q ' "${positional[@]}")
 		"
-
-cleanup
