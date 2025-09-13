@@ -105,9 +105,14 @@ unshare \
 		--setenv TERM "${TERM:-linux}" \
 		--setenv PATH "${PATH:-/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin}" \
 		--setenv DISPLAY "$DISPLAY" \
+		--setenv LANG "$LANG" \
 		--setenv XAUTHORITY "${XAUTHORITY:+$HOME/.Xauthority}" \
 		--setenv XDG_RUNTIME_DIR "$XDG_RUNTIME_DIR" \
+		--setenv XDG_SESSION_TYPE "$XDG_SESSION_TYPE" \
 		--setenv PULSE_SERVER "unix:$HOME/.pulse" \
+		--setenv GTK_THEME "Adwaita:dark" \
+		--setenv ICON_THEME "Adwaita" \
+		--setenv ADW_DEBUG_COLOR_SCHEME "prefer-dark" \
 		"${flags[@]}" \
 		sh -c "
 			trap 'pkill -9 .*' EXIT
