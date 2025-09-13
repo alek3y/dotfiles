@@ -58,6 +58,16 @@ if [[ -z "$prefix" ]]; then
 fi
 
 flags=()
+if [[ $offline -eq 1 ]]; then
+	flags+=(--unshare-net)
+fi
+
+flatpak=0
+if which flatpak &>/dev/null && [[ -d /var/lib/flatpak ]]; then
+	flags+=(--tmpfs /var/lib/flatpak)
+	flatpak=1
+fi
+
 if [[ ${#shares[@]} -gt 0 ]]; then
 	for share in "${shares[@]}"; do
 		IFS=':' read -r src dst <<< "$share"
@@ -65,10 +75,6 @@ if [[ ${#shares[@]} -gt 0 ]]; then
 		dst="$(realpath "${dst/#~/$HOME}")"
 		flags+=(--bind "$src" "$dst")
 	done
-fi
-
-if [[ $offline -eq 1 ]]; then
-	flags+=(--unshare-net)
 fi
 
 if [[ ${#positional[@]} -eq 0 ]]; then
@@ -85,9 +91,11 @@ trap cleanup EXIT
 unshare \
 	--user --map-current-user --map-auto \
 	bwrap \
-		--bind / / --proc /proc \
-		--dev /dev --dev-bind /dev/dri /dev/dri \
-		--tmpfs /tmp --tmpfs /var/tmp --tmpfs /var/lib/flatpak --tmpfs "$XDG_RUNTIME_DIR" \
+		--bind / / --proc /proc --dev /dev \
+		--dev-bind /dev/dri /dev/dri \
+		--dev-bind /dev/kvm /dev/kvm \
+		--dev-bind /dev/input /dev/input \
+		--tmpfs /tmp --tmpfs /var/tmp --tmpfs "$XDG_RUNTIME_DIR" \
 		--bind-try /tmp/.X11-unix /tmp/.X11-unix \
 		--bind "$prefix" "$HOME" \
 		--bind-try "$XDG_RUNTIME_DIR/pulse/native" "$HOME/.pulse" \
@@ -102,8 +110,20 @@ unshare \
 		--setenv PULSE_SERVER "unix:$HOME/.pulse" \
 		"${flags[@]}" \
 		sh -c "
-			export \$(dbus-launch)
-			flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo &>/dev/null
 			trap 'pkill -9 .*' EXIT
+			export \$(dbus-launch)
+
+			if [[ $flatpak -eq 1 ]]; then
+				flatpak remote-add --user --if-not-exists flathub \
+					https://flathub.org/repo/flathub.flatpakrepo >/dev/null
+				pushd ~/.local/share >/dev/null
+				mv flatpak flatpak.bak
+				ln -s /var/lib/flatpak flatpak
+				flatpak repair --user >/dev/null
+				rm flatpak
+				mv flatpak.bak flatpak
+				popd >/dev/null
+			fi
+
 			exec $(printf '%q ' "${positional[@]}")
 		"
