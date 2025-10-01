@@ -62,10 +62,8 @@ if [[ $offline -eq 1 ]]; then
 	flags+=(--unshare-net)
 fi
 
-flatpak=0
 if which flatpak &>/dev/null && [[ -d /var/lib/flatpak ]]; then
 	flags+=(--tmpfs /var/lib/flatpak)
-	flatpak=1
 fi
 
 if [[ ${#shares[@]} -gt 0 ]]; then
@@ -114,11 +112,14 @@ unshare \
 		--setenv ICON_THEME "Adwaita" \
 		--setenv ADW_DEBUG_COLOR_SCHEME "prefer-dark" \
 		"${flags[@]}" \
-		sh -c "
+		bash -c "
 			trap 'pkill -9 .*' EXIT
-			export \$(dbus-launch)
 
-			if [[ $flatpak -eq 1 ]]; then
+			if which dbus-launch &>/dev/null; then
+				export \$(dbus-launch)
+			fi
+
+			if which flatpak &>/dev/null; then
 				flatpak remote-add --user --if-not-exists flathub \
 					https://flathub.org/repo/flathub.flatpakrepo >/dev/null
 				pushd ~/.local/share >/dev/null
