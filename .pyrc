@@ -1,2 +1,26 @@
-import numpy as np
-from math import *
+import sys
+import os
+import math
+import json
+
+from _pyrepl.simple_interact import _get_reader
+reader = _get_reader()
+reader.bind(r"\x1b[3;5~", "kill-word")	# Bind Ctrl+Del to delete forward word
+del reader, _get_reader
+
+for (module, component) in [
+		("requests", None),
+		("pyquery", ["PyQuery"]),
+		("numpy", "np")
+	]:
+	try:
+		if type(component) == list:
+			component = ", ".join(component)
+			exec(f"from {module} import {component}")
+		elif type(component) == str:
+			exec(f"import {module} as {component}")
+		else:
+			exec(f"import {module}")
+	except ModuleNotFoundError:	# Import modules only if available
+		pass
+del module, component
