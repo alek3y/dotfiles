@@ -1,6 +1,8 @@
 [core]
 	editor = nvim
 	pager = less -X
+[receive]
+	denyCurrentBranch = updateInstead
 [credential]
 	helper = store
 [alias]
