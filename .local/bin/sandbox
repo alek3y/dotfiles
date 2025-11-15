@@ -6,10 +6,10 @@ IFS=$'\n'
 function usage {
 	printf 'Usage: %s [OPTION...] [COMMAND]\n\n' "$(basename "$0")"
 	printf 'Options:\n'
-	printf '  -p, --prefix PREFIX   Change the home to PREFIX\n'
-	printf '  -s, --share SRC:DST   Bind SRC to DST within the container\n'
-	printf '  -o, --offline         Disable network access\n'
-	printf '  -h, --help            Show this help message\n'
+	printf '  -p, --prefix PREFIX     Change the user home folder to PREFIX\n'
+	printf '  -s, --share SRC[:DST]   Bind path SRC (to DST) within the container\n'
+	printf '  -o, --offline           Disable network access\n'
+	printf '  -h, --help              Show this help message\n'
 	exit ${1:-1}
 }
 
@@ -51,12 +51,6 @@ while [[ $# -gt 0 ]]; do
 	esac
 done
 
-temporary=0
-if [[ -z "$prefix" ]]; then
-	prefix=$(mktemp -d --tmpdir "sandbox.XXXXXXXXXX")
-	temporary=1
-fi
-
 flags=()
 if [[ $offline -eq 1 ]]; then
 	flags+=(--unshare-net)
@@ -69,6 +63,12 @@ fi
 if [[ ${#shares[@]} -gt 0 ]]; then
 	for share in "${shares[@]}"; do
 		IFS=':' read -r src dst <<< "$share"
+		if [[ -z "$src" ]]; then
+			usage 1
+		elif [[ -z "$dst" ]]; then
+			dst="$src"
+		fi
+
 		src="$(realpath "${src/#~/$HOME}")"
 		dst="$(realpath "${dst/#~/$HOME}")"
 		flags+=(--bind "$src" "$dst")
@@ -77,6 +77,12 @@ fi
 
 if [[ ${#positional[@]} -eq 0 ]]; then
 	positional=(bash)
+fi
+
+temporary=0
+if [[ -z "$prefix" ]]; then
+	prefix=$(mktemp -d --tmpdir "sandbox.XXXXXXXXXX")
+	temporary=1
 fi
 
 function cleanup {
