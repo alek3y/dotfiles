@@ -56,10 +56,6 @@ if [[ $offline -eq 1 ]]; then
 	flags+=(--unshare-net)
 fi
 
-if which flatpak &>/dev/null && [[ -d /var/lib/flatpak ]]; then
-	flags+=(--tmpfs /var/lib/flatpak)
-fi
-
 if [[ ${#shares[@]} -gt 0 ]]; then
 	for share in "${shares[@]}"; do
 		IFS=':' read -r src dst <<< "$share"
@@ -75,14 +71,21 @@ if [[ ${#shares[@]} -gt 0 ]]; then
 	done
 fi
 
-if [[ ${#positional[@]} -eq 0 ]]; then
-	positional=(bash)
+if which flatpak &>/dev/null; then
+	if [[ -d /var/lib/flatpak ]]; then	# Avoids permission denied
+		flags+=(--tmpfs /var/lib/flatpak)
+	fi
+	flags+=(--tmpfs "$HOME/.local/share/flatpak")
 fi
 
 temporary=0
 if [[ -z "$prefix" ]]; then
 	prefix=$(mktemp -d --tmpdir "sandbox.XXXXXXXXXX")
 	temporary=1
+fi
+
+if [[ ${#positional[@]} -eq 0 ]]; then
+	positional=(bash)
 fi
 
 function cleanup {
@@ -128,13 +131,17 @@ unshare \
 			if which flatpak &>/dev/null; then
 				flatpak remote-add --user --if-not-exists flathub \
 					https://flathub.org/repo/flathub.flatpakrepo >/dev/null
-				pushd ~/.local/share >/dev/null
-				mv flatpak flatpak.bak
-				ln -s /var/lib/flatpak flatpak
-				flatpak repair --user >/dev/null
-				rm flatpak
-				mv flatpak.bak flatpak
-				popd >/dev/null
+
+				if [[ -d /var/lib/flatpak ]]; then	# Tries to fix the missing repo error
+					pushd \$(mktemp -d) >/dev/null
+					mkdir -p .local/share
+					ln -s /var/lib/flatpak .local/share/flatpak
+					HOME=. flatpak repair --user >/dev/null
+					rm .local/share/flatpak
+					rmdir .local/share .local
+					popd >/dev/null
+					rmdir \$OLDPWD
+				fi
 			fi
 
 			exec $(printf '%q ' "${positional[@]}")
