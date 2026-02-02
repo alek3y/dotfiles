@@ -4,7 +4,7 @@ set -e
 IFS=$'\n'
 
 function usage {
-	printf 'Usage: %s [OPTION...] [COMMAND]\n\n' "$(basename "$0")"
+	printf 'Usage: %s [OPTION...] [--] [COMMAND]\n\n' "$(basename "$0")"
 	printf 'Options:\n'
 	printf '  -p, --prefix PREFIX     Change the user home folder to PREFIX\n'
 	printf '  -s, --share SRC[:DST]   Bind path SRC (to DST) within the container\n'
@@ -106,7 +106,7 @@ unshare \
 		--bind-try /tmp/.X11-unix /tmp/.X11-unix \
 		--bind "$prefix" "$HOME" \
 		--bind-try "$XDG_RUNTIME_DIR/pulse/native" "$HOME/.pulse" \
-		--ro-bind-try "$XAUTHORITY" "$HOME/.Xauthority" \
+		--ro-bind-try "${XAUTHORITY:-$HOME/.Xauthority}" "$HOME/.Xauthority" \
 		--unshare-pid --die-with-parent --clearenv \
 		--setenv HOME "$HOME" \
 		--setenv TERM "${TERM:-linux}" \
@@ -118,6 +118,7 @@ unshare \
 		--setenv XDG_SESSION_TYPE "$XDG_SESSION_TYPE" \
 		--setenv PULSE_SERVER "unix:$HOME/.pulse" \
 		--setenv GTK_THEME "Adwaita:dark" \
+		--setenv XCURSOR_THEME "Adwaita" \
 		--setenv ICON_THEME "Adwaita" \
 		--setenv ADW_DEBUG_COLOR_SCHEME "prefer-dark" \
 		"${flags[@]}" \
