@@ -1,0 +1,20 @@
+/*
+CSS for any page content, which needs to be placed into [a-z0-9]+\.default-default/chrome/.
+*/
+
+/* See https://stackoverflow.com/a/75492305 */
+@-moz-document url(about:newtab), url(about:home) {
+	.logo-and-wordmark .wordmark {
+		filter: invert(1);
+		mix-blend-mode: difference;
+	}
+
+	.title .title-label {
+		color: white;
+	}
+
+	.tile {
+		background-color: #fff4 !important;
+		backdrop-filter: blur(5px) !important;
+	}
+}

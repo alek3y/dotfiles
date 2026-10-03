@@ -1,0 +1,24 @@
+/*
+CSS for LibreWolf window, which needs to be placed into [a-z0-9]+\.default-default/chrome/.
+For opening the window devtools, see https://firefox-source-docs.mozilla.org/devtools-user/browser_toolbox/index.html#opening-the-browser-toolbox
+*/
+
+#urlbar {
+	/* Grouping labels (e.g. 'Suggestions') */
+	& .urlbarView-row[label] {
+		--urlbarView-labeled-row-margin-top: 0px;
+		&::before {
+			content: "" !important;
+		}
+	}
+
+	/* History badge icon on items from history suggestions */
+	& .urlbarView-type-icon {
+		display: none;
+	}
+
+	/* 'This time, search with' stuff */
+	& .search-one-offs {
+		display: none !important;
+	}
+}
