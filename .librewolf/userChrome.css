@@ -16,6 +16,9 @@ For opening the window devtools, see https://firefox-source-docs.mozilla.org/dev
 	& .urlbarView-type-icon {
 		display: none;
 	}
+	& .urlbarView-favicon {
+		mask-image: unset !important;
+	}
 
 	/* 'This time, search with' stuff */
 	& .search-one-offs {
