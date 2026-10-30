@@ -5,9 +5,13 @@
 #
 # This is ale's ~/.bashrc
 
-#if command -v tmux &> /dev/null && [ -z "$TMUX" ] && [[ "$-" =~ i ]]; then
-#	exec tmux
-#fi
+if command -v tmux &> /dev/null \
+	&& [ -z "$TMUX" ] \
+	&& [ -z "$VSCODE_GIT_ASKPASS_NODE" ] \
+	&& [[ "$-" =~ i ]]
+then
+	exec tmux
+fi
 
 # Bash
 export HISTSIZE=-1
@@ -15,8 +19,8 @@ export HISTCONTROL="ignoreboth"
 shopt -s histappend
 
 # Environment variables
-export PATH="$PATH:$HOME/.local/bin"
-export EDITOR="nvim"
+export PATH="$HOME/.local/bin:$PATH"
+export EDITOR="vim"
 export LESS="-RFi"
 export PYTHONSTARTUP="$HOME/.pyrc"
 export GOPATH="$HOME/.go"
@@ -51,7 +55,7 @@ if [[ "$-" =~ i ]]; then	# Show only if shell is interactive
 fi
 
 # Aliases
-alias sudo="sudo "	# See https://unix.stackexchange.com/a/349290
+alias sudo="sudo --preserve-env=PATH "	# See https://unix.stackexchange.com/a/349290
 alias ls="ls --color=auto"
 alias grep="grep --color=auto"
 alias dd="dd status=progress"
@@ -84,4 +88,7 @@ function overlay {
 			$@
 		rm -rf $parent
 	"
+}
+function rpass {
+	grep -aoP '[a-zA-Z0-9.:;!+*?\-&]+' /dev/urandom | tr -d $'\n' | head -c ${1:-12}; echo
 }
