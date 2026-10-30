@@ -1,26 +1,52 @@
-import sys
-import os
-import math
-import json
+def setup():
+	MODULES = [
+		"sys", "os", "math",
+		"time", "datetime",
+		"re", "json",
 
-from _pyrepl.simple_interact import _get_reader
-reader = _get_reader()
-reader.bind(r"\x1b[3;5~", "kill-word")	# Bind Ctrl+Del to delete forward word
-del reader, _get_reader
+		("functools", ["reduce", "partial", ("cache", "memoize")]),
 
-for (module, component) in [
-		("requests", None),
+		"requests",
 		("pyquery", ["PyQuery"]),
+
 		("numpy", "np")
-	]:
-	try:
-		if type(component) == list:
-			component = ", ".join(component)
-			exec(f"from {module} import {component}")
-		elif type(component) == str:
-			exec(f"import {module} as {component}")
-		else:
-			exec(f"import {module}")
-	except ModuleNotFoundError:	# Import modules only if available
-		pass
-del module, component
+	]
+
+	from _pyrepl.simple_interact import _get_reader
+	reader = _get_reader()
+	reader.bind(r"\x1b[3;5~", "kill-word")	# Bind Ctrl+Del to delete forward word
+
+	def statement(module):
+		assert type(module) in [str, tuple]
+		if type(module) == str:
+			module = (module, module)
+
+		(module, alias_or_children) = module
+		assert type(module) == str and type(alias_or_children) in [str, list]
+		if type(alias_or_children) == str:
+			alias = alias_or_children
+			return f"global {alias}; import {module} as {alias}"
+
+		exports = []
+		submodules = []
+		children = alias_or_children
+		for (i, child) in enumerate(children):
+			assert type(child) in [str, tuple]
+			if type(child) == str:
+				child = (child, child)
+
+			(submodule, alias) = child
+			assert type(submodule) == str and type(alias) == str
+			exports.append(alias)
+			submodules.append(f"{submodule} as {alias}")
+
+		return f"global {','.join(exports)}; from {module} import {','.join(submodules)}"
+
+	for module in MODULES:
+		try:
+			exec(statement(module))
+		except ModuleNotFoundError:	# Import modules only if available
+			pass
+
+setup()
+del setup
